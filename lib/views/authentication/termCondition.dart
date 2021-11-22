@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 //import views
-import 'package:ui_fresh_app/views/authentication/termCondition.dart';
+import 'package:ui_fresh_app/views/authentication/signIn.dart';
 
 //import constants
 import 'package:ui_fresh_app/constants/colors.dart';
@@ -14,7 +14,7 @@ import 'package:ui_fresh_app/constants/others.dart';
 //import others
 import 'package:flutter/services.dart';
 import 'package:blur/blur.dart';
-import 'package:ui_fresh_app/views/onboardings/onboardingWrapper.dart';
+import 'package:ui_fresh_app/views/wrapper/onboardingWrapper.dart';
 
 class conditionScreen extends StatelessWidget {
   const conditionScreen({Key? key}) : super(key: key);
@@ -31,16 +31,16 @@ class conditionScreen extends StatelessWidget {
             backgroundColor: blueWater,
             centerTitle: true,
             leading: IconButton(
-              padding: EdgeInsets.only(left: 30),
+              padding: EdgeInsets.only(left: 28),
               onPressed: () {
                 Navigator.pop(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => onboardingScreen(),
+                    builder: (context) => signinScreen(),
                   ),
                 );
               },
-              icon: Icon(Icons.arrow_back_ios, size: 28, color: black),
+              icon: Icon(Icons.arrow_back_ios, size: 28, color: blackLight),
             ),
           ),
           body: SingleChildScrollView(
@@ -48,12 +48,11 @@ class conditionScreen extends StatelessWidget {
               child: Column(children: [
                 SizedBox(height: 16.0),
                 Container(
-                  padding: EdgeInsets.only(left: 8),
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Terms & Conditions',
                     style: TextStyle(
-                      fontFamily: 'Poppins',
+                      fontFamily: 'SFProText',
                       fontSize: title28,
                       color: blueWater,
                       fontWeight: FontWeight.w600,
@@ -65,12 +64,9 @@ class conditionScreen extends StatelessWidget {
                 Divider(
                     color: grey8,
                     thickness: 0.5,
-                    indent: 10,
-                    endIndent: 10,
                 ),
                 SizedBox(height: 16),
                 Container(
-                  padding: EdgeInsets.only(left: 10, right: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -79,7 +75,7 @@ class conditionScreen extends StatelessWidget {
                             child: Text(
                             'Last updated: 2021-11-01',
                             style: TextStyle(
-                                fontFamily: 'Poppins',
+                                fontFamily: 'SFProText',
                                 fontSize: content14,
                                 color: grey8,
                                 fontWeight: FontWeight.w300,
@@ -98,7 +94,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '1. Introduction',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -118,7 +114,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'SFProText',
                                         fontSize: content14,
                                         color: black,
                                         fontWeight: FontWeight.w400,
@@ -130,7 +126,7 @@ class conditionScreen extends StatelessWidget {
                                             'Welcome to ',
                                       ),
                                       TextSpan(
-                                        text: 'Grow Company ',
+                                        text: 'Fresh Company ',
                                         style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -146,7 +142,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                        fontFamily: 'Poppins',
+                                        fontFamily: 'SFProText',
                                         fontSize: content14,
                                         color: black,
                                         fontWeight: FontWeight.w400,
@@ -157,7 +153,7 @@ class conditionScreen extends StatelessWidget {
                                         text: 'These Terms of Service (“Terms”, “Terms of Service”) govern your use of our website located at ',
                                       ),
                                       TextSpan(
-                                        text: 'Growapp.com ',
+                                        text: 'Freshapp.com ',
                                         style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -166,7 +162,7 @@ class conditionScreen extends StatelessWidget {
                                         text: '(together or individually “Service”) operated by ',
                                       ),
                                       TextSpan(
-                                        text: 'Grow Company.',
+                                        text: 'Fresh Company.',
                                         style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -179,7 +175,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -197,7 +193,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -215,7 +211,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -226,7 +222,7 @@ class conditionScreen extends StatelessWidget {
                                         text: 'If you do not agree with (or cannot comply with) Agreements, then you may not use the Service, but please let us know by emailing at ',
                                       ),
                                       TextSpan(
-                                        text: 'HelpGrow@gmail.com ',
+                                        text: 'HelpFresh@gmail.com ',
                                         style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -251,7 +247,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '2. Communications',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -271,7 +267,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -282,7 +278,7 @@ class conditionScreen extends StatelessWidget {
                                         text: 'By using our Service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or by emailing at ',
                                       ),
                                       TextSpan(
-                                        text: 'HelpGrow@gmail.com.',
+                                        text: 'HelpFresh@gmail.com.',
                                         style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -304,7 +300,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '3. Contests, Sweepstakes and Promotions',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -324,7 +320,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -352,7 +348,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '4. Content',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -372,7 +368,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -391,7 +387,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -410,7 +406,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -429,7 +425,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -438,7 +434,7 @@ class conditionScreen extends StatelessWidget {
                                     children: const <TextSpan>[
                                       TextSpan(
                                         text:
-                                            'Grow Company has the right but not the obligation to monitor and edit all Content provided by users.',
+                                            'Fresh Company has the right but not the obligation to monitor and edit all Content provided by users.',
                                       ),
                                     ],
                                   ),
@@ -448,7 +444,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -457,7 +453,7 @@ class conditionScreen extends StatelessWidget {
                                     children: const <TextSpan>[
                                       TextSpan(
                                         text:
-                                            'In addition, Content found on or through this Service are the property of Grow Company or used with permission. You may not distribute, modify, transmit, reuse, download, repost, copy, or use said Content, whether in whole or in part, for commercial purposes or for personal gain, without express advance written permission from us.',
+                                            'In addition, Content found on or through this Service are the property of Fresh Company or used with permission. You may not distribute, modify, transmit, reuse, download, repost, copy, or use said Content, whether in whole or in part, for commercial purposes or for personal gain, without express advance written permission from us.',
                                       ),
                                     ],
                                   ),
@@ -476,7 +472,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '5. Prohibited Uses',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -496,7 +492,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -518,7 +514,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -537,7 +533,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -556,7 +552,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -575,7 +571,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -594,7 +590,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -613,7 +609,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -632,7 +628,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -654,7 +650,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -673,7 +669,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -692,7 +688,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -711,7 +707,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -730,7 +726,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -749,7 +745,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -768,7 +764,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -787,7 +783,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -806,7 +802,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -834,7 +830,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '6. Analytics',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -854,7 +850,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -882,7 +878,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '7. No Use By Minors',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -902,7 +898,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -930,7 +926,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '8. Accounts',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -950,7 +946,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -969,7 +965,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -988,7 +984,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1007,7 +1003,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1035,7 +1031,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '9. Intellectual Property',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -1055,7 +1051,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1064,7 +1060,7 @@ class conditionScreen extends StatelessWidget {
                                     children: const <TextSpan>[
                                       TextSpan(
                                         text:
-                                            'Service and its original content (excluding Content provided by users), features and functionality are and will remain the exclusive property of Grow Company and its licensors. Service is protected by copyright, trademark, and other laws of and foreign countries. Our trademarks may not be used in connection with any product or service without the prior written consent of Grow Company.',
+                                            'Service and its original content (excluding Content provided by users), features and functionality are and will remain the exclusive property of Fresh Company and its licensors. Service is protected by copyright, trademark, and other laws of and foreign countries. Our trademarks may not be used in connection with any product or service without the prior written consent of Fresh Company.',
                                       ),
                                     ],
                                   ),
@@ -1083,7 +1079,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '10. Copyright Policy',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -1103,7 +1099,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1122,7 +1118,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1131,7 +1127,7 @@ class conditionScreen extends StatelessWidget {
                                     children: const <TextSpan>[
                                       TextSpan(
                                         text:
-                                            'If you are a copyright owner, or authorized on behalf of one, and you believe that the copyrighted work has been copied in a way that constitutes copyright infringement, please submit your claim via email to HelpGrow@gmail.com, with the subject line: “Copyright Infringement” and include in your claim a detailed description of the alleged Infringement as detailed below, under “DMCA Notice and Procedure for Copyright Infringement Claims”',
+                                            'If you are a copyright owner, or authorized on behalf of one, and you believe that the copyrighted work has been copied in a way that constitutes copyright infringement, please submit your claim via email to HelpFresh@gmail.com, with the subject line: “Copyright Infringement” and include in your claim a detailed description of the alleged Infringement as detailed below, under “DMCA Notice and Procedure for Copyright Infringement Claims”',
                                       ),
                                     ],
                                   ),
@@ -1141,7 +1137,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1167,9 +1163,9 @@ class conditionScreen extends StatelessWidget {
                             Container(
                                 alignment: Alignment.topLeft,
                                 child: Text(
-                                  '11. DMCA Notice and Procedure for Copyright Infringement Claims',
+                                  '11. DMCA Notice and Procedure Copyright Infringement Claims',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -1189,7 +1185,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1208,7 +1204,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1227,7 +1223,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1246,7 +1242,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1265,7 +1261,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1284,7 +1280,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1303,7 +1299,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1322,7 +1318,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1331,7 +1327,7 @@ class conditionScreen extends StatelessWidget {
                                     children: const <TextSpan>[
                                       TextSpan(
                                         text:
-                                            'You can contact our Copyright Agent via email at HelpGrow@gmail.com.',
+                                            'You can contact our Copyright Agent via email at HelpFresh@gmail.com.',
                                       ),
                                     ],
                                   ),
@@ -1350,7 +1346,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '12. Error Reporting and Feedback',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -1370,7 +1366,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1398,7 +1394,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '13. Links To Other Web Sites',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -1418,7 +1414,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1427,7 +1423,7 @@ class conditionScreen extends StatelessWidget {
                                     children: const <TextSpan>[
                                       TextSpan(
                                         text:
-                                            'Our Service may contain links to third party web sites or services that are not owned or controlled by Grow Company.',
+                                            'Our Service may contain links to third party web sites or services that are not owned or controlled by Fresh Company.',
                                       ),
                                     ],
                                   ),
@@ -1437,7 +1433,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1446,7 +1442,7 @@ class conditionScreen extends StatelessWidget {
                                     children: const <TextSpan>[
                                       TextSpan(
                                         text:
-                                            'Grow Company has no control over, and assumes no responsibility for the content, privacy policies, or practices of any third party web sites or services. We do not warrant the offerings of any of these entities/individuals or their websites.',
+                                            'Fresh Company has no control over, and assumes no responsibility for the content, privacy policies, or practices of any third party web sites or services. We do not warrant the offerings of any of these entities/individuals or their websites.',
                                       ),
                                     ],
                                   ),
@@ -1456,7 +1452,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1475,7 +1471,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1494,7 +1490,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1522,7 +1518,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '14. Disclaimer Of Warranty',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -1542,7 +1538,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1561,7 +1557,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1580,7 +1576,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1599,7 +1595,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1627,7 +1623,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '15. Limitation Of Liability',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -1647,7 +1643,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1675,7 +1671,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '16. Termination',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -1695,7 +1691,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1714,7 +1710,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1733,7 +1729,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1761,7 +1757,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '17. Governing Law',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -1781,7 +1777,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1800,7 +1796,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1828,7 +1824,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '18. Changes To Service',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -1848,7 +1844,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1876,7 +1872,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '19. Amendments To Terms',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -1896,7 +1892,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1915,7 +1911,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1934,7 +1930,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -1962,7 +1958,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '20. Waiver And Severability',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -1982,7 +1978,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -2001,7 +1997,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -2029,7 +2025,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '21. Acknowledgement',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -2049,7 +2045,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -2077,7 +2073,7 @@ class conditionScreen extends StatelessWidget {
                                 child: Text(
                                   '22. Contact Us',
                                   style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: title18,
                                       color: blueWater,
                                       fontWeight: FontWeight.w600,
@@ -2097,7 +2093,7 @@ class conditionScreen extends StatelessWidget {
                                   textAlign: TextAlign.justify,
                                   text: TextSpan(
                                     style: TextStyle(
-                                      fontFamily: 'Poppins',
+                                      fontFamily: 'SFProText',
                                       fontSize: content14,
                                       color: black,
                                       fontWeight: FontWeight.w400,
@@ -2109,7 +2105,7 @@ class conditionScreen extends StatelessWidget {
                                             'Please send your feedback, comments, requests for technical support by email: ',
                                       ),
                                       TextSpan(
-                                        text: 'HelpGrow@gmail.com.',
+                                        text: 'HelpFresh@gmail.com.',
                                         style: TextStyle(
                                           fontWeight: FontWeight.w600,
                                         ),
@@ -2139,9 +2135,9 @@ class conditionScreen extends StatelessWidget {
                       Container(
                           alignment: Alignment.topLeft,
                           child: Text(
-                            'These Terms of Service were created for Growapp.com by PolicyMaker.io on 2021-11-01.',
+                            'Terms of Service created for Freshapp.com by PolicyMaker.io on 2021-11-01.',
                             style: TextStyle(
-                                fontFamily: 'Poppins',
+                                fontFamily: 'SFProText',
                                 fontSize: content14,
                                 color: grey8,
                                 fontWeight: FontWeight.w300,

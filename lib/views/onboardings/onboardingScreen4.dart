@@ -12,8 +12,8 @@ import 'package:ui_fresh_app/constants/others.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class onboardingScreen3 extends StatelessWidget {
-  const onboardingScreen3({Key? key}) : super(key: key);
+class onboardingScreen4 extends StatelessWidget {
+  const onboardingScreen4({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +32,12 @@ class onboardingScreen3 extends StatelessWidget {
           ),
           child: Column(
             children: [
-              SizedBox(height: 35),
+              SizedBox(height: 45),
               Container(
                 alignment: Alignment.topLeft,
-                child: Image.asset(obTargetBrand, scale: 1),
+                child: Image.asset(obDrinkBrand, scale: 1),
               ),
-              SizedBox(height: 36),
+              SizedBox(height: 8),
               Container(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +45,7 @@ class onboardingScreen3 extends StatelessWidget {
                     Container(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          'Our Mission',
+                          'Our Drinks',
                           style: TextStyle(
                             fontFamily: 'SFProText',
                             fontSize: title40,
@@ -70,8 +70,14 @@ class onboardingScreen3 extends StatelessWidget {
                             ),
                             children: const <TextSpan>[
                               TextSpan(
-                                text:
-                                    'Vietnamese milk tea is for Vietnamese people, with Vietnamese soul and spirit creating Vietnamese youth style.',
+                                text: 'Fresh',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: blueWater,
+                                ),
+                              ),
+                              TextSpan(
+                                text: ' – there are many drinks to choose from in the menu. Each dish will have a different flavor and depending on the taste of each person, adjust the amount of ice sugar accordingly.',
                               ),
                             ],
                           ),
@@ -89,18 +95,7 @@ class onboardingScreen3 extends StatelessWidget {
                             ),
                             children: const <TextSpan>[
                               TextSpan(
-                                text: 'That is the task that ',
-                              ),
-                              TextSpan(
-                                text: 'Fresh',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: blueWater,
-                                ),
-                              ),
-                              TextSpan(
-                                text:
-                                    ' always wants to complete and must succeed with the chosen path.',
+                                text: 'For even the most demanding customers, a cup of milk tea scented with tea or milk is always ready to serve.',
                               ),
                             ],
                           ),

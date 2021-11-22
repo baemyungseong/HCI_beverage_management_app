@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 //fontsizes used in this app
 
+const double title40 = 40.0;
 const double title32 = 32.0;
 const double title28 = 28.0;
 const double title18 = 18.0;

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:ui_fresh_app/views/authentication/signIn.dart';
 
 //import views
-import 'package:ui_fresh_app/views/onboardings/onboardingWrapper.dart';
+import 'package:ui_fresh_app/views/wrapper/onboardingWrapper.dart';
 import 'package:ui_fresh_app/views/authentication/termCondition.dart';
 
 //import others
@@ -32,10 +33,10 @@ class FreshApp extends StatelessWidget {
           accentColor: Colors.white,
         ),
         initialRoute:
-            initScreen == 0 || initScreen == null ? 'onboarding' : 'authNav',
+            initScreen == 0 || initScreen == null ? 'onboarding' : 'signin',
         routes: {
-          'onboarding': (context) => onboardingScreen(),
-          'authNav': (context) => conditionScreen(),
+          'onboarding': (context) => onboardingWrapper(),
+          'signin': (context) => signinScreen(),
         },
     );
   }

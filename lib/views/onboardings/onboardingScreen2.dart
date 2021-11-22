@@ -17,7 +17,7 @@ class onboardingScreen2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Change status bar color to white
+    // Change status bar color to black
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
           statusBarBrightness: Brightness.light,
@@ -25,85 +25,109 @@ class onboardingScreen2 extends StatelessWidget {
           statusBarColor: Colors.transparent),
       child: Scaffold(
         body: Container(
-          padding: EdgeInsets.all(38),
+          padding: EdgeInsets.all(28),
           decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage(backgroundOnboarding), fit: BoxFit.cover),
           ),
           child: Column(
             children: [
-              Stack(
-                children: [
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(top: 140),
-                        width: 240,
-                        height: 372,
-                        decoration: BoxDecoration(
-                            color: white.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(30)
-                        ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(top: 122),
-                        width: 270,
-                        height: 372,
-                        decoration: BoxDecoration(
-                            color: white.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(30)
-                        ),
-                      ),
-                      Container(
-                          padding:
-                              EdgeInsets.only(top: 142, left: 19, right: 19),
-                          margin: EdgeInsets.only(top: 104),
-                          height: 372,
-                          decoration: BoxDecoration(
-                              color: white,
-                              borderRadius: BorderRadius.circular(30)
+              SizedBox(height: 45),
+              Container(
+                alignment: Alignment.topLeft,
+                child: Image.asset(obHistoryBrand, scale: 1),
+              ),
+              SizedBox(height: 24),
+              Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Our History',
+                          style: TextStyle(
+                            fontFamily: 'SFProText',
+                            fontSize: title40,
+                            color: blackLight,
+                            fontWeight: FontWeight.w600,
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    'Build the target' + '\n' + 'you want',
-                                    style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: title32,
-                                      color: black,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                    textAlign: TextAlign.left,
-                                  )
+                          textAlign: TextAlign.left,
+                        )),
+                    SizedBox(height: 16),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        RichText(
+                          textAlign: TextAlign.justify,
+                          text: TextSpan(
+                            style: TextStyle(
+                              fontFamily: 'SFProText',
+                              fontSize: content16,
+                              color: grey3,
+                              fontWeight: FontWeight.w400,
+                              height: 1.4,
+                            ),
+                            children: const <TextSpan>[
+                              TextSpan(
+                                text: 'In November 2021, when all of milk teas becomes indispensable habit of young Vietnamese, ',
                               ),
-                              SizedBox(height: 8),
-                              Container(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    'Build the target you want.' + '\n' + 'Customize Grow to make it work' + '\n' + 'the way you want it to.',
-                                    style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        fontSize: content16,
-                                        color: black,
-                                        fontWeight: FontWeight.w400,
-                                        height: 1.6),
-                                    textAlign: TextAlign.left,
-                                  )
+                              TextSpan(
+                                text: 'Fresh',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: blueWater,
+                                ),
+                              ),
+                              TextSpan(
+                                text: ' has transformed into ',
+                              ),
+                              TextSpan(
+                                text: 'Fresh Drink',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: blueWater,
+                                ),
+                              ),
+                              TextSpan(
+                                text: ' – a more modern image with a enjoy "limited and signature" drinks.',
                               ),
                             ],
-                          )
-                      ),
-                    ],
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    child: Image.asset(obTargetDynamic, scale: 1),
-                  ),
-                ],
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        RichText(
+                          textAlign: TextAlign.justify,
+                          text: TextSpan(
+                            style: TextStyle(
+                              fontFamily: 'SFProText',
+                              fontSize: content16,
+                              color: grey3,
+                              fontWeight: FontWeight.w400,
+                              height: 1.4,
+                            ),
+                            children: const <TextSpan>[
+                              TextSpan(
+                                text:
+                                    'Currently, ',
+                              ),
+                              TextSpan(
+                                text: 'Fresh',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: blueWater,
+                                ),
+                              ),
+                              TextSpan(
+                                text: ' is not only present in USA, Vietnam also has branches in UK, Taiwan, Thailand...',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
