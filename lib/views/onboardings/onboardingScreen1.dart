@@ -17,7 +17,7 @@ class onboardingScreen1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Change status bar color to white
+    // Change status bar color to black
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
           statusBarBrightness: Brightness.light,
@@ -31,42 +31,42 @@ class onboardingScreen1 extends StatelessWidget {
           ),
           child: Column(
             children: [
-              SizedBox(height: 60),
+              SizedBox(height: 108),
               Container(
-                alignment: Alignment.topRight,
-                child: Image.asset(obHandCalendar, scale: 1),
+                alignment: Alignment.center,
+                child: Image.asset(obChosingDrink, scale: 1),
               ),
-              SizedBox(height: 47),
+              SizedBox(height: 56),
               Container(
-                padding: EdgeInsets.only(right: 32),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                        alignment: Alignment.centerRight,
+                        alignment: Alignment.center,
                         child: Text(
-                          'Manage Your Schedule',
+                          'Let’s Choose Your Favourite Drinks!',
                           style: TextStyle(
-                            fontFamily: 'Poppins',
+                            fontFamily: 'SFProText',
                             fontSize: title32,
-                            color: white,
+                            color: blackLight,
                             fontWeight: FontWeight.w600,
                           ),
-                          textAlign: TextAlign.right,
+                          textAlign: TextAlign.center,
                         )
                     ),
-                    SizedBox(height: 8),
+                    SizedBox(height: 16),
                     Container(
-                        alignment: Alignment.centerRight,
+                        alignment: Alignment.center,
                         child: Text(
-                          'We’re more than a application.' + '\n' + 'Customize Grow to work the way you do.',
+                          'Choose favorite drink as life brings joy to us' + '\n' + 'Our menu will serve even the most' + '\n' + 'demanding customers!',
                           style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: content16,
-                              color: white,
-                              fontWeight: FontWeight.w400,
-                              height: 1.6),
-                          textAlign: TextAlign.right,
+                            fontFamily: 'SFProText',
+                            fontSize: content16,
+                            color: grey3,
+                            fontWeight: FontWeight.w400,
+                            height: 1.4,
+                          ),
+                          textAlign: TextAlign.center,
                         )
                     ),
                   ],
