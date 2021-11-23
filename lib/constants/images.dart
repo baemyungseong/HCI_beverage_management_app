@@ -5,8 +5,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 //images used in this app
 
 //background images
-const backgroundOnboarding = 'assets/images/background/backgroundOnboarding.png';
 const background = 'assets/images/background/basicBackground.png';
+const backgroundOnboarding = 'assets/images/background/backgroundOnboarding.png';
+const backgroundLogin = 'assets/images/background/backgroundLogin.png';
 
 //logo images
 const logo = 'assets/images/logo/basicLogo.png';
@@ -19,3 +20,5 @@ const obDrinkBrand = 'assets/images/onboarding/drinkBrand.png';
 
 //authentication images
 const atWavingHand = 'assets/images/authentication/wavingHand.png';
+const atBallonPeople = 'assets/images/authentication/ballonPeople.png';
+const atCheckPerspective = 'assets/images/authentication/check_perspective.png';

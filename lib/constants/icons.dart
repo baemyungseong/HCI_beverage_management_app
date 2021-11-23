@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 //icons used in this app
 
 //general
-const outlineClose = 'assets/icons/general/outline_close.svg';
+// const outlineClose = 'assets/icons/general/outline_close.svg';
 
 //authentication icons
 const googleLogoIcon = 'assets/icons/authentication/google.png';
