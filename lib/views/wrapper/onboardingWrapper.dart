@@ -79,7 +79,7 @@ class _OnboardingState extends State<onboardingWrapper> {
                                       color: blackLight,
                                       fontFamily: 'SFProText',
                                       fontWeight: FontWeight.w600,
-                                      fontSize: textButton),
+                                      fontSize: textButton18),
                                 ),
                               )
                             : Container(
@@ -175,7 +175,7 @@ class _OnboardingState extends State<onboardingWrapper> {
                                           color: whiteLight,
                                           fontFamily: 'SFProText',
                                           fontWeight: FontWeight.w600,
-                                          fontSize: textButton),
+                                          fontSize: textButton18),
                                     ),
                                   ),
                                 )
@@ -219,7 +219,7 @@ class _OnboardingState extends State<onboardingWrapper> {
                                             color: whiteLight,
                                             fontFamily: 'SFProText',
                                             fontWeight: FontWeight.w600,
-                                            fontSize: textButton),
+                                            fontSize: textButton18),
                                       )
                                   ),
                                 )
