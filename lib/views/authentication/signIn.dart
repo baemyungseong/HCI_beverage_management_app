@@ -28,6 +28,7 @@ class _signinScreenState extends State<signinScreen> {
   bool isHiddenPassword = true;
   final GlobalKey<FormState> _formemailKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formpasswordKey = GlobalKey<FormState>();
+  List<String> _listImage = [loginAds1, loginAds2, loginAds3];
 
   @override
   Widget build(BuildContext context) {
@@ -52,25 +53,23 @@ class _signinScreenState extends State<signinScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Text(
-                              'Good morning,',
-                              style: TextStyle(
-                                fontFamily: 'SFProText',
-                                fontSize: content16,
-                                color: grey8,
-                                fontWeight: FontWeight.w400,
-                                height: 1.6,
-                              ),
+                        Row(children: [
+                          Text(
+                            'Good morning,',
+                            style: TextStyle(
+                              fontFamily: 'SFProText',
+                              fontSize: content16,
+                              color: grey8,
+                              fontWeight: FontWeight.w400,
+                              height: 1.6,
                             ),
-                            SizedBox(width: 32),
-                            Container(
-                              alignment: Alignment.topCenter,
-                              child: Image.asset(atWavingHand, scale: 4),
-                            ),
-                          ]
-                        ),
+                          ),
+                          SizedBox(width: 32),
+                          Container(
+                            alignment: Alignment.topCenter,
+                            child: Image.asset(atWavingHand, scale: 4),
+                          ),
+                        ]),
                         SizedBox(height: 8),
                         Text(
                           'Welcome back!',
@@ -120,8 +119,22 @@ class _signinScreenState extends State<signinScreen> {
                 SizedBox(height: 36),
                 //pageview làm ở đây nhe!
                 Container(
-                  child: Text('Ple Ple Ple!')
-                ),
+                    height: 137,
+                    decoration: BoxDecoration(color: Colors.transparent),
+                    child: PageView.builder(
+                        controller: PageController(viewportFraction: 0.6),
+                        itemCount: _listImage.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: EdgeInsets.symmetric(horizontal: 16.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20.0),
+                              image: DecorationImage(
+                                  image: AssetImage(_listImage[index]),
+                                  fit: BoxFit.cover),
+                            ),
+                          );
+                        })),
                 //end pageview
                 SizedBox(height: 40),
                 Column(
@@ -134,21 +147,21 @@ class _signinScreenState extends State<signinScreen> {
                         autofillHints: [AutofillHints.email],
                         style: TextStyle(color: blackLight),
                         decoration: InputDecoration(
-                            contentPadding:
-                                EdgeInsets.only(left: 20, right: 20),
-                            hintStyle: TextStyle(
-                                fontFamily: 'SFProText',
-                                fontSize: content16,
-                                fontWeight: FontWeight.w400,
-                                color: blackLight.withOpacity(0.5)),
-                            hintText: "Enter your email",
-                            filled: true,
-                            fillColor: white,
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            errorStyle: TextStyle(foreground: Paint()..shader = redGradient),
+                          contentPadding: EdgeInsets.only(left: 20, right: 20),
+                          hintStyle: TextStyle(
+                              fontFamily: 'SFProText',
+                              fontSize: content16,
+                              fontWeight: FontWeight.w400,
+                              color: blackLight.withOpacity(0.5)),
+                          hintText: "Enter your email",
+                          filled: true,
+                          fillColor: white,
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          errorStyle: TextStyle(
+                              foreground: Paint()..shader = redGradient),
                         ),
                         //validator
                         validator: MultiValidator([
@@ -168,55 +181,56 @@ class _signinScreenState extends State<signinScreen> {
                         obscureText: isHiddenPassword,
                         style: TextStyle(color: blackLight),
                         decoration: InputDecoration(
-                            suffixIcon: InkWell(
-                                onTap: _togglePasswordView,
-                                child: isHiddenPassword
-                                    ? Stack(
-                                        alignment: Alignment.centerRight,
-                                        children: [
-                                            Container(
-                                                padding:
-                                                    EdgeInsets.only(right: 20),
-                                                child: SvgPicture.asset(
-                                                    eyeVisibility,
-                                                    color: blackLight,
-                                                    height: 24,
-                                                    width: 24))
-                                          ])
-                                    : Stack(
-                                        alignment: Alignment.centerRight,
-                                        children: [
-                                            Container(
-                                                padding:
-                                                    EdgeInsets.only(right: 20),
-                                                child: SvgPicture.asset(
-                                                    eyeInvisibility,
-                                                    color: blackLight,
-                                                    height: 24,
-                                                    width: 24))
-                                          ])),
-                            contentPadding:
-                                EdgeInsets.only(left: 20, right: 12),
-                            hintStyle: TextStyle(
-                                fontFamily: 'SFProText',
-                                fontSize: content16,
-                                fontWeight: FontWeight.w400,
-                                color: blackLight.withOpacity(0.5)),
-                            hintText: "Enter your password",
-                            filled: true,
-                            fillColor: white,
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            errorStyle: TextStyle(foreground: Paint()..shader = redGradient),
+                          suffixIcon: InkWell(
+                              onTap: _togglePasswordView,
+                              child: isHiddenPassword
+                                  ? Stack(
+                                      alignment: Alignment.centerRight,
+                                      children: [
+                                          Container(
+                                              padding:
+                                                  EdgeInsets.only(right: 20),
+                                              child: SvgPicture.asset(
+                                                  eyeVisibility,
+                                                  color: blackLight,
+                                                  height: 24,
+                                                  width: 24))
+                                        ])
+                                  : Stack(
+                                      alignment: Alignment.centerRight,
+                                      children: [
+                                          Container(
+                                              padding:
+                                                  EdgeInsets.only(right: 20),
+                                              child: SvgPicture.asset(
+                                                  eyeInvisibility,
+                                                  color: blackLight,
+                                                  height: 24,
+                                                  width: 24))
+                                        ])),
+                          contentPadding: EdgeInsets.only(left: 20, right: 12),
+                          hintStyle: TextStyle(
+                              fontFamily: 'SFProText',
+                              fontSize: content16,
+                              fontWeight: FontWeight.w400,
+                              color: blackLight.withOpacity(0.5)),
+                          hintText: "Enter your password",
+                          filled: true,
+                          fillColor: white,
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          errorStyle: TextStyle(
+                              foreground: Paint()..shader = redGradient),
                         ),
                         //validator
                         validator: MultiValidator([
                           RequiredValidator(
                               errorText: "Please enter your password"),
                           MinLengthValidator(6,
-                              errorText: "Your password must be at least 6 digits length"),
+                              errorText:
+                                  "Your password must be at least 6 digits length"),
                         ]),
                       ),
                     ),
