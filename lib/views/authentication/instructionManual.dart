@@ -226,7 +226,7 @@ class instructionScreen extends StatelessWidget {
                     child: AnimatedContainer(
                       alignment: Alignment.center,
                       duration: Duration(milliseconds: 300),
-                      height: 56,
+                      height: 52,
                       width: 240,
                       decoration: BoxDecoration(
                         color: blueWater,

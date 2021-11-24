@@ -51,9 +51,7 @@ class checkinEmailScreen extends StatelessWidget {
               Container(
                   alignment: Alignment.center,
                   child: Text(
-                    'We just emailed you with the reset link to' +
-                        '\n' +
-                        'reset your password.',
+                    'We just emailed you with the reset link to' + '\n' + 'reset your password.',
                     style: TextStyle(
                         fontFamily: 'SFProText',
                         fontSize: content14,
@@ -79,7 +77,7 @@ class checkinEmailScreen extends StatelessWidget {
                     child: AnimatedContainer(
                       alignment: Alignment.center,
                       duration: Duration(milliseconds: 300),
-                      height: 56,
+                      height: 52,
                       width: 240,
                       decoration: BoxDecoration(
                         color: blueWater,
@@ -111,7 +109,7 @@ class checkinEmailScreen extends StatelessWidget {
                     ),
                   )
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 24),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
