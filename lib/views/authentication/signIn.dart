@@ -1,3 +1,4 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -29,6 +30,7 @@ class _signinScreenState extends State<signinScreen> {
   final GlobalKey<FormState> _formemailKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formpasswordKey = GlobalKey<FormState>();
   List<String> _listImage = [loginAds1, loginAds2, loginAds3];
+  double _currentPosition = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -124,6 +126,11 @@ class _signinScreenState extends State<signinScreen> {
                     child: PageView.builder(
                         controller: PageController(viewportFraction: 0.6),
                         itemCount: _listImage.length,
+                        onPageChanged: (num) {
+                          setState(() {
+                            _currentPosition = num.toDouble();
+                          });
+                        },
                         itemBuilder: (context, index) {
                           return Container(
                             margin: EdgeInsets.symmetric(horizontal: 16.0),
@@ -135,6 +142,18 @@ class _signinScreenState extends State<signinScreen> {
                             ),
                           );
                         })),
+                Container(
+                  child: new DotsIndicator(
+                      dotsCount: 3,
+                      position: _currentPosition,
+                      decorator: DotsDecorator(
+                        activeColor: Colors.black,
+                        size: const Size.square(9.0),
+                        activeSize: const Size(18.0, 9.0),
+                        activeShape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0)),
+                      )),
+                ),
                 //end pageview
                 SizedBox(height: 40),
                 Column(
