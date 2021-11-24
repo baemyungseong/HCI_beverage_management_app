@@ -75,7 +75,8 @@ class _forgotScreenState extends State<forgotScreen> {
                           fontFamily: 'SFProText',
                           fontSize: content14,
                           color: blackLight,
-                          fontWeight: FontWeight.w400),
+                          fontWeight: FontWeight.w400
+                      ),
                     ),
                   ),
                   SizedBox(height: 32),
