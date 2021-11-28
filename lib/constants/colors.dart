@@ -15,8 +15,23 @@ const Color greyD = Color(0xFFDDDDDD);
 
 const Color blueWater = Color(0xFF5FAAEF);
 
-// dynamic greenGradient = [const Color(0xFF159957), const Color(0xFF159199)];
-// dynamic redGradient = [const Color(0xFFCB356B), const Color(0xFFBD3F32)];
+// const greenGradient = [Color(0xFF159957), Color(0xFF159199)];
+// const redGradient = [Color(0xFFCB356B), Color(0xFFBD3F32)];
 
-const greenGradient = [Color(0xFF159957), Color(0xFF159199)];
-const redGradient = [Color(0xFFCB356B), Color(0xFFBD3F32)];
+final Shader redGradient = LinearGradient(
+  colors: <Color>[Color(0xFFCB356B), Color(0xFFBD3F32)],
+).createShader(
+  Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
+);
+
+final Shader greenGradient = LinearGradient(
+  colors: <Color>[Color(0xFF159957), Color(0xFF159199)],
+).createShader(
+  Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
+);
+
+final Shader blueGradient = LinearGradient(
+  colors: <Color>[blueWater, Color(0xFF979DFA)],
+).createShader(
+  Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
+);
