@@ -11,11 +11,16 @@ import 'package:ui_fresh_app/constants/others.dart';
 //import views
 import 'package:ui_fresh_app/views/authentication/forgotPassword.dart';
 import 'package:ui_fresh_app/views/storekeeper/skDashboard.dart';
+import 'package:ui_fresh_app/views/serve/svDashboard.dart';
+import 'package:ui_fresh_app/views/accountant/atDashboard.dart';
+import 'package:ui_fresh_app/views/bartender/btDashboard.dart';
+import 'package:ui_fresh_app/views/accountManagement/profileManagement.dart';
 
 //import others
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 
 class signinScreen extends StatefulWidget {
   const signinScreen({Key? key}) : super(key: key);
@@ -29,6 +34,11 @@ class _signinScreenState extends State<signinScreen> {
   final GlobalKey<FormState> _formemailKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formpasswordKey = GlobalKey<FormState>();
 
+  String? email, password;
+
+  List<String> _listImage = [atAdsLogin1, atAdsLogin2, atAdsLogin3];
+  double _currentPosition = 1.0;
+
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion(
@@ -38,7 +48,6 @@ class _signinScreenState extends State<signinScreen> {
           statusBarColor: Colors.transparent),
       child: Scaffold(
         body: Container(
-            padding: EdgeInsets.all(appPadding),
             decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage(backgroundLogin), fit: BoxFit.cover),
@@ -46,14 +55,15 @@ class _signinScreenState extends State<signinScreen> {
             child: Column(
               children: [
                 SizedBox(height: 45),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
+                Container(
+                  padding: EdgeInsets.all(appPadding),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(children: [
                             Text(
                               'Good morning,',
                               style: TextStyle(
@@ -69,71 +79,117 @@ class _signinScreenState extends State<signinScreen> {
                               alignment: Alignment.topCenter,
                               child: Image.asset(atWavingHand, scale: 4),
                             ),
-                          ]
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          'Welcome back!',
-                          style: TextStyle(
-                            fontFamily: 'SFProText',
-                            fontSize: title22,
-                            color: blackLight,
-                            fontWeight: FontWeight.w900,
-                            height: 1.6,
-                          ),
-                        ),
-                        SizedBox(height: 16),
-                        RichText(
-                          textAlign: TextAlign.left,
-                          text: TextSpan(
+                          ]),
+                          SizedBox(height: 8),
+                          Text(
+                            'Welcome back!',
                             style: TextStyle(
                               fontFamily: 'SFProText',
-                              fontSize: title18,
+                              fontSize: title22,
                               color: blackLight,
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.w900,
                               height: 1.6,
                             ),
-                            children: const <TextSpan>[
-                              TextSpan(
-                                text: 'Fresh',
-                                style: TextStyle(
-                                  color: blueWater,
-                                ),
-                              ),
-                              TextSpan(
-                                text: ' Drink',
-                              ),
-                            ],
                           ),
-                        ),
-                      ],
-                    ),
-                    new Spacer(),
-                    Container(
-                      margin: EdgeInsets.only(top: 5),
-                      alignment: Alignment.topRight,
-                      child: Image.asset(logo, scale: 2.678),
-                    ),
-                    SizedBox(width: 16)
-                  ],
+                          SizedBox(height: 16),
+                          RichText(
+                            textAlign: TextAlign.left,
+                            text: TextSpan(
+                              style: TextStyle(
+                                fontFamily: 'SFProText',
+                                fontSize: title18,
+                                color: blackLight,
+                                fontWeight: FontWeight.w700,
+                                height: 1.6,
+                              ),
+                              children: const <TextSpan>[
+                                TextSpan(
+                                  text: 'Fresh',
+                                  style: TextStyle(
+                                    color: blueWater,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: ' Drink',
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      new Spacer(),
+                      Container(
+                        margin: EdgeInsets.only(top: 5),
+                        alignment: Alignment.topRight,
+                        child: Image.asset(logo, scale: 2.678),
+                      ),
+                      SizedBox(width: 16)
+                    ],
+                  ),
                 ),
-                SizedBox(height: 36),
-                //pageview làm ở đây nhe!
+                SizedBox(height: 8),
                 Container(
-                  child: Text('Ple Ple Ple!')
+                    height: 137,
+                    decoration: BoxDecoration(color: Colors.transparent),
+                    child: PageView.builder(
+                        controller: PageController(
+                            initialPage: 1,
+                            keepPage: true,
+                            viewportFraction: 0.6),
+                        itemCount: _listImage.length,
+                        scrollDirection: Axis.horizontal,
+                        onPageChanged: (num) {
+                          setState(() {
+                            if (num + 1 == _listImage.length) {
+                              _currentPosition = 2.0;
+                            } else if (num == 0) {
+                              _currentPosition = 0.0;
+                            } else {
+                              _currentPosition = num.toDouble();
+                            }
+                          });
+                        },
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: EdgeInsets.symmetric(horizontal: 14.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20.0),
+                              image: DecorationImage(
+                                  image: AssetImage(_listImage[index]),
+                                  fit: BoxFit.cover),
+                            ),
+                          );
+                        })),
+                SizedBox(height: 32),
+                Container(
+                  alignment: Alignment.center,
+                  child: new DotsIndicator(
+                      dotsCount: 3,
+                      position: _currentPosition,
+                      decorator: DotsDecorator(
+                        spacing: const EdgeInsets.only(left: 4, right: 4),
+                        color: blackLight.withOpacity(0.3),
+                        activeColor: blackLight,
+                        size: const Size.square(6.0),
+                        activeSize: const Size(20.0, 8.0),
+                        activeShape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0)),
+                      )),
                 ),
                 //end pageview
-                SizedBox(height: 40),
-                Column(
-                  children: [
-                    Form(
-                      autovalidate: true,
-                      key: _formemailKey,
-                      child: TextFormField(
-                        keyboardType: TextInputType.emailAddress,
-                        autofillHints: [AutofillHints.email],
-                        style: TextStyle(color: blackLight),
-                        decoration: InputDecoration(
+                SizedBox(height: 12),
+                Container(
+                  padding: EdgeInsets.all(appPadding),
+                  child: Column(
+                    children: [
+                      Form(
+                        autovalidate: true,
+                        key: _formemailKey,
+                        child: TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          autofillHints: [AutofillHints.email],
+                          style: TextStyle(color: blackLight),
+                          decoration: InputDecoration(
                             contentPadding:
                                 EdgeInsets.only(left: 20, right: 20),
                             hintStyle: TextStyle(
@@ -148,26 +204,31 @@ class _signinScreenState extends State<signinScreen> {
                               borderSide: BorderSide.none,
                               borderRadius: BorderRadius.circular(8.0),
                             ),
-                            errorStyle: TextStyle(foreground: Paint()..shader = redGradient),
+                            errorStyle: TextStyle(
+                                foreground: Paint()..shader = redGradient),
+                          ),
+                          //validator
+                          validator: MultiValidator([
+                            RequiredValidator(
+                                errorText: "Please enter your email"),
+                            EmailValidator(
+                                errorText: "Your email is not valid"),
+                          ]),
+                          onChanged: (String? value) {
+                            email = value;
+                          },
                         ),
-                        //validator
-                        validator: MultiValidator([
-                          RequiredValidator(
-                              errorText: "Please enter your email"),
-                          EmailValidator(errorText: "Your email is not valid"),
-                        ]),
                       ),
-                    ),
-                    SizedBox(height: 16),
-                    Form(
-                      autovalidate: true,
-                      key: _formpasswordKey,
-                      child: TextFormField(
-                        keyboardType: TextInputType.visiblePassword,
-                        autofillHints: [AutofillHints.password],
-                        obscureText: isHiddenPassword,
-                        style: TextStyle(color: blackLight),
-                        decoration: InputDecoration(
+                      SizedBox(height: 16),
+                      Form(
+                        autovalidate: true,
+                        key: _formpasswordKey,
+                        child: TextFormField(
+                          keyboardType: TextInputType.visiblePassword,
+                          autofillHints: [AutofillHints.password],
+                          obscureText: isHiddenPassword,
+                          style: TextStyle(color: blackLight),
+                          decoration: InputDecoration(
                             suffixIcon: InkWell(
                                 onTap: _togglePasswordView,
                                 child: isHiddenPassword
@@ -178,11 +239,13 @@ class _signinScreenState extends State<signinScreen> {
                                                 padding:
                                                     EdgeInsets.only(right: 20),
                                                 child: SvgPicture.asset(
-                                                    eyeVisibility,
+                                                    atEyeVisibility,
                                                     color: blackLight,
                                                     height: 24,
-                                                    width: 24))
-                                          ])
+                                                    width: 24)
+                                            )
+                                          ]
+                                    )
                                     : Stack(
                                         alignment: Alignment.centerRight,
                                         children: [
@@ -190,11 +253,14 @@ class _signinScreenState extends State<signinScreen> {
                                                 padding:
                                                     EdgeInsets.only(right: 20),
                                                 child: SvgPicture.asset(
-                                                    eyeInvisibility,
+                                                    atEyeInvisibility,
                                                     color: blackLight,
                                                     height: 24,
-                                                    width: 24))
-                                          ])),
+                                                    width: 24)
+                                            )
+                                          ]
+                                    )
+                            ),
                             contentPadding:
                                 EdgeInsets.only(left: 20, right: 12),
                             hintStyle: TextStyle(
@@ -209,52 +275,87 @@ class _signinScreenState extends State<signinScreen> {
                               borderSide: BorderSide.none,
                               borderRadius: BorderRadius.circular(8.0),
                             ),
-                            errorStyle: TextStyle(foreground: Paint()..shader = redGradient),
-                        ),
-                        //validator
-                        validator: MultiValidator([
-                          RequiredValidator(
-                              errorText: "Please enter your password"),
-                          MinLengthValidator(6,
-                              errorText: "Your password must be at least 6 digits length"),
-                        ]),
-                      ),
-                    ),
-                    Container(
-                        alignment: Alignment.topRight,
-                        padding: EdgeInsets.only(top: 16),
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => forgotScreen()),
-                            );
+                            errorStyle: TextStyle(
+                                foreground: Paint()..shader = redGradient),
+                          ),
+                          //validator
+                          validator: MultiValidator([
+                            RequiredValidator(
+                                errorText: "Please enter your password"),
+                            MinLengthValidator(6,
+                                errorText:
+                                    "Your password must be at least 6 digits length"),
+                          ]),
+                          onChanged: (String? value) {
+                            password = value;
                           },
-                          child: Text('Forgot password?',
-                              style: TextStyle(
-                                fontFamily: 'SFProText',
-                                color: blueWater,
-                                fontSize: content14,
-                                fontWeight: FontWeight.w500,
-                              )),
-                        )),
-                  ],
+                        ),
+                      ),
+                      Container(
+                          alignment: Alignment.topRight,
+                          padding: EdgeInsets.only(top: 16),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => forgotScreen()),
+                              );
+                            },
+                            child: Text('Forgot password?',
+                                style: TextStyle(
+                                  fontFamily: 'SFProText',
+                                  color: blueWater,
+                                  fontSize: content14,
+                                  fontWeight: FontWeight.w500,
+                                )),
+                          )),
+                    ],
+                  ),
                 ),
-                new Spacer(),
                 Container(
+                    padding: EdgeInsets.all(appPadding),
                     alignment: Alignment.center,
                     child: GestureDetector(
                       //action navigate to dashboard screen
                       onTap: () {
                         if (_formemailKey.currentState!.validate() &&
                             _formpasswordKey.currentState!.validate()) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => storekeeperDashboard(),
-                            ),
-                          );
+                          if(email == "storekeeper@gmail.com" && password == "storekeeper")
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => storekeeperDashboard(),
+                              ),
+                            );
+                          else if (email == "serve@gmail.com")
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => serveDashboard(),
+                              ),
+                            );
+                          else if (email == "bartender@gmail.com" && password == "bartender")
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => bartenderDashboard(),
+                              ),
+                            );
+                          else if (email == "accountant@gmail.com" && password == "accountant")
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => accountantDashboard(),
+                              ),
+                            );
+                          else 
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => profileManagementScreen(),
+                              ),
+                            );
                           // ScaffoldMessenger.of(context).showSnackBar(
                           //   const SnackBar(content: Text('Processing Data')),
                           // );
@@ -294,8 +395,8 @@ class _signinScreenState extends State<signinScreen> {
                               fontSize: textButton20),
                         ),
                       ),
-                    )),
-                SizedBox(height: 85)
+                    )
+                ),
               ],
             )),
       ),

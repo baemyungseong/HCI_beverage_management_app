@@ -23,7 +23,14 @@ const obDrinkBrand = 'assets/images/onboarding/drinkBrand.png';
 //authentication images
 const atWavingHand = 'assets/images/authentication/wavingHand.png';
 const atBallonPeople = 'assets/images/authentication/ballonPeople.png';
-const atCheckPerspective = 'assets/images/authentication/checkPerspective.png';
 
 //account management images
+const atCheckPerspective = 'assets/images/authentication/checkPerspective.png';
+const atAdsLogin1 = 'assets/images/authentication/adsLogin1.png';
+const atAdsLogin2 = 'assets/images/authentication/adsLogin2.png';
+const atAdsLogin3 = 'assets/images/authentication/adsLogin3.png';
+
+//accountManagement images
+const amGradientCard = 'assets/images/accountManagement/gradientCard.png';
+const amUserAvatar = 'assets/images/accountManagement/userAvatar.png';
 const amFunnyDog = 'assets/images/accountManagement/funnyDog.png';

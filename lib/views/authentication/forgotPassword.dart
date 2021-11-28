@@ -68,15 +68,14 @@ class _forgotScreenState extends State<forgotScreen> {
                   SizedBox(height: 16),
                   Container(
                     child: Text(
-                      ' Just enter the email address you’ve used to' +
-                          '\n' +
-                          'register with us and we’ll send you a reset link!',
+                      'Just enter the email address you’ve used to' + '\n' + 'register with us and we’ll send you a reset link!',
                       style: TextStyle(
                           fontFamily: 'SFProText',
                           fontSize: content14,
                           color: blackLight,
                           fontWeight: FontWeight.w400
                       ),
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   SizedBox(height: 32),
@@ -133,7 +132,7 @@ class _forgotScreenState extends State<forgotScreen> {
                       ),
                     ),
                   ),
-                  new Spacer(),
+                  SizedBox(height: 48),
                   Container(
                       alignment: Alignment.center,
                       child: GestureDetector(
@@ -154,7 +153,7 @@ class _forgotScreenState extends State<forgotScreen> {
                         child: AnimatedContainer(
                           alignment: Alignment.center,
                           duration: Duration(milliseconds: 300),
-                          height: 56,
+                          height: 52,
                           width: 240,
                           decoration: BoxDecoration(
                             color: blueWater,
@@ -202,7 +201,7 @@ class _forgotScreenState extends State<forgotScreen> {
                         child: AnimatedContainer(
                             alignment: Alignment.center,
                             duration: Duration(milliseconds: 300),
-                            height: 56,
+                            height: 52,
                             width: 240,
                             decoration: BoxDecoration(
                               color: whiteLight.withOpacity(1),
@@ -243,7 +242,6 @@ class _forgotScreenState extends State<forgotScreen> {
                         ),
                       )
                   ),
-                  SizedBox(height: 64),
                 ],
               ),
             )
