@@ -7,7 +7,7 @@ import 'package:ui_fresh_app/views/onboardings/onboardingScreen1.dart';
 import 'package:ui_fresh_app/views/onboardings/onboardingScreen2.dart';
 import 'package:ui_fresh_app/views/onboardings/onboardingScreen3.dart';
 import 'package:ui_fresh_app/views/onboardings/onboardingScreen4.dart';
-import 'package:ui_fresh_app/views/common/termCondition.dart';
+import 'package:ui_fresh_app/views/accountManagement/termCondition.dart';
 
 //import constants
 import 'package:ui_fresh_app/constants/colors.dart';

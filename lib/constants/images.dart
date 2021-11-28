@@ -26,3 +26,7 @@ const atCheckPerspective = 'assets/images/authentication/check_perspective.png';
 const atAdsLogin1 = 'assets/images/authentication/adsLogin1.png';
 const atAdsLogin2 = 'assets/images/authentication/adsLogin2.png';
 const atAdsLogin3 = 'assets/images/authentication/adsLogin3.png';
+
+//accountManagement images
+const amGradientCard = 'assets/images/accountManagement/gradientCard.png';
+const amUserAvatar = 'assets/images/accountManagement/userAvatar.png';

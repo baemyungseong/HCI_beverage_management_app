@@ -11,6 +11,10 @@ import 'package:ui_fresh_app/constants/others.dart';
 //import views
 import 'package:ui_fresh_app/views/authentication/forgotPassword.dart';
 import 'package:ui_fresh_app/views/storekeeper/skDashboard.dart';
+import 'package:ui_fresh_app/views/serve/svDashboard.dart';
+import 'package:ui_fresh_app/views/accountant/atDashboard.dart';
+import 'package:ui_fresh_app/views/bartender/btDashboard.dart';
+import 'package:ui_fresh_app/views/accountManagement/profileManagement.dart';
 
 //import others
 import 'package:flutter/services.dart';
@@ -29,6 +33,8 @@ class _signinScreenState extends State<signinScreen> {
   bool isHiddenPassword = true;
   final GlobalKey<FormState> _formemailKey = GlobalKey<FormState>();
   final GlobalKey<FormState> _formpasswordKey = GlobalKey<FormState>();
+
+  String? email, password;
 
   List<String> _listImage = [atAdsLogin1, atAdsLogin2, atAdsLogin3];
   double _currentPosition = 1.0;
@@ -126,7 +132,10 @@ class _signinScreenState extends State<signinScreen> {
                     height: 137,
                     decoration: BoxDecoration(color: Colors.transparent),
                     child: PageView.builder(
-                        controller: PageController(initialPage: 1, keepPage: true, viewportFraction: 0.6),
+                        controller: PageController(
+                            initialPage: 1,
+                            keepPage: true,
+                            viewportFraction: 0.6),
                         itemCount: _listImage.length,
                         scrollDirection: Axis.horizontal,
                         onPageChanged: (num) {
@@ -205,6 +214,9 @@ class _signinScreenState extends State<signinScreen> {
                             EmailValidator(
                                 errorText: "Your email is not valid"),
                           ]),
+                          onChanged: (String? value) {
+                            email = value;
+                          },
                         ),
                       ),
                       SizedBox(height: 16),
@@ -227,11 +239,13 @@ class _signinScreenState extends State<signinScreen> {
                                                 padding:
                                                     EdgeInsets.only(right: 20),
                                                 child: SvgPicture.asset(
-                                                    eyeVisibility,
+                                                    atEyeVisibility,
                                                     color: blackLight,
                                                     height: 24,
-                                                    width: 24))
-                                          ])
+                                                    width: 24)
+                                            )
+                                          ]
+                                    )
                                     : Stack(
                                         alignment: Alignment.centerRight,
                                         children: [
@@ -239,11 +253,14 @@ class _signinScreenState extends State<signinScreen> {
                                                 padding:
                                                     EdgeInsets.only(right: 20),
                                                 child: SvgPicture.asset(
-                                                    eyeInvisibility,
+                                                    atEyeInvisibility,
                                                     color: blackLight,
                                                     height: 24,
-                                                    width: 24))
-                                          ])),
+                                                    width: 24)
+                                            )
+                                          ]
+                                    )
+                            ),
                             contentPadding:
                                 EdgeInsets.only(left: 20, right: 12),
                             hintStyle: TextStyle(
@@ -269,6 +286,9 @@ class _signinScreenState extends State<signinScreen> {
                                 errorText:
                                     "Your password must be at least 6 digits length"),
                           ]),
+                          onChanged: (String? value) {
+                            password = value;
+                          },
                         ),
                       ),
                       Container(
@@ -301,12 +321,41 @@ class _signinScreenState extends State<signinScreen> {
                       onTap: () {
                         if (_formemailKey.currentState!.validate() &&
                             _formpasswordKey.currentState!.validate()) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => storekeeperDashboard(),
-                            ),
-                          );
+                          if(email == "storekeeper@gmail.com" && password == "storekeeper")
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => storekeeperDashboard(),
+                              ),
+                            );
+                          else if (email == "serve@gmail.com")
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => serveDashboard(),
+                              ),
+                            );
+                          else if (email == "bartender@gmail.com" && password == "bartender")
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => bartenderDashboard(),
+                              ),
+                            );
+                          else if (email == "accountant@gmail.com" && password == "accountant")
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => accountantDashboard(),
+                              ),
+                            );
+                          else 
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => profileManagementScreen(),
+                              ),
+                            );
                           // ScaffoldMessenger.of(context).showSnackBar(
                           //   const SnackBar(content: Text('Processing Data')),
                           // );
@@ -346,7 +395,8 @@ class _signinScreenState extends State<signinScreen> {
                               fontSize: textButton20),
                         ),
                       ),
-                    )),
+                    )
+                ),
               ],
             )),
       ),
