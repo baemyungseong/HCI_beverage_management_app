@@ -9,7 +9,7 @@ import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
 //import views
-import 'package:ui_fresh_app/views/common/userProfile.dart';
+import 'package:ui_fresh_app/views/accountManagement/profileManagement.dart';
 
 class createAccountSuccessfullyScreen extends StatelessWidget {
   const createAccountSuccessfullyScreen({Key? key}) : super(key: key);
@@ -72,7 +72,7 @@ class createAccountSuccessfullyScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => userProfileScreen(),
+                                builder: (context) => profileManagementScreen(),
                               ),
                             );
                           },
