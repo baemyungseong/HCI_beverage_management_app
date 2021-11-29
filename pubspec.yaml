@@ -36,6 +36,7 @@ flutter:
     #icons
     - assets/icons/
     - assets/icons/general/
+    - assets/icons/navigationBar/
     - assets/icons/authentication/
     - assets/icons/accountManagement/
 

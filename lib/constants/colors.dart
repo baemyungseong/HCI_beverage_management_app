@@ -8,6 +8,7 @@ const Color whiteLight = Color(0xFFF5F5F5);
 
 const Color black = Colors.black;
 const Color blackLight = Color(0xFF061D32);
+const Color blackUltraLight = Color(0xFF3E4D5B);
 
 const Color grey3 = Color(0xFF333333);
 const Color grey8 = Color(0xFF888888);

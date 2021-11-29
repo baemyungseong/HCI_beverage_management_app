@@ -10,11 +10,17 @@ import 'package:ui_fresh_app/constants/others.dart';
 
 //import views
 import 'package:ui_fresh_app/views/authentication/forgotPassword.dart';
+import 'package:ui_fresh_app/views/navigationBar/skNavigationBar.dart';
 import 'package:ui_fresh_app/views/storekeeper/skDashboard.dart';
 import 'package:ui_fresh_app/views/serve/svDashboard.dart';
 import 'package:ui_fresh_app/views/accountant/atDashboard.dart';
 import 'package:ui_fresh_app/views/bartender/btDashboard.dart';
 import 'package:ui_fresh_app/views/accountManagement/profileManagement.dart';
+
+import 'package:ui_fresh_app/views/navigationBar/skNavigationBar.dart';
+import 'package:ui_fresh_app/views/navigationBar/svNavigationBar.dart';
+import 'package:ui_fresh_app/views/navigationBar/btNavigationBar.dart';
+import 'package:ui_fresh_app/views/navigationBar/atNavigationBar.dart';
 
 //import others
 import 'package:flutter/services.dart';
@@ -325,28 +331,28 @@ class _signinScreenState extends State<signinScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => storekeeperDashboard(),
+                                builder: (context) => storekeeperNavigationBar(),
                               ),
                             );
                           else if (email == "serve@gmail.com")
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => serveDashboard(),
+                                builder: (context) => serveNavigationBar(),
                               ),
                             );
                           else if (email == "bartender@gmail.com" && password == "bartender")
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => bartenderDashboard(),
+                                builder: (context) => bartenderNavigationBar(),
                               ),
                             );
                           else if (email == "accountant@gmail.com" && password == "accountant")
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => accountantDashboard(),
+                                builder: (context) => accountantNavigationBar(),
                               ),
                             );
                           else 

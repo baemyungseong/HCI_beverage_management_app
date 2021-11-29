@@ -8,8 +8,8 @@ import 'package:ui_fresh_app/constants/images.dart';
 import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
-class bartenderDashboard extends StatelessWidget {
-  const bartenderDashboard({Key? key}) : super(key: key);
+class accountantIncidentReport extends StatelessWidget {
+  const accountantIncidentReport({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class bartenderDashboard extends StatelessWidget {
       color: white,
       child: Center(
         child: Text(
-          "Bartender's Dashboard",
+          "Accountant's Incident Report",
           style: TextStyle(
             fontFamily: 'SFProText',
             fontWeight: FontWeight.w700,
