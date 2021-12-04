@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:ui_fresh_app/views/authentication/signIn.dart';
 
 //import views
 import 'package:ui_fresh_app/views/onboardings/onboardingScreen1.dart';
 import 'package:ui_fresh_app/views/onboardings/onboardingScreen2.dart';
 import 'package:ui_fresh_app/views/onboardings/onboardingScreen3.dart';
 import 'package:ui_fresh_app/views/onboardings/onboardingScreen4.dart';
-import 'package:ui_fresh_app/views/authentication/termCondition.dart';
+import 'package:ui_fresh_app/views/authentication/signIn.dart';
 
 //import constants
 import 'package:ui_fresh_app/constants/colors.dart';
@@ -79,7 +78,7 @@ class _OnboardingState extends State<onboardingWrapper> {
                                       color: blackLight,
                                       fontFamily: 'SFProText',
                                       fontWeight: FontWeight.w600,
-                                      fontSize: textButton),
+                                      fontSize: textButton18),
                                 ),
                               )
                             : Container(
@@ -175,7 +174,7 @@ class _OnboardingState extends State<onboardingWrapper> {
                                           color: whiteLight,
                                           fontFamily: 'SFProText',
                                           fontWeight: FontWeight.w600,
-                                          fontSize: textButton),
+                                          fontSize: textButton18),
                                     ),
                                   ),
                                 )
@@ -219,7 +218,7 @@ class _OnboardingState extends State<onboardingWrapper> {
                                             color: whiteLight,
                                             fontFamily: 'SFProText',
                                             fontWeight: FontWeight.w600,
-                                            fontSize: textButton),
+                                            fontSize: textButton18),
                                       )
                                   ),
                                 )

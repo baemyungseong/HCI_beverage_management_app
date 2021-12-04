@@ -8,8 +8,8 @@ import 'package:ui_fresh_app/constants/images.dart';
 import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
-class serveDashboard extends StatelessWidget {
-  const serveDashboard({Key? key}) : super(key: key);
+class accountantMainTaskManagement extends StatelessWidget {
+  const accountantMainTaskManagement({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class serveDashboard extends StatelessWidget {
       color: white,
       child: Center(
         child: Text(
-          "Serve's Dashboard",
+          "Accountant's Main Task Management",
           style: TextStyle(
             fontFamily: 'SFProText',
             fontWeight: FontWeight.w700,
