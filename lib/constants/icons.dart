@@ -5,11 +5,32 @@ import 'package:flutter_svg/flutter_svg.dart';
 //icons used in this app
 
 //general
-// const outlineClose = 'assets/icons/general/outline_close.svg';
+const outlineClose = 'assets/icons/general/outlineClose.svg';
+const arrowRight = 'assets/icons/general/arrowRight.svg';
+const notifications = 'assets/icons/general/notifications.svg';
+const messages = 'assets/icons/general/messages.svg';
+const filter = 'assets/icons/general/filter.svg';
+
+//navigationBar icons
+const nbDashboard = 'assets/icons/navigationBar/dashboard.svg';
+const nbIncidentReport = 'assets/icons/navigationBar/incidentReport.svg';
+const nbAccountManagement = 'assets/icons/navigationBar/accountManagement.svg';
+const nbMainTaskManagement = 'assets/icons/navigationBar/mainTaskManagement.svg';
+const nbInvoiceManagement = 'assets/icons/navigationBar/invoiceManagement.svg';
+const nbInventoryManagement = 'assets/icons/navigationBar/inventoryManagement.svg';
+const nbReexManagement = 'assets/icons/navigationBar/reexManagement.svg';
 
 //authentication icons
-const googleLogoIcon = 'assets/icons/authentication/google.png';
-const facebookLogoIcon = 'assets/icons/authentication/facebook.png';
-const eyeVisibility = 'assets/icons/authentication/eye_visibility.svg';
-const eyeInvisibility = 'assets/icons/authentication/eye_invisibility.svg';
-const checkSuccessfully = 'assets/icons/authentication/check_successfully.svg';
+const atGoogleLogoIcon = 'assets/icons/authentication/google.png';
+const atFacebookLogoIcon = 'assets/icons/authentication/facebook.png';
+const atEyeVisibility = 'assets/icons/authentication/eyeVisibility.svg';
+const atEyeInvisibility = 'assets/icons/authentication/eyeInvisibility.svg';
+const atCheckSuccessfully = 'assets/icons/authentication/checkSuccessfully.svg';
+
+//accountManagement icons
+const amMessages = 'assets/icons/accountManagement/accountMessages.svg';
+const amNotifications = 'assets/icons/accountManagement/accountNotifications.svg';
+const amSettings = 'assets/icons/accountManagement/accountSettings.svg';
+
+//serve icons
+const svShoppingCart = 'assets/icons/serve/shoppingCart.svg';

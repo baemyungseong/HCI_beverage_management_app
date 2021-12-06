@@ -31,11 +31,14 @@ flutter:
     - assets/images/background/
     - assets/images/logo/
     - assets/images/onboarding/
-    
+    - assets/images/accountManagement/
+
     #icons
     - assets/icons/
-    - assets/icons/authentication/
     - assets/icons/general/
+    - assets/icons/navigationBar/
+    - assets/icons/authentication/
+    - assets/icons/accountManagement/
 
   fonts:
     # - family: NavBarIcons

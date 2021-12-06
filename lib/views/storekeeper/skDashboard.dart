@@ -7,8 +7,9 @@ import 'package:ui_fresh_app/constants/fonts.dart';
 import 'package:ui_fresh_app/constants/images.dart';
 import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
+
 class storekeeperDashboard extends StatelessWidget {
-  const storekeeperDashboard({ Key? key }) : super(key: key);
+  const storekeeperDashboard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
