@@ -17,6 +17,7 @@ dependencies:
   form_field_validator: ^1.1.0
   simple_gradient_text: ^1.2.2
   dots_indicator: ^2.0.0
+  another_xlider: ^1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -33,13 +34,14 @@ flutter:
     - assets/images/onboarding/
     - assets/images/accountManagement/
 
+
     #icons
     - assets/icons/
     - assets/icons/general/
     - assets/icons/navigationBar/
     - assets/icons/authentication/
     - assets/icons/accountManagement/
-
+    - assets/images/accountant/
   fonts:
     # - family: NavBarIcons
     #   fonts:
