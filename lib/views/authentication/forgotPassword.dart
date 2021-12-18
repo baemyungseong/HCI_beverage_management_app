@@ -8,6 +8,9 @@ import 'package:ui_fresh_app/constants/images.dart';
 import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
+//import widgets
+import 'package:ui_fresh_app/views/widget/snackBarWidget.dart';
+
 //import screens
 import 'package:ui_fresh_app/views/authentication/signin.dart';
 import 'package:ui_fresh_app/views/authentication/instructionManual.dart';
@@ -16,7 +19,6 @@ import 'package:ui_fresh_app/views/authentication/checkinEmail.dart';
 //import others
 import 'package:flutter/services.dart';
 import 'package:blur/blur.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class forgotScreen extends StatefulWidget {
@@ -27,6 +29,9 @@ class forgotScreen extends StatefulWidget {
 }
 
 class _forgotScreenState extends State<forgotScreen> {
+
+  TextEditingController emailController = TextEditingController();
+  final GlobalKey<FormState> emailFormKey = GlobalKey<FormState>();
 
   final GlobalKey<FormState> _formemailKey = GlobalKey<FormState>();
 
@@ -81,32 +86,54 @@ class _forgotScreenState extends State<forgotScreen> {
                   SizedBox(height: 32),
                   Form(
                     autovalidate: true,
-                    key: _formemailKey,
-                    child: TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      autofillHints: [AutofillHints.email],
-                      style: TextStyle(color: blackLight),
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(left: 20, right: 20),
-                          hintStyle: TextStyle(
-                              fontFamily: 'SFProText',
-                              fontSize: content16,
-                              fontWeight: FontWeight.w400,
-                              color: blackLight.withOpacity(0.5)),
-                          hintText: "Enter your email",
-                          filled: true,
-                          fillColor: white,
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(8.0),
+                    key: emailFormKey,
+                    child: Container(
+                      width: 319,
+                      height: 48,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: blueLight),
+                      alignment: Alignment.topCenter,
+                      child: TextFormField(
+                          style: TextStyle(
+                            fontFamily: 'SFProText',
+                            fontSize: 16,
+                            color: blackLight,
+                            fontWeight: FontWeight.w400
                           ),
-                          errorStyle: TextStyle(foreground: Paint()..shader = redGradient),
+                          controller: emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          autofillHints: [AutofillHints.email],
+                          // //validator
+                          // validator: (password) {
+                          //   if (isPasswordValid(password.toString())) {
+                          //     return null;
+                          //   } else {
+                          //     return '';
+                          //   }
+                          // },
+                          decoration: InputDecoration(
+                            contentPadding:
+                              EdgeInsets.only(left: 20, right: 12),
+                            hintStyle: TextStyle(
+                                fontFamily: 'SFProText',
+                                fontSize: content16,
+                                fontWeight: FontWeight.w400,
+                                color: blackLight.withOpacity(0.5)),
+                            hintText: "Enter your email",
+                            filled: true,
+                            fillColor: white,
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            errorStyle: TextStyle(
+                              color: Colors.transparent,
+                              fontSize: 0,
+                              height: 0,
+                            ),
+                          )
                       ),
-                      //validator
-                      validator: MultiValidator([
-                        RequiredValidator(errorText: "Please enter your email"),
-                        EmailValidator(errorText: "Your email is not valid"),
-                      ]),
                     ),
                   ),
                   SizedBox(height: 16),
@@ -138,7 +165,8 @@ class _forgotScreenState extends State<forgotScreen> {
                       child: GestureDetector(
                         //action navigate to dashboard screen
                         onTap: () {
-                          if (_formemailKey.currentState!.validate()) {
+                          // if (_formemailKey.currentState!.validate()) {
+                            showSnackBar(context, 'Fresh sent you a reset link in your email!', 'success');
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -148,7 +176,7 @@ class _forgotScreenState extends State<forgotScreen> {
                             // ScaffoldMessenger.of(context).showSnackBar(
                             //   const SnackBar(content: Text('Processing Data')),
                             // );
-                          }
+                          // }
                         },
                         child: AnimatedContainer(
                           alignment: Alignment.center,

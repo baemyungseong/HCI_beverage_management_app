@@ -12,6 +12,7 @@ const double title18 = 18.0;
 const double content12 = 12.0;
 const double content14 = 14.0;
 const double content16 = 16.0;
+const double content18 = 18.0;
 const double textButton16 = 16.0;
 const double textButton18 = 18.0;
 const double textButton20 = 20.0;

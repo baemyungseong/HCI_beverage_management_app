@@ -14,9 +14,10 @@ dependencies:
   flutter_svg: ^0.23.0+1
   blur: ^3.0.0
   cupertino_icons: ^1.0.2
-  form_field_validator: ^1.1.0
   simple_gradient_text: ^1.2.2
   dots_indicator: ^2.0.0
+  iconsax: ^0.0.8
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -34,3 +34,4 @@ const atAdsLogin3 = 'assets/images/authentication/adsLogin3.png';
 const amGradientCard = 'assets/images/accountManagement/gradientCard.png';
 const amUserAvatar = 'assets/images/accountManagement/userAvatar.png';
 const amFunnyDog = 'assets/images/accountManagement/funnyDog.png';
+const amHelper = 'assets/images/accountManagement/helper.png';

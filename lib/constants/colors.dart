@@ -15,6 +15,7 @@ const Color grey8 = Color(0xFF888888);
 const Color greyD = Color(0xFFDDDDDD);
 
 const Color blueWater = Color(0xFF5FAAEF);
+const Color blueLight = Color(0xFFDDF1FF);
 
 // const greenGradient = [Color(0xFF159957), Color(0xFF159199)];
 // const redGradient = [Color(0xFFCB356B), Color(0xFFBD3F32)];
