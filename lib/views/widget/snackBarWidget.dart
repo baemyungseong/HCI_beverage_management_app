@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:iconsax/iconsax.dart';
 
 //import constants
 import 'package:ui_fresh_app/constants/colors.dart';
@@ -8,6 +7,9 @@ import 'package:ui_fresh_app/constants/fonts.dart';
 import 'package:ui_fresh_app/constants/images.dart';
 import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
+
+//import others
+import 'package:iconsax/iconsax.dart';
 
 void showSnackBar(context, text, category) {
   final snackBar = SnackBar(

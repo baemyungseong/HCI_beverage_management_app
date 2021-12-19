@@ -16,6 +16,7 @@ import 'package:ui_fresh_app/views/bartender/btIncidentReport.dart';
 
 //import others
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:iconsax/iconsax.dart';
 
 class bartenderNavigationBar extends StatefulWidget {
   @override
@@ -43,10 +44,10 @@ class _bartenderNavigationBarState extends State<bartenderNavigationBar>
     return Scaffold(
       body: TabBarView(
         children: <Widget>[
-          bartenderDashboard(),
-          bartenderMainTaskManagement(),
-          bartenderInventoryManagement(),
-          bartenderIncidentReport()
+          bartenderDashboardScreen(),
+          bartenderMainTaskManagementScreen(),
+          bartenderInventoryManagementScreen(),
+          bartenderIncidentReportScreen()
         ],
         controller: _tabController,
         //onPageChanged: whenPageChanged,
@@ -57,8 +58,8 @@ class _bartenderNavigationBarState extends State<bartenderNavigationBar>
         height: 48 + 34,
         padding: EdgeInsets.only(
             bottom: 34,
-            left: (MediaQuery.of(context).size.width - 236) / 2,
-            right: (MediaQuery.of(context).size.width - 236) / 2),
+            left: (MediaQuery.of(context).size.width - 244) / 2,
+            right: (MediaQuery.of(context).size.width - 244) / 2),
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
           child: Container(
@@ -77,25 +78,25 @@ class _bartenderNavigationBarState extends State<bartenderNavigationBar>
                     //   nbDashboard,
                     //   height: 24, width: 24
                     // )
-                    icon: Icon(Icons.space_dashboard_rounded)),
+                    icon: Icon(Iconsax.element_4, size: 24)),
                 Tab(
                     // icon: SvgPicture.asset(
                     //   nbAccountManagement,
                     //   height: 24, width: 24
                     // )
-                    icon: Icon(Icons.task_rounded)),
+                    icon: Icon(Iconsax.clipboard_text, size: 28)),
                 Tab(
                     // icon: SvgPicture.asset(
                     //   nbIncidentReport,
                     //   height: 24, width: 24
                     // )
-                    icon: Icon(Icons.inventory_2_rounded)),
+                    icon: Icon(Iconsax.box, size: 24)),
                 Tab(
                     // icon: SvgPicture.asset(
                     //   nbIncidentReport,
                     //   height: 24, width: 24
                     // )
-                    icon: Icon(Icons.report)),
+                    icon: Icon(Iconsax.document_text, size: 24)),
               ],
               controller: _tabController,
             ),

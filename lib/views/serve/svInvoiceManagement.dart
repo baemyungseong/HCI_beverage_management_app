@@ -8,8 +8,8 @@ import 'package:ui_fresh_app/constants/images.dart';
 import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
-class serveInvoiceManagement extends StatelessWidget {
-  const serveInvoiceManagement({Key? key}) : super(key: key);
+class serveInvoiceManagementScreen extends StatelessWidget {
+  const serveInvoiceManagementScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

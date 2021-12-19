@@ -8,8 +8,8 @@ import 'package:ui_fresh_app/constants/images.dart';
 import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
-class storekeeperIncidentReport extends StatelessWidget {
-  const storekeeperIncidentReport({Key? key}) : super(key: key);
+class storekeeperIncidentReportScreen extends StatelessWidget {
+  const storekeeperIncidentReportScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -8,8 +8,8 @@ import 'package:ui_fresh_app/constants/images.dart';
 import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
-class serveMainTaskManagement extends StatelessWidget {
-  const serveMainTaskManagement({Key? key}) : super(key: key);
+class serveMainTaskManagementScreen extends StatelessWidget {
+  const serveMainTaskManagementScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

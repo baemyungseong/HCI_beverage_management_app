@@ -70,7 +70,7 @@ class checkinEmailScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => signinScreen(),
+                          builder: (context) => signInScreen(),
                         ),
                       );
                     },

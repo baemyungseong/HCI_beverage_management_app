@@ -35,3 +35,6 @@ const amGradientCard = 'assets/images/accountManagement/gradientCard.png';
 const amUserAvatar = 'assets/images/accountManagement/userAvatar.png';
 const amFunnyDog = 'assets/images/accountManagement/funnyDog.png';
 const amHelper = 'assets/images/accountManagement/helper.png';
+
+//accountant images
+const atReexCard = 'assets/images/accountant/reexCard.png';

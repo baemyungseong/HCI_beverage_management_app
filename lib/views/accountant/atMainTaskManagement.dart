@@ -8,8 +8,8 @@ import 'package:ui_fresh_app/constants/images.dart';
 import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
-class accountantMainTaskManagement extends StatelessWidget {
-  const accountantMainTaskManagement({Key? key}) : super(key: key);
+class atMainTaskManagementScreen extends StatelessWidget {
+  const atMainTaskManagementScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

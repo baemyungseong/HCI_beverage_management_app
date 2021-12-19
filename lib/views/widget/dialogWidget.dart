@@ -40,7 +40,7 @@ logoutDialog(BuildContext mContext) {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => signinScreen(),
+                                  builder: (context) => signInScreen(),
                                 ),
                               );
                             },

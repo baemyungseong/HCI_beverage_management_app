@@ -35,7 +35,7 @@ class FreshApp extends StatelessWidget {
             initScreen == 0 || initScreen == null ? 'onboarding' : 'signin',
         routes: {
           'onboarding': (context) => onboardingWrapper(),
-          'signin': (context) => signinScreen(),
+          'signin': (context) => signInScreen(),
         },
     );
   }

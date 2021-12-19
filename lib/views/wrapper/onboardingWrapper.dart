@@ -137,7 +137,7 @@ class _OnboardingState extends State<onboardingWrapper> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => signinScreen(),
+                                        builder: (context) => signInScreen(),
                                       ),
                                     );
                                   },

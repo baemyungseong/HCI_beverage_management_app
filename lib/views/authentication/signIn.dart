@@ -31,14 +31,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:iconsax/iconsax.dart';
 
-class signinScreen extends StatefulWidget {
-  const signinScreen({Key? key}) : super(key: key);
+class signInScreen extends StatefulWidget {
+  const signInScreen({Key? key}) : super(key: key);
 
   @override
-  _signinScreenState createState() => _signinScreenState();
+  _signInScreenState createState() => _signInScreenState();
 }
 
-class _signinScreenState extends State<signinScreen> {
+class _signInScreenState extends State<signInScreen> {
   bool isHiddenPassword = true;
 
   TextEditingController emailController = TextEditingController();
@@ -194,7 +194,6 @@ class _signinScreenState extends State<signinScreen> {
                   child: Column(
                     children: [
                       Form(
-                        autovalidate: true,
                         key: emailFormKey,
                         child: Container(
                           width: 319,
@@ -247,7 +246,6 @@ class _signinScreenState extends State<signinScreen> {
                       ),
                       SizedBox(height: 16),
                       Form(
-                        autovalidate: true,
                         key: passwordFormKey,
                         child: Container(
                           width: 319,

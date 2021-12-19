@@ -36,7 +36,7 @@ class conditionScreen extends StatelessWidget {
                 Navigator.pop(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => signinScreen(),
+                    builder: (context) => signInScreen(),
                   ),
                 );
               },

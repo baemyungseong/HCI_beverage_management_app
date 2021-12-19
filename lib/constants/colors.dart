@@ -17,8 +17,8 @@ const Color greyD = Color(0xFFDDDDDD);
 const Color blueWater = Color(0xFF5FAAEF);
 const Color blueLight = Color(0xFFDDF1FF);
 
-// const greenGradient = [Color(0xFF159957), Color(0xFF159199)];
-// const redGradient = [Color(0xFFCB356B), Color(0xFFBD3F32)];
+const greenGradientBackground = [Color(0xFF159957), Color(0xFF159199)];
+const redGradientBackground = [Color(0xFFCB356B), Color(0xFFBD3F32)];
 
 final Shader redGradient = LinearGradient(
   colors: <Color>[Color(0xFFCB356B), Color(0xFFBD3F32)],

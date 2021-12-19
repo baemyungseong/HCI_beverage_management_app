@@ -85,7 +85,6 @@ class _forgotScreenState extends State<forgotScreen> {
                   ),
                   SizedBox(height: 32),
                   Form(
-                    autovalidate: true,
                     key: emailFormKey,
                     child: Container(
                       width: 319,
@@ -222,7 +221,7 @@ class _forgotScreenState extends State<forgotScreen> {
                           Navigator.pop(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => signinScreen(),
+                              builder: (context) => signInScreen(),
                             ),
                           );
                         },

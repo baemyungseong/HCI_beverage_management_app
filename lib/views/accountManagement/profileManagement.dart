@@ -46,12 +46,7 @@ class profileManagementScreen extends StatelessWidget {
                     IconButton(
                       padding: EdgeInsets.only(left: appPadding),
                       onPressed: () {
-                        // Navigator.pop(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => signinScreen(),
-                        //   ),
-                        // );
+                        Navigator.pop(context);
                       },
                       icon: Icon(Icons.arrow_back_ios, size: 28, color: blackLight),
                     ),
