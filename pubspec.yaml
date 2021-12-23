@@ -18,8 +18,12 @@ dependencies:
   dots_indicator: ^2.0.0
   iconsax: ^0.0.8
   another_xlider: ^1.0.0
-
-
+  flutter_rounded_date_picker: ^2.0.2
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.17.0
+  rflutter_alert: ^2.0.4
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

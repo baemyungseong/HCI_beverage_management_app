@@ -7,6 +7,7 @@ import 'package:ui_fresh_app/constants/fonts.dart';
 import 'package:ui_fresh_app/constants/images.dart';
 import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
+import 'package:ui_fresh_app/views/accountManagement/accountRegister.dart';
 
 //import widgets
 import 'package:ui_fresh_app/views/widget/snackBarWidget.dart';
@@ -204,11 +205,10 @@ class _signInScreenState extends State<signInScreen> {
                           alignment: Alignment.topCenter,
                           child: TextFormField(
                               style: TextStyle(
-                                fontFamily: 'SFProText',
-                                fontSize: 16,
-                                color: blackLight,
-                                fontWeight: FontWeight.w400
-                              ),
+                                  fontFamily: 'SFProText',
+                                  fontSize: 16,
+                                  color: blackLight,
+                                  fontWeight: FontWeight.w400),
                               controller: emailController,
                               keyboardType: TextInputType.emailAddress,
                               autofillHints: [AutofillHints.email],
@@ -222,7 +222,7 @@ class _signInScreenState extends State<signInScreen> {
                               // },
                               decoration: InputDecoration(
                                 contentPadding:
-                                  EdgeInsets.only(left: 20, right: 12),
+                                    EdgeInsets.only(left: 20, right: 12),
                                 hintStyle: TextStyle(
                                     fontFamily: 'SFProText',
                                     fontSize: content16,
@@ -240,8 +240,7 @@ class _signInScreenState extends State<signInScreen> {
                                   fontSize: 0,
                                   height: 0,
                                 ),
-                              )
-                          ),
+                              )),
                         ),
                       ),
                       SizedBox(height: 16),
@@ -256,15 +255,13 @@ class _signInScreenState extends State<signInScreen> {
                           alignment: Alignment.topCenter,
                           child: TextFormField(
                               style: TextStyle(
-                                fontFamily: 'SFProText',
-                                fontSize: 16,
-                                color: blackLight,
-                                fontWeight: FontWeight.w400
-                              ),
+                                  fontFamily: 'SFProText',
+                                  fontSize: 16,
+                                  color: blackLight,
+                                  fontWeight: FontWeight.w400),
                               controller: passwordController,
                               obscureText: isHiddenPassword,
-                              keyboardType:
-                                  TextInputType.visiblePassword,
+                              keyboardType: TextInputType.visiblePassword,
                               autofillHints: [AutofillHints.password],
                               // //validator
                               // validator: (password) {
@@ -276,29 +273,30 @@ class _signInScreenState extends State<signInScreen> {
                               // },
                               decoration: InputDecoration(
                                 suffixIcon: InkWell(
-                                onTap: _togglePasswordView,
-                                child: isHiddenPassword
-                                  ? Stack(
-                                      alignment: Alignment.centerRight,
-                                      children: [
-                                        Container(
-                                          padding: EdgeInsets.only(right: 20),
-                                          child: Icon(Iconsax.eye, size: 24, color: grey8)
-                                        )
-                                      ]
-                                  )
-                                  : Stack(
-                                    alignment: Alignment.centerRight,
-                                    children: [
-                                      Container(
-                                        padding: EdgeInsets.only(right: 20),
-                                        child: Icon(Iconsax.eye_slash, size: 24, color: grey8)
-                                      )
-                                    ]
-                                  )
-                                ),
+                                    onTap: _togglePasswordView,
+                                    child: isHiddenPassword
+                                        ? Stack(
+                                            alignment: Alignment.centerRight,
+                                            children: [
+                                                Container(
+                                                    padding: EdgeInsets.only(
+                                                        right: 20),
+                                                    child: Icon(Iconsax.eye,
+                                                        size: 24, color: grey8))
+                                              ])
+                                        : Stack(
+                                            alignment: Alignment.centerRight,
+                                            children: [
+                                                Container(
+                                                    padding: EdgeInsets.only(
+                                                        right: 20),
+                                                    child: Icon(
+                                                        Iconsax.eye_slash,
+                                                        size: 24,
+                                                        color: grey8))
+                                              ])),
                                 contentPadding:
-                                  EdgeInsets.only(left: 20, right: 12),
+                                    EdgeInsets.only(left: 20, right: 12),
                                 hintStyle: TextStyle(
                                     fontFamily: 'SFProText',
                                     fontSize: content16,
@@ -316,8 +314,7 @@ class _signInScreenState extends State<signInScreen> {
                                   fontSize: 0,
                                   height: 0,
                                 ),
-                              )
-                          ),
+                              )),
                         ),
                       ),
                       Container(
@@ -350,11 +347,13 @@ class _signInScreenState extends State<signInScreen> {
                       onTap: () {
                         if (emailFormKey.currentState!.validate() &&
                             passwordFormKey.currentState!.validate()) {
-                          if(emailController.text == "storekeeper@gmail.com" && passwordController.text == "storekeeper")
+                          if (emailController.text == "storekeeper@gmail.com" &&
+                              passwordController.text == "storekeeper")
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => storekeeperNavigationBar(),
+                                builder: (context) =>
+                                    storekeeperNavigationBar(),
                               ),
                             );
                           else if (emailController.text == "serve@gmail.com")
@@ -364,14 +363,18 @@ class _signInScreenState extends State<signInScreen> {
                                 builder: (context) => serveNavigationBar(),
                               ),
                             );
-                          else if (emailController.text == "bartender@gmail.com" && passwordController.text == "bartender")
+                          else if (emailController.text ==
+                                  "bartender@gmail.com" &&
+                              passwordController.text == "bartender")
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => bartenderNavigationBar(),
                               ),
                             );
-                          else if (emailController.text == "accountant@gmail.com" && passwordController.text == "accountant")
+                          else if (emailController.text ==
+                                  "accountant@gmail.com" &&
+                              passwordController.text == "accountant")
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -379,7 +382,10 @@ class _signInScreenState extends State<signInScreen> {
                               ),
                             );
                           else {
-                            showSnackBar(context, 'Your user account is wrong, please check!', 'error');
+                            showSnackBar(
+                                context,
+                                'Your user account is wrong, please check!',
+                                'error');
                           }
                         }
                       },
@@ -417,8 +423,7 @@ class _signInScreenState extends State<signInScreen> {
                               fontSize: textButton20),
                         ),
                       ),
-                    )
-                ),
+                    )),
               ],
             )),
       ),

@@ -11,6 +11,7 @@ const double title22 = 22.0;
 const double title18 = 18.0;
 const double content12 = 12.0;
 const double content8 = 8.0;
+const double content10 = 10.0;
 const double content14 = 14.0;
 const double content16 = 16.0;
 const double content18 = 18.0;

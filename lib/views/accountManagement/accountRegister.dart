@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 
 //import constants
 import 'package:ui_fresh_app/constants/colors.dart';
@@ -12,22 +13,33 @@ import 'package:ui_fresh_app/constants/others.dart';
 import 'package:meta/meta.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ui_fresh_app/views/widget/dialogWidget.dart';
 
 //import widgets
 import 'package:ui_fresh_app/views/widget/snackBarWidget.dart';
 
-class changePasswordScreen extends StatefulWidget {
-  const changePasswordScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
-  _changePasswordScreenState createState() => _changePasswordScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _changePasswordScreenState extends State<changePasswordScreen>
+class _RegisterScreenState extends State<RegisterScreen>
     with InputValidationMixin {
   bool isHiddenCurrentPassword = true;
   bool isHiddenNewPassword = true;
   bool isHiddenConfirmPassword = true;
+  late DateTime selectDate = DateTime.now();
+
+  int selected = 0;
+
+  TextEditingController emailController = TextEditingController();
+  GlobalKey<FormState> emailFormKey = GlobalKey<FormState>();
+  TextEditingController usernameController = TextEditingController();
+  GlobalKey<FormState> usernameFormKey = GlobalKey<FormState>();
+  TextEditingController phoneController = TextEditingController();
+  GlobalKey<FormState> phoneFormKey = GlobalKey<FormState>();
 
   TextEditingController currentController = TextEditingController();
   GlobalKey<FormState> currentFormKey = GlobalKey<FormState>();
@@ -35,6 +47,53 @@ class _changePasswordScreenState extends State<changePasswordScreen>
   GlobalKey<FormState> newFormKey = GlobalKey<FormState>();
   TextEditingController confirmController = TextEditingController();
   GlobalKey<FormState> confirmFormKey = GlobalKey<FormState>();
+
+  Widget customRadio(String role, int index) {
+    return Container(
+        alignment: Alignment.center,
+        child: GestureDetector(
+          onTap: () {
+            setState(() {
+              selected = index;
+            });
+          },
+          child: AnimatedContainer(
+            child: Center(
+              child: Text(
+                role,
+                style: TextStyle(
+                  fontFamily: "SFProText",
+                  fontSize: 16.0,
+                  color: black,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            alignment: Alignment.center,
+            duration: Duration(milliseconds: 300),
+            height: 48,
+            width: index == 1 ? 180 : (index == 2 ? 123 : 148),
+            decoration: BoxDecoration(
+              color: (selected == index) ? blueLight : null,
+              border: Border(
+                top: BorderSide(width: 2, color: blueLight),
+                left: BorderSide(width: 2, color: blueLight),
+                right: BorderSide(width: 2, color: blueLight),
+                bottom: BorderSide(width: 2, color: blueLight),
+              ),
+              borderRadius: BorderRadius.circular(8),
+              // boxShadow: [
+              //   BoxShadow(
+              //     color: black.withOpacity(0.1),
+              //     spreadRadius: 0,
+              //     blurRadius: 8,
+              //     offset: Offset(0, 4),
+              //   ),
+              // ],
+            ),
+          ),
+        ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +121,7 @@ class _changePasswordScreenState extends State<changePasswordScreen>
               Container(
                 padding: EdgeInsets.only(left: appPadding, right: appPadding),
                 child: Text(
-                  "Change Password",
+                  "Register new Password",
                   style: TextStyle(
                       fontFamily: "SFProText",
                       fontSize: 24.0,
@@ -75,12 +134,12 @@ class _changePasswordScreenState extends State<changePasswordScreen>
                 Container(
                   padding: EdgeInsets.only(left: appPadding, right: appPadding),
                   child: Text(
-                    "Current Password",
+                    "Email",
                     style: TextStyle(
                         fontFamily: "SFProText",
                         fontSize: 20.0,
                         color: black,
-                        fontWeight: FontWeight.w500),
+                        fontWeight: FontWeight.w600),
                   ),
                 ),
                 SizedBox(height: 16),
@@ -88,7 +147,7 @@ class _changePasswordScreenState extends State<changePasswordScreen>
                   padding: EdgeInsets.only(left: appPadding, right: appPadding),
                   alignment: Alignment.centerLeft,
                   child: Form(
-                    key: currentFormKey,
+                    key: emailFormKey,
                     child: Container(
                       width: 319,
                       height: 48,
@@ -102,40 +161,10 @@ class _changePasswordScreenState extends State<changePasswordScreen>
                               fontSize: 16,
                               color: blackLight,
                               fontWeight: FontWeight.w400),
-                          controller: currentController,
-                          obscureText: isHiddenCurrentPassword,
-                          keyboardType: TextInputType.visiblePassword,
-                          autofillHints: [AutofillHints.password],
-                          //validator
-                          validator: (password) {
-                            if (isPasswordValid(password.toString())) {
-                              return null;
-                            } else {
-                              return '';
-                            }
-                          },
+                          controller: emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          autofillHints: [AutofillHints.email],
                           decoration: InputDecoration(
-                            suffixIcon: InkWell(
-                                onTap: _toggleCurrentPasswordView,
-                                child: isHiddenCurrentPassword
-                                    ? Stack(
-                                        alignment: Alignment.centerRight,
-                                        children: [
-                                            Container(
-                                                padding:
-                                                    EdgeInsets.only(right: 20),
-                                                child: Icon(Iconsax.eye,
-                                                    size: 24, color: grey8))
-                                          ])
-                                    : Stack(
-                                        alignment: Alignment.centerRight,
-                                        children: [
-                                            Container(
-                                                padding:
-                                                    EdgeInsets.only(right: 20),
-                                                child: Icon(Iconsax.eye_slash,
-                                                    size: 24, color: grey8))
-                                          ])),
                             contentPadding:
                                 EdgeInsets.only(left: 20, right: 12),
                             hintStyle: TextStyle(
@@ -143,7 +172,7 @@ class _changePasswordScreenState extends State<changePasswordScreen>
                                 fontSize: content16,
                                 fontWeight: FontWeight.w400,
                                 color: blackLight.withOpacity(0.5)),
-                            hintText: "Enter your current password",
+                            hintText: "Enter your email",
                             filled: true,
                             fillColor: blueLight,
                             border: OutlineInputBorder(
@@ -157,6 +186,216 @@ class _changePasswordScreenState extends State<changePasswordScreen>
                             ),
                           )),
                     ),
+                  ),
+                ),
+                SizedBox(height: 24),
+                Container(
+                  padding: EdgeInsets.only(left: appPadding, right: appPadding),
+                  child: Text(
+                    "UserName",
+                    style: TextStyle(
+                        fontFamily: "SFProText",
+                        fontSize: 20.0,
+                        color: black,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+                SizedBox(height: 16),
+                Container(
+                  padding: EdgeInsets.only(left: appPadding, right: appPadding),
+                  alignment: Alignment.centerLeft,
+                  child: Form(
+                    key: usernameFormKey,
+                    child: Container(
+                      width: 319,
+                      height: 48,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: blueLight),
+                      alignment: Alignment.topCenter,
+                      child: TextFormField(
+                          style: TextStyle(
+                              fontFamily: 'SFProText',
+                              fontSize: 16,
+                              color: blackLight,
+                              fontWeight: FontWeight.w400),
+                          controller: usernameController,
+                          decoration: InputDecoration(
+                            contentPadding:
+                                EdgeInsets.only(left: 20, right: 12),
+                            hintStyle: TextStyle(
+                                fontFamily: 'SFProText',
+                                fontSize: content16,
+                                fontWeight: FontWeight.w400,
+                                color: blackLight.withOpacity(0.5)),
+                            hintText: "Enter your username",
+                            filled: true,
+                            fillColor: blueLight,
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          )),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 24),
+                Container(
+                  padding: EdgeInsets.only(left: appPadding, right: appPadding),
+                  child: Text(
+                    "Phone number",
+                    style: TextStyle(
+                        fontFamily: "SFProText",
+                        fontSize: 20.0,
+                        color: black,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+                SizedBox(height: 16),
+                Container(
+                  padding: EdgeInsets.only(left: appPadding, right: appPadding),
+                  alignment: Alignment.centerLeft,
+                  child: Form(
+                    key: phoneFormKey,
+                    child: Container(
+                      width: 319,
+                      height: 48,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: blueLight),
+                      alignment: Alignment.topCenter,
+                      child: TextFormField(
+                          style: TextStyle(
+                              fontFamily: 'SFProText',
+                              fontSize: 16,
+                              color: blackLight,
+                              fontWeight: FontWeight.w400),
+                          controller: phoneController,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            contentPadding:
+                                EdgeInsets.only(left: 20, right: 12),
+                            hintStyle: TextStyle(
+                                fontFamily: 'SFProText',
+                                fontSize: content16,
+                                fontWeight: FontWeight.w400,
+                                color: blackLight.withOpacity(0.5)),
+                            hintText: "Enter your phone number",
+                            filled: true,
+                            fillColor: blueLight,
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          )),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 24),
+                Container(
+                  padding: EdgeInsets.only(left: appPadding, right: appPadding),
+                  child: Text(
+                    "Date of birth",
+                    style: TextStyle(
+                        fontFamily: "SFProText",
+                        fontSize: 20.0,
+                        color: black,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+                SizedBox(height: 16),
+                Container(
+                  padding: EdgeInsets.only(left: appPadding, right: appPadding),
+                  alignment: Alignment.centerLeft,
+                  child: GestureDetector(
+                    onTap: () async {
+                      String category = "dob";
+                      DateTime? dt =
+                          await datePickerDialog(context, selectDate, category);
+                      if (dt != null) {
+                        selectDate = dt;
+                        setState(() {
+                          selectDate != selectDate;
+                        });
+                      }
+                      print(selectDate);
+                    },
+                    child: AnimatedContainer(
+                        alignment: Alignment.center,
+                        duration: Duration(milliseconds: 300),
+                        height: 48,
+                        width: 180,
+                        decoration: BoxDecoration(
+                          color: blueLight,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(width: 12),
+                            Container(
+                                padding: EdgeInsets.zero,
+                                alignment: Alignment.center,
+                                child: Icon(
+                                  Iconsax.calendar_1,
+                                  size: 16,
+                                  color: blackLight,
+                                )),
+                            SizedBox(width: 8),
+                            Text(
+                              "${DateFormat('yMMMMd').format(selectDate)}",
+                              style: TextStyle(
+                                color: blackLight,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14,
+                              ),
+                            ),
+                            SizedBox(width: 4),
+                          ],
+                        )),
+                  ),
+                ),
+                SizedBox(height: 24),
+                Container(
+                  padding: EdgeInsets.only(left: appPadding, right: appPadding),
+                  child: Text(
+                    "Role",
+                    style: TextStyle(
+                        fontFamily: "SFProText",
+                        fontSize: 20.0,
+                        color: black,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+                SizedBox(height: 16),
+                Container(
+                  padding: EdgeInsets.only(left: appPadding, right: appPadding),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 12),
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              customRadio('Accountant', 1),
+                            ],
+                          ),
+                          SizedBox(height: 16),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              customRadio('Serve', 2),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              customRadio('Bartender', 3),
+                            ],
+                          )
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ]),
@@ -412,7 +651,32 @@ class _changePasswordScreenState extends State<changePasswordScreen>
                       ),
                     ),
                   )),
-              SizedBox(height: 64),
+              Row(
+                children: [
+                  Text(
+                    'Total Money:',
+                    style: TextStyle(
+                      fontFamily: "SFProText",
+                      fontSize: content16,
+                      color: black,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Spacer(),
+                  Text(
+                    '\$2069.00',
+                    maxLines: 1,
+                    softWrap: false,
+                    overflow: TextOverflow.fade,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'SFProText',
+                      foreground: Paint()..shader = blueGradient,
+                    ),
+                  ),
+                ],
+              ),
             ]),
           )
         ],
