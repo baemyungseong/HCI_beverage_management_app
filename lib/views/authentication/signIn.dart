@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:ui_fresh_app/constants/colors.dart';
 import 'package:ui_fresh_app/constants/fonts.dart';
 import 'package:ui_fresh_app/constants/images.dart';
-import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
 //import widgets
@@ -18,7 +17,7 @@ import 'package:ui_fresh_app/views/storekeeper/skDashboard.dart';
 import 'package:ui_fresh_app/views/serve/svDashboard.dart';
 import 'package:ui_fresh_app/views/accountant/atDashboard.dart';
 import 'package:ui_fresh_app/views/bartender/btDashboard.dart';
-import 'package:ui_fresh_app/views/accountManagement/profileManagement.dart';
+import 'package:ui_fresh_app/views/account/profileManagement.dart';
 
 import 'package:ui_fresh_app/views/navigationBar/skNavigationBar.dart';
 import 'package:ui_fresh_app/views/navigationBar/svNavigationBar.dart';

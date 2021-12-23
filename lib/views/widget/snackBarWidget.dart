@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:ui_fresh_app/constants/colors.dart';
 import 'package:ui_fresh_app/constants/fonts.dart';
 import 'package:ui_fresh_app/constants/images.dart';
-import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
 //import others
@@ -39,7 +38,7 @@ void showSnackBar(context, text, category) {
     ),
     margin: EdgeInsets.symmetric(horizontal: 24),
     behavior: SnackBarBehavior.floating,
-    elevation: 0,
+    elevation: 10,
   );
   
   ScaffoldMessenger.of(context)

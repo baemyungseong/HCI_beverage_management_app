@@ -5,23 +5,28 @@ import 'package:flutter/cupertino.dart';
 import 'package:ui_fresh_app/constants/colors.dart';
 import 'package:ui_fresh_app/constants/fonts.dart';
 import 'package:ui_fresh_app/constants/images.dart';
-import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
 //import widgets
+import 'package:ui_fresh_app/views/widget/dialogWidget.dart';
+import 'package:ui_fresh_app/views/widget/snackBarWidget.dart';
 import 'package:ui_fresh_app/views/accountant/atWidget/atIncomeAndOutcomeWidget.dart';
 import 'package:ui_fresh_app/views/accountant/atWidget/atRecentTransactionWidget.dart';
 import 'package:ui_fresh_app/views/accountant/atWidget/atRevenueAndExpenditureCardWidget.dart';
 
 //import views
 import 'package:ui_fresh_app/views/accountant/atSearchingReex.dart';
-import 'package:ui_fresh_app/views/accountManagement/profileManagement.dart';
+import 'package:ui_fresh_app/views/account/profileManagement.dart';
+import 'package:ui_fresh_app/views/accountant/atIncomeTransactionDetail.dart';
+import 'package:ui_fresh_app/views/accountant/atOutcomeTransactionDetail.dart';
 
 //import others
 import 'package:iconsax/iconsax.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:another_xlider/another_xlider.dart';
+import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
+import 'package:intl/intl.dart';
 
 class atReexManagementScreen extends StatefulWidget {
   const atReexManagementScreen({Key? key}) : super(key: key);
@@ -32,11 +37,8 @@ class atReexManagementScreen extends StatefulWidget {
 
 class _atReexManagementScreenState extends State<atReexManagementScreen> {
 
-  TextEditingController _minpricecontroller = TextEditingController();
-  TextEditingController _maxpricecontroller = TextEditingController();
-  TextEditingController searchController = TextEditingController();
-  bool haveFilter = false;
   bool haveSearch = false;
+  TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +64,7 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
                   SizedBox(height: 34),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
                         alignment: Alignment.center,
@@ -204,7 +207,7 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
                         alignment: Alignment.center,
                         child: GestureDetector(
                           onTap: () {
-                            showNumberPad(context);
+                            showFilter(context);
                           },
                           child: AnimatedContainer(
                             alignment: Alignment.center,
@@ -242,7 +245,7 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 40),
+                  SizedBox(height: 32),
                   Container(
                     alignment: Alignment.centerLeft,
                     padding: EdgeInsets.zero,
@@ -251,21 +254,19 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
                       style: TextStyle(
                         color: blackLight,
                         fontSize: title24,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w700,
                         fontFamily: 'SFProText',
                       ),
                     ),
                   ),
-                  SizedBox(height: 36),
-                  atRevenueAndExpenditureCardWidget(),
-                  SizedBox(height: 36),
+                  SizedBox(height: 32),
                   atIncomeAndOutcomeWidget(),
                   SizedBox(height: 32),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        'Recent transaction',
+                        'All Transaction',
                         style: TextStyle(
                           fontSize: content16,
                           fontWeight: FontWeight.w500,
@@ -273,25 +274,198 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
                           color: blackLight,
                         ),
                       ),
-                      Spacer(),
-                      Column(
-                        children: [
-                          SizedBox(height: 2),
-                          Text(
-                            'view all',
-                            style: TextStyle(
-                              fontSize: content12,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'SFProText',
-                              color: grey8,
-                            ),
-                          ),
-                        ],
-                      )
                     ],
                   ),
                   SizedBox(height: 18),
-                  atRecentTransactionListWidget(),
+                  // atRecentTransactionListWidget(),
+                  Column(
+                    children: [
+                      Container(
+                        height: 463,
+                        width: 319,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              ListView.separated(
+                                physics: const NeverScrollableScrollPhysics(),
+                                padding: EdgeInsets.zero,
+                                scrollDirection: Axis.vertical,
+                                shrinkWrap: true,
+                                itemCount: 16,
+                                separatorBuilder: (BuildContext context, int index) =>
+                                    SizedBox(height: 24),
+                                itemBuilder: (context, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      (index == 2 || index == 5 || index == 7 || index == 8 || index == 10 || index == 12 || index == 14 || index == 15) 
+                                      ? Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => atOutcomeTransactionDetailScreen(),
+                                        ),
+                                      )
+                                      // .then((value) {});
+                                      : Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => atIncomeTransactionDetailScreen(),
+                                        ),
+                                      );
+                                      // .then((value) {});
+                                    },
+                                    child: AnimatedContainer(
+                                      duration: Duration(milliseconds: 300),
+                                      child: Row(
+                                        children: [
+                                          Image.asset(
+                                            (index == 2 ||
+                                                    index == 5 ||
+                                                    index == 7 ||
+                                                    index == 8 ||
+                                                    index == 10 ||
+                                                    index == 12 ||
+                                                    index == 14 ||
+                                                    index == 15)
+                                                ? 'assets/images/accountant/oderavatar.png'
+                                                : 'assets/images/accountant/drinkavatar.png',
+                                          ),
+                                          SizedBox(width: 16),
+                                          Container(
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  children: [
+                                                    Container(
+                                                      child: Text(
+                                                        (index == 2 ||
+                                                                index == 5 ||
+                                                                index == 7 ||
+                                                                index == 8 ||
+                                                                index == 10 ||
+                                                                index == 12 ||
+                                                                index == 14 ||
+                                                                index == 15)
+                                                            ? 'Order'
+                                                            : 'Drink',
+                                                        maxLines: 1,
+                                                        softWrap: false,
+                                                        overflow: TextOverflow.fade,
+                                                        style: TextStyle(
+                                                            fontSize: content16,
+                                                            fontWeight: FontWeight.w600,
+                                                            fontFamily: 'SFProText',
+                                                            color: blackLight,
+                                                            height: 1.0),
+                                                      ),
+                                                    ),
+                                                    Column(
+                                                      children: [
+                                                        SizedBox(height: 1),
+                                                        Container(
+                                                          width: 64,
+                                                          child: Text(
+                                                            ' #' + '2092',
+                                                            maxLines: 1,
+                                                            softWrap: false,
+                                                            overflow: TextOverflow.fade,
+                                                            style: TextStyle(
+                                                              fontSize: content14,
+                                                              fontWeight: FontWeight.w500,
+                                                              fontFamily: 'SFProText',
+                                                              foreground: Paint()
+                                                                ..shader = (index == 2 ||
+                                                                        index == 5 ||
+                                                                        index == 7 ||
+                                                                        index == 8 ||
+                                                                        index == 10 ||
+                                                                        index == 12 ||
+                                                                        index == 14 ||
+                                                                        index == 15)
+                                                                    ? redGradient
+                                                                    : greenGradient,
+                                                            ),
+                                                          ),
+                                                        )
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
+                                                SizedBox(height: 4),
+                                                Row(
+                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                  children: [
+                                                    Container(
+                                                      width: 145,
+                                                      child: Text(
+                                                        '02.00 pm, 08 Oct 2021',
+                                                        maxLines: 1,
+                                                        overflow: TextOverflow.fade,
+                                                        softWrap: false,
+                                                        style: TextStyle(
+                                                            fontSize: content12,
+                                                            fontWeight: FontWeight.w400,
+                                                            fontFamily: 'SFProText',
+                                                            color: grey8,
+                                                            height: 1.4),
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Spacer(),
+                                          Container(
+                                            width: 102,
+                                            child: Text(
+                                              (index == 2 ||
+                                                      index == 5 ||
+                                                      index == 7 ||
+                                                      index == 8 ||
+                                                      index == 10 ||
+                                                      index == 12 ||
+                                                      index == 14 ||
+                                                      index == 15)
+                                                  ? '- ' + '\$68.00'
+                                                  : '+ ' + '\$137.00',
+                                              maxLines: 1,
+                                              overflow: TextOverflow.fade,
+                                              softWrap: false,
+                                              textAlign: TextAlign.right,
+                                              style: TextStyle(
+                                                fontSize: content16,
+                                                fontWeight: FontWeight.w600,
+                                                fontFamily: 'SFProText',
+                                                foreground: Paint()
+                                                  ..shader = (index == 2 ||
+                                                          index == 5 ||
+                                                          index == 7 ||
+                                                          index == 8 ||
+                                                          index == 10 ||
+                                                          index == 12 ||
+                                                          index == 14 ||
+                                                          index == 15)
+                                                      ? redGradient
+                                                      : greenGradient,
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                              SizedBox(height: 112)
+                            ]
+                          )
+                        )
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),
@@ -301,46 +475,36 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
     );
   }
 
-  late DateTime _myDateTime;
-  bool selected = true;
+  //Bottom Sheet - start
+
+  TextEditingController _minpricecontroller = TextEditingController();
+  TextEditingController _maxpricecontroller = TextEditingController();
+
+  bool haveFilter = false;
+
+  late DateTime selectDate1 = DateTime.now();
+  late DateTime selectDate2 = DateTime.now();
+
+  int selected = 0;
   double _lowerValue = 0;
-  double _upperValue = 0;
+  double _upperValue = 1000;
 
-  DateTime selectedDate = DateTime.now();
-
-  _selectDate(BuildContext context, StateSetter setState1) async {
-    final DateTime? selected = await showDatePicker(
-      context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime(2019),
-      lastDate: DateTime(2023),
-    );
-    setState1(() {
-      selectedDate = selected!;
-    });
-  }
-
-  DateTime selectedDate1 = DateTime.now();
-
-  _selectDate1(BuildContext context, StateSetter setState1) async {
-    final DateTime? selected1 = await showDatePicker(
-      context: context,
-      initialDate: selectedDate1,
-      firstDate: DateTime(2019),
-      lastDate: DateTime(2023),
-    );
-    setState1(() {
-      selectedDate1 = selected1!;
-    });
+  void initState() {
+    super.initState();
+    _minpricecontroller.text = _lowerValue.toString();
+    _maxpricecontroller.text = _upperValue.toString();
   }
 
   FlutterSliderHandler customHandler(IconData icon) {
     return FlutterSliderHandler(
       decoration: BoxDecoration(),
       child: Container(
+        width: 32,
+        height: 32,
         decoration: BoxDecoration(
           color: Colors.white,
-          shape: BoxShape.circle,
+          shape: BoxShape.rectangle,
+          borderRadius: new BorderRadius.all(Radius.circular(8)),
           boxShadow: [
             BoxShadow(
                 color: Colors.blue.withOpacity(0.3),
@@ -349,30 +513,22 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
                 offset: Offset(0, 1))
           ],
         ),
-        child: Container(
-          margin: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-              color: Colors.blue.withOpacity(0.3), shape: BoxShape.circle),
-          child: Icon(
-            icon,
-            color: Colors.white,
-            size: 23,
-          ),
-        ),
+        child: Icon(Iconsax.coin, size: 20, color: blackLight)
       ),
     );
   }
 
-  showNumberPad(BuildContext context) {
+  showFilter(BuildContext context) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
+      elevation: 20,
       builder: (context) {
         return StatefulBuilder(
             builder: (BuildContext context, StateSetter SetState1) {
           return Container(
-            height: 657,
+            height: 685,
             decoration: new BoxDecoration(
               color: Colors.white,
               borderRadius: new BorderRadius.only(
@@ -383,36 +539,43 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Padding(
+                Container(
                   padding: const EdgeInsets.only(top: 16),
-                  child: Image.asset(
-                      'assets/images/accountant/Home_Indicator.png'),
+                  child: Image.asset(indicator),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 16),
+                SizedBox(height: 24),
+                Container(
                   child: Text(
                     'Refine Result',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                      fontSize: title28,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'SFProText',
+                      color: blackLight,
+                    ),
                   ),
                 ),
+                SizedBox(height: 32),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(top: 24, left: 28),
+                      padding: EdgeInsets.only(left: 28),
                       child: Text(
                         'Category',
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w600),
+                          fontSize: title20,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'SFProText',
+                          color: blackLight,
+                        ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 16,
-                ),
+                SizedBox(height: 16),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
                       padding: EdgeInsets.only(left: 28),
@@ -422,47 +585,58 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
                         child: new OutlinedButton(
                           onPressed: () {
                             SetState1(() {
-                              selected = true;
+                              selected = 1;
                             });
                           },
                           child: Text(
-                            'income',
+                            'Income',
                             style: TextStyle(
-                              color: selected ? Colors.green : Colors.grey,
+                              fontSize: content20,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'SFProText',
+                              foreground: (selected == 1) ? (Paint()..shader = greenGradient) : (Paint()..shader = blackLightShader),
                             ),
                           ),
                           style: OutlinedButton.styleFrom(
                             side: BorderSide(
-                                width: 1.5,
-                                color: selected ? Colors.green : Colors.grey),
+                              width: 2,
+                              color: (selected == 1) ? green : greyC
+                            ),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
                         ),
                       ),
                     ),
+                    Spacer(),
                     Padding(
                       padding: EdgeInsets.only(right: 28),
                       child: SizedBox(
                         width: 150.0,
                         height: 45.0,
-                        child: OutlinedButton(
+                        child: new OutlinedButton(
                           onPressed: () {
                             SetState1(() {
-                              selected = false;
+                              selected = 2;
                             });
                           },
-                          child: Text('outcome',
-                              style: TextStyle(
-                                  color:
-                                      selected ? Colors.grey : Colors.green)),
+                          child: Text(
+                            'Outcome',
+                            style: TextStyle(
+                              fontSize: content20,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'SFProText',
+                              foreground: (selected == 2) ? (Paint()..shader = redGradient) : (Paint()..shader = blackLightShader),
+                            ),
+                          ),
                           style: OutlinedButton.styleFrom(
                             side: BorderSide(
-                                width: 1.5,
-                                color: selected ? Colors.grey : Colors.green),
+                              width: 2,
+                              color: (selected == 2) ? red : greyC
+                            ),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
                         ),
@@ -470,177 +644,318 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 32,
-                ),
+                SizedBox(height: 32),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Padding(
+                    Container(
                       padding: EdgeInsets.only(left: 28),
                       child: Text(
                         'Date',
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w600),
+                          fontSize: content20,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'SFProText',
+                          color: blackLight
+                        ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 28, top: 5),
+                    Spacer(),
+                    Container(
+                      padding: EdgeInsets.only(right: 28, top: 0),
                       child: Text(
                         'range',
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(
+                          fontSize: content16,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'SFProText',
+                          color: grey8
+                        ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 16,
-                ),
+                SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
+                    Container(
                       padding: EdgeInsets.only(left: 28),
-                      child: SizedBox(
-                        width: 120.0,
-                        height: 36.0,
-                        child: new OutlinedButton(
-                          onPressed: () {
-                            _selectDate1(context, SetState1);
-                          },
-                          child: Text(
-                            "${selectedDate1.day}/${selectedDate1.month}/${selectedDate1.year}",
-                            style: TextStyle(
-                              color: Colors.grey,
-                            ),
+                      alignment: Alignment.centerLeft,
+                      child: GestureDetector(
+                        onTap: () async {
+                          String category = "reex";
+                          DateTime? dt = await datePickerDialog(context, selectDate1, category);
+                          if (dt != null) {
+                            selectDate1 = dt;
+                            SetState1(() {
+                              selectDate1 != selectDate1;
+                            });
+                          }
+                          print(selectDate1);
+                        },
+                        child: AnimatedContainer(
+                          alignment: Alignment.center,
+                          duration: Duration(milliseconds: 300),
+                          height: 36,
+                          width: 120,
+                          decoration: BoxDecoration(
+                            color: white,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border(
+                              top: BorderSide(width: 1, color: greyC),
+                              left: BorderSide(width: 1, color: greyC),
+                              right: BorderSide(width: 1, color: greyC),
+                              bottom: BorderSide(width: 1, color: greyC),
+                            )
                           ),
-                          style: OutlinedButton.styleFrom(
-                            side: BorderSide(width: 1.5, color: Colors.grey),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Image.asset('assets/images/accountant/Arrow.png'),
-                    Padding(
-                      padding: EdgeInsets.only(right: 28),
-                      child: SizedBox(
-                        width: 120.0,
-                        height: 36.0,
-                        child: StatefulBuilder(builder: (context, SetState1) {
-                          return OutlinedButton(
-                            onPressed: () {
-                              _selectDate(context, SetState1);
-                            },
+                          child: Center(
                             child: Text(
-                                "${selectedDate.day}/${selectedDate.month}/${selectedDate.year}",
-                                style: TextStyle(color: Colors.grey)),
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(width: 1.5, color: Colors.grey),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
+                              // "12 November, 2021",
+                              // dd/MM/yyyy
+                              "${DateFormat('yMd').format(selectDate1)}",
+                              // "${selectDate.day} ${selectDate.month}, ${selectDate.year}",
+                              style: TextStyle(
+                                color: blackLight,
+                                fontFamily: 'SFProText',
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
                               ),
                             ),
-                          );
-                        }),
-                      ),
+                          )
+                        ),
+                      )
+                    ),
+                    Container(
+                      padding: EdgeInsets.zero,
+                      alignment: Alignment.center,
+                      child: Icon(
+                        Iconsax.arrow_right_1,
+                        size: 24, color: blackLight
+                      )
+                    ),
+                    Container(
+                      padding: EdgeInsets.only(right: 28),
+                      alignment: Alignment.centerRight,
+                      child: GestureDetector(
+                        onTap: () async {
+                          String category = "reex";
+                          DateTime? dt = await datePickerDialog(context, selectDate2, category);
+                          if (dt != null) {
+                            selectDate2 = dt;
+                            SetState1(() {
+                              selectDate2 != selectDate2;
+                            });
+                          }
+                          print(selectDate2);
+                        },
+                        child: AnimatedContainer(
+                          alignment: Alignment.center,
+                          duration: Duration(milliseconds: 300),
+                          height: 36,
+                          width: 120,
+                          decoration: BoxDecoration(
+                            color: white,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border(
+                              top: BorderSide(width: 1, color: greyC),
+                              left: BorderSide(width: 1, color: greyC),
+                              right: BorderSide(width: 1, color: greyC),
+                              bottom: BorderSide(width: 1, color: greyC),
+                            )
+                          ),
+                          child: Center(
+                            child: Text(
+                              // "12 November, 2021",
+                              "${DateFormat('yMd').format(selectDate2)}",
+                              // "${selectDate.day} ${selectDate.month}, ${selectDate.year}",
+                              style: TextStyle(
+                                color: blackLight,
+                                fontFamily: 'SFProText',
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                              ),
+                            ),
+                          )
+                        ),
+                      )
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 16,
-                ),
+                SizedBox(height: 32),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(top: 24, left: 28),
+                    Container(
+                      padding: EdgeInsets.only(left: 28),
                       child: Text(
                         'Price Range',
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 16,
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 28),
-                      child: Text('from'),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 92),
-                      child: Text('to'),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 28),
-                      child: SizedBox(
-                        height: 36,
-                        width: 96,
-                        child: TextFormField(
-                          onChanged: (context) {
-                            double a = double.parse(_minpricecontroller.text);
-                            _lowerValue = a;
-                          },
-                          controller: _minpricecontroller,
-                          keyboardType: TextInputType.number,
-                          textAlign: TextAlign.center,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8)),
-                            prefixText: "\$",
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 28),
-                      child: SizedBox(
-                        height: 36,
-                        width: 96,
-                        child: TextFormField(
-                          onChanged: (context) {
-                            double b = double.parse(_maxpricecontroller.text);
-                            _upperValue = b;
-                          },
-                          controller: _maxpricecontroller,
-                          keyboardType: TextInputType.number,
-                          textAlign: TextAlign.center,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8)),
-                            prefixText: "\$",
-                          ),
+                          fontSize: content20,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'SFProText',
+                          color: blackLight
                         ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 32,
+                SizedBox(height: 16),
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(left: 28),
+                      child: Text(
+                        'from',
+                        style: TextStyle(
+                          fontSize: content16,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'SFProText',
+                          color: grey8
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.only(left: 164),
+                      child: Text(
+                        'to',
+                        style: TextStyle(
+                          fontSize: content16,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'SFProText',
+                          color: grey8
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
+                SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(left: 28),
+                      height: 36,
+                      width: 148,
+                      child: TextFormField(
+                        style: TextStyle(
+                          fontSize: content16,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'SFProText',
+                          color: blackLight,
+                          height: 0.8
+                        ),
+                        textAlign: TextAlign.center,
+                        onChanged: (context) {
+                          double min = double.parse(_minpricecontroller.text);
+                          if(min <= _upperValue) {
+                            _lowerValue = min;
+                            print(_minpricecontroller.text);
+                          }
+                        },
+                        onEditingComplete: () {
+                          SetState1(() {
+                            double min = double.parse(_minpricecontroller.text);
+                            if(min <= _upperValue) {
+                              _lowerValue = min;
+                              print(_minpricecontroller.text);
+                            }
+                            else {
+                              _lowerValue = 0;
+                              _minpricecontroller.text = "0.0";
+                              showSnackBar(context, "text", "error");
+                            }
+                          });
+                        },
+                        controller: _minpricecontroller,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(width: 1, color: greyC),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          prefixText: "\$",
+                          prefixStyle: TextStyle(
+                            fontSize: content16,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'SFProText',
+                            color: blackLight,
+                          ),
+                        )
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.zero,
+                      alignment: Alignment.center,
+                      child: Icon(
+                        Iconsax.arrow_right_1,
+                        size: 24, color: blackLight
+                      )
+                    ),
+                    Container(
+                      padding: const EdgeInsets.only(right: 28),
+                      height: 36,
+                      width: 148,
+                      child: TextFormField(
+                        style: TextStyle(
+                          fontSize: content16,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'SFProText',
+                          color: blackLight,
+                          height: 0.8
+                        ),
+                        textAlign: TextAlign.center,
+                        onChanged: (context) {
+                          double max = double.parse(_maxpricecontroller.text);
+                          if(_lowerValue <= max) {
+                            _upperValue = max;
+                            print(_maxpricecontroller.text);
+                          }
+                        },
+                        onEditingComplete: () {
+                          SetState1(() {
+                            double max = double.parse(_maxpricecontroller.text);
+                            if(_lowerValue <= max) {
+                              _upperValue = max;
+                              print(_maxpricecontroller.text);
+                            }
+                            else {
+                              _maxpricecontroller.text = "1000.0";
+                              _upperValue = 1000;
+                              showSnackBar(context, "text", "error");
+                            }
+                          });
+                        },
+                        controller: _maxpricecontroller,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(width: 1, color: greyC),
+                            borderRadius: BorderRadius.circular(8)
+                          ),
+                          prefixText: "\$",
+                            prefixStyle: TextStyle(
+                            fontSize: content16,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'SFProText',
+                            color: blackLight,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]
+                ),
+                SizedBox(height: 32),
                 Container(
                   margin: EdgeInsets.only(left: 52, right: 52),
                   alignment: Alignment.centerLeft,
                   child: FlutterSlider(
                     values: [_lowerValue, _upperValue],
                     rangeSlider: true,
-                    max: 25000,
+                    max: 1000,
                     min: 0,
-                    step: FlutterSliderStep(step: 100),
+                    step: FlutterSliderStep(step: 1),
                     jump: true,
                     trackBar: FlutterSliderTrackBar(
                       inactiveTrackBarHeight: 2,
@@ -652,15 +967,20 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
                     tooltip: FlutterSliderTooltip(
                       leftPrefix: Icon(
                         Icons.attach_money,
-                        size: 19,
-                        color: Colors.black45,
+                        size: 18,
+                        color: blackLight,
                       ),
                       rightSuffix: Icon(
                         Icons.attach_money,
-                        size: 19,
-                        color: Colors.black45,
+                        size: 18,
+                        color: blackLight,
                       ),
-                      textStyle: TextStyle(fontSize: 17, color: Colors.black45),
+                      textStyle: TextStyle(
+                        fontSize: content16,
+                        fontWeight: FontWeight.w500,
+                        fontFamily: 'SFProText',
+                        color: blackLight,
+                      ),
                     ),
                     onDragging: (handlerIndex, lowerValue, upperValue) {
                       SetState1(() {
@@ -672,6 +992,7 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
                     },
                   ),
                 ),
+                SizedBox(height: 32),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -679,34 +1000,56 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
                       padding: const EdgeInsets.only(left: 28),
                       child: ElevatedButton(
                           onPressed: () {
-                            setState(() {
-                              haveFilter = true;
-                            });
-                            Navigator.pop(context);
+                            if(selectDate1.isBefore(selectDate2)) {
+                              if(_lowerValue <= _upperValue) {
+                                setState(() {
+                                  haveFilter = true;
+                                });
+                                Navigator.pop(context);
+                              } 
+                              else {
+                                showSnackBar(context, 'The max value must be greater than the min', "error");
+                              }
+                            }
+                            else {
+                              showSnackBar(context, 'The max date must be greater than the min', "error");
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                             minimumSize: Size(196, 52),
                             primary: Colors.black,
                             shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(30.0),
+                              borderRadius: new BorderRadius.circular(12.0),
                             ),
                           ),
                           child: Text(
                             ' Apply',
-                            style: TextStyle(color: Colors.white),
-                          )),
+                            style: TextStyle(
+                              fontSize: textButton20,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: 'SFProText',
+                              color: white,
+                            ),
+                          )
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 28),
                       child: ElevatedButton(
                         onPressed: () {
                           SetState1(() {
-                            selectedDate = DateTime.now();
-                            selectedDate1 = DateTime.now();
+                            selected = 0;
+                            selectDate1 = DateTime.now();
+                            selectDate2 = DateTime.now();
                             _lowerValue = 0;
-                            _upperValue = 25000;
+                            _upperValue = 1000;
+                            _minpricecontroller.text =  _lowerValue.toString();
+                            _maxpricecontroller.text = _upperValue.toString();
                           });
                           setState(() {
+                            haveFilter = false;
+                          });
+                          SetState1(() {
                             haveFilter = false;
                           });
                         },
@@ -714,13 +1057,18 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
                           minimumSize: Size(112, 52),
                           primary: Colors.white,
                           shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(30.0),
+                            borderRadius: new BorderRadius.circular(12.0),
                           ),
                         ),
                         child: Text(
                           ' Reset',
-                          style: TextStyle(color: Colors.black),
-                        ),
+                          style: TextStyle(
+                            fontSize: textButton20,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'SFProText',
+                            color: blackLight,
+                          ),
+                        )
                       ),
                     ),
                   ],
@@ -732,4 +1080,6 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
       },
     );
   }
+  // /Bottom Sheet - end
+  
 }

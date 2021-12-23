@@ -5,20 +5,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:ui_fresh_app/constants/colors.dart';
 import 'package:ui_fresh_app/constants/fonts.dart';
 import 'package:ui_fresh_app/constants/images.dart';
-import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
 //import widgets
 import 'package:ui_fresh_app/views/widget/dialogWidget.dart';
-import 'package:ui_fresh_app/views/accountManagement/accountMessages.dart';
-import 'package:ui_fresh_app/views/accountManagement/accountNotifications.dart';
-import 'package:ui_fresh_app/views/accountManagement/accountSettings.dart';
-import 'package:ui_fresh_app/views/accountManagement/changePassword.dart';
-import 'package:ui_fresh_app/views/accountManagement/helpCenter.dart';
-import 'package:ui_fresh_app/views/accountManagement/profileDetail.dart';
-import 'package:ui_fresh_app/views/accountManagement/termCondition.dart';
+
+//import views
+import 'package:ui_fresh_app/views/account/accountMessages.dart';
+import 'package:ui_fresh_app/views/account/accountNotifications.dart';
+import 'package:ui_fresh_app/views/account/accountSettings.dart';
+import 'package:ui_fresh_app/views/account/changePassword.dart';
+import 'package:ui_fresh_app/views/account/helpCenter.dart';
+import 'package:ui_fresh_app/views/account/profileDetail.dart';
+import 'package:ui_fresh_app/views/account/termCondition.dart';
+
 
 //import others
+import 'package:iconsax/iconsax.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -42,13 +45,13 @@ class profileManagementScreen extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 52),
+                    SizedBox(height: 62),
                     IconButton(
                       padding: EdgeInsets.only(left: appPadding),
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: Icon(Icons.arrow_back_ios, size: 28, color: blackLight),
+                      icon: Icon(Iconsax.arrow_square_left, size: 32, color: blackLight),
                     ),
                     SizedBox(height: 8),
                     Container(
@@ -62,14 +65,14 @@ class profileManagementScreen extends StatelessWidget {
                                 fontFamily: 'SFProText',
                                 fontSize: title24,
                                 color: blackLight,
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w700,
                                 height: 1.6,
                               ),
                             ),
                           ],
                         )
                     ),
-                    SizedBox(height: 28),
+                    SizedBox(height: 24),
                     Stack(
                       children: [
                         Container(
@@ -167,7 +170,7 @@ class profileManagementScreen extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                        accountMessageScreen(),
+                                        accountMessagesScreen(),
                                   ),
                                 );
                               },
@@ -182,13 +185,6 @@ class profileManagementScreen extends StatelessWidget {
                                       BorderRadius.all(Radius.circular(12)),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: black.withOpacity(0.2),
-                                      spreadRadius: 0,
-                                      blurRadius: 4,
-                                      offset: Offset(
-                                          0, 2), // changes position of shadow
-                                    ),
-                                    BoxShadow(
                                       color: black.withOpacity(0.1),
                                       spreadRadius: 0,
                                       blurRadius: 64,
@@ -202,11 +198,12 @@ class profileManagementScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
-                                      child: SvgPicture.asset(
-                                        amMessages,
-                                        color: blackLight,
-                                        height: 24,
-                                        width: 24
+                                      padding: EdgeInsets.zero,
+                                      alignment: Alignment.center,
+                                      child: Icon(
+                                        Iconsax.messages_3,
+                                        size: 20, 
+                                        color: blackLight
                                       )
                                     ),
                                     SizedBox(height: 4),
@@ -215,7 +212,7 @@ class profileManagementScreen extends StatelessWidget {
                                       style: TextStyle(
                                         color: blackLight,
                                         fontFamily: 'SFProText',
-                                        fontWeight: FontWeight.w400,
+                                        fontWeight: FontWeight.w500,
                                         fontSize: content12
                                       ),
                                     ),
@@ -233,7 +230,7 @@ class profileManagementScreen extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                        accountNotificationScreen(),
+                                        accountNotificationsScreen(),
                                   ),
                                 );
                               },
@@ -248,13 +245,6 @@ class profileManagementScreen extends StatelessWidget {
                                       BorderRadius.all(Radius.circular(12)),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: black.withOpacity(0.2),
-                                      spreadRadius: 0,
-                                      blurRadius: 4,
-                                      offset: Offset(
-                                          0, 2), // changes position of shadow
-                                    ),
-                                    BoxShadow(
                                       color: black.withOpacity(0.1),
                                       spreadRadius: 0,
                                       blurRadius: 64,
@@ -268,11 +258,12 @@ class profileManagementScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
-                                      child: SvgPicture.asset(
-                                        amNotifications,
-                                        color: blackLight,
-                                        height: 24,
-                                        width: 24
+                                      padding: EdgeInsets.zero,
+                                      alignment: Alignment.center,
+                                      child: Icon(
+                                        Iconsax.notification_status,
+                                        size: 20, 
+                                        color: blackLight
                                       )
                                     ),
                                     SizedBox(height: 4),
@@ -281,7 +272,7 @@ class profileManagementScreen extends StatelessWidget {
                                       style: TextStyle(
                                         color: blackLight,
                                         fontFamily: 'SFProText',
-                                        fontWeight: FontWeight.w400,
+                                        fontWeight: FontWeight.w500,
                                         fontSize: content12
                                       ),
                                     ),
@@ -314,13 +305,6 @@ class profileManagementScreen extends StatelessWidget {
                                       BorderRadius.all(Radius.circular(12)),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: black.withOpacity(0.2),
-                                      spreadRadius: 0,
-                                      blurRadius: 4,
-                                      offset: Offset(
-                                          0, 2), // changes position of shadow
-                                    ),
-                                    BoxShadow(
                                       color: black.withOpacity(0.1),
                                       spreadRadius: 0,
                                       blurRadius: 64,
@@ -334,11 +318,12 @@ class profileManagementScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Container(
-                                      child: SvgPicture.asset(
-                                        amSettings,
-                                        color: blackLight,
-                                        height: 24,
-                                        width: 24
+                                      padding: EdgeInsets.zero,
+                                      alignment: Alignment.center,
+                                      child: Icon(
+                                        Iconsax.setting_2,
+                                        size: 20, 
+                                        color: blackLight
                                       )
                                     ),
                                     SizedBox(height: 4),
@@ -347,7 +332,7 @@ class profileManagementScreen extends StatelessWidget {
                                       style: TextStyle(
                                         color: blackLight,
                                         fontFamily: 'SFProText',
-                                        fontWeight: FontWeight.w400,
+                                        fontWeight: FontWeight.w500,
                                         fontSize: content12
                                       ),
                                     ),
@@ -391,12 +376,6 @@ class profileManagementScreen extends StatelessWidget {
                                       blurRadius: 4,
                                       offset: Offset(0, 2), // changes position of shadow
                                     ),
-                                    BoxShadow(
-                                      color: black.withOpacity(0.1),
-                                      spreadRadius: 0,
-                                      blurRadius: 64,
-                                      offset: Offset(15, 15), // changes position of shadow
-                                    ),
                                   ],
                                 ),
                                 child: Row(
@@ -414,10 +393,12 @@ class profileManagementScreen extends StatelessWidget {
                                     ),
                                     new Spacer(),
                                     Container(
-                                      child: SvgPicture.asset(arrowRight,
-                                        color: blackLight,
-                                        height: 32,
-                                        width: 32
+                                      padding: EdgeInsets.zero,
+                                      alignment: Alignment.center,
+                                      child: Icon(
+                                        Iconsax.arrow_right,
+                                        size: 24, 
+                                        color: blackLight
                                       )
                                     ),
                                     SizedBox(width: 12)
@@ -426,7 +407,7 @@ class profileManagementScreen extends StatelessWidget {
                               ),
                             )
                         ),
-                        SizedBox(height: 16),
+                        SizedBox(height: 20),
                         Container(
                             padding: EdgeInsets.only(left: appPadding, right: appPadding),
                             alignment: Alignment.center,
@@ -458,13 +439,6 @@ class profileManagementScreen extends StatelessWidget {
                                         offset: Offset(
                                             0, 2), // changes position of shadow
                                       ),
-                                      BoxShadow(
-                                        color: black.withOpacity(0.1),
-                                        spreadRadius: 0,
-                                        blurRadius: 64,
-                                        offset: Offset(15,
-                                            15), // changes position of shadow
-                                      ),
                                     ],
                                   ),
                                   child: Row(
@@ -481,19 +455,21 @@ class profileManagementScreen extends StatelessWidget {
                                       ),
                                       new Spacer(),
                                       Container(
-                                        child: SvgPicture.asset(arrowRight,
-                                          color: blackLight,
-                                          height: 32,
-                                          width: 32
-                                        )
-                                      ),
+                                      padding: EdgeInsets.zero,
+                                      alignment: Alignment.center,
+                                      child: Icon(
+                                        Iconsax.arrow_right,
+                                        size: 24, 
+                                        color: blackLight
+                                      )
+                                    ),
                                       SizedBox(width: 12)
                                     ],
                                   )
                               ),
                             )
                         ),
-                        SizedBox(height: 16),
+                        SizedBox(height: 20),
                         Container(
                             padding: EdgeInsets.only(left: appPadding, right: appPadding),
                             alignment: Alignment.center,
@@ -525,13 +501,6 @@ class profileManagementScreen extends StatelessWidget {
                                         offset: Offset(
                                             0, 2), // changes position of shadow
                                       ),
-                                      BoxShadow(
-                                        color: black.withOpacity(0.1),
-                                        spreadRadius: 0,
-                                        blurRadius: 64,
-                                        offset: Offset(15,
-                                            15), // changes position of shadow
-                                      ),
                                     ],
                                   ),
                                   child: Row(
@@ -548,19 +517,21 @@ class profileManagementScreen extends StatelessWidget {
                                       ),
                                       new Spacer(),
                                       Container(
-                                        child: SvgPicture.asset(arrowRight,
-                                          color: blackLight,
-                                          height: 32,
-                                          width: 32
-                                        )
-                                      ),
+                                      padding: EdgeInsets.zero,
+                                      alignment: Alignment.center,
+                                      child: Icon(
+                                        Iconsax.arrow_right,
+                                        size: 24, 
+                                        color: blackLight
+                                      )
+                                    ),
                                       SizedBox(width: 12)
                                     ],
                                   )
                               ),
                             )
                         ),
-                        SizedBox(height: 16),
+                        SizedBox(height: 20),
                         Container(
                             padding: EdgeInsets.only(left: appPadding, right: appPadding),
                             alignment: Alignment.center,
@@ -592,13 +563,6 @@ class profileManagementScreen extends StatelessWidget {
                                         offset: Offset(
                                             0, 2), // changes position of shadow
                                       ),
-                                      BoxShadow(
-                                        color: black.withOpacity(0.1),
-                                        spreadRadius: 0,
-                                        blurRadius: 64,
-                                        offset: Offset(15,
-                                            15), // changes position of shadow
-                                      ),
                                     ],
                                   ),
                                   child: Row(
@@ -615,12 +579,14 @@ class profileManagementScreen extends StatelessWidget {
                                       ),
                                       new Spacer(),
                                       Container(
-                                        child: SvgPicture.asset(arrowRight,
-                                          color: blackLight,
-                                          height: 32,
-                                          width: 32
-                                        )
-                                      ),
+                                      padding: EdgeInsets.zero,
+                                      alignment: Alignment.center,
+                                      child: Icon(
+                                        Iconsax.arrow_right,
+                                        size: 24, 
+                                        color: blackLight
+                                      )
+                                    ),
                                       SizedBox(width: 12)
                                     ],
                                   )
@@ -629,7 +595,7 @@ class profileManagementScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 12),
+                    SizedBox(height: 8),
                     Container(
                         padding: EdgeInsets.all(appPadding),
                         alignment: Alignment.center,
@@ -644,7 +610,7 @@ class profileManagementScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               color: blackLight,
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(16)),
+                                  BorderRadius.all(Radius.circular(12)),
                               boxShadow: [
                                 BoxShadow(
                                   color: black.withOpacity(0.25),

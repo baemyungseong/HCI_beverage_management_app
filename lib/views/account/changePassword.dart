@@ -5,16 +5,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:ui_fresh_app/constants/colors.dart';
 import 'package:ui_fresh_app/constants/fonts.dart';
 import 'package:ui_fresh_app/constants/images.dart';
-import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
+
+//import widgets
+import 'package:ui_fresh_app/views/widget/snackBarWidget.dart';
 
 //import others
 import 'package:meta/meta.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-//import widgets
-import 'package:ui_fresh_app/views/widget/snackBarWidget.dart';
 
 class changePasswordScreen extends StatefulWidget {
   const changePasswordScreen({ Key? key }) : super(key: key);
@@ -51,25 +50,33 @@ class _changePasswordScreenState extends State<changePasswordScreen> with InputV
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start, 
               children: [
-                SizedBox(height: 68),
-                IconButton(
-                  padding: EdgeInsets.only(left: 28),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: Icon(Icons.arrow_back_ios, size: 28, color: black),
-                ),
-                SizedBox(height: 16),
-                Container(
-                  padding: EdgeInsets.only(left: appPadding, right: appPadding),
-                  child: Text(
-                    "Change Password",
-                    style: TextStyle(
-                      fontFamily: "SFProText",
-                      fontSize: 24.0,
-                      color: black,
-                      fontWeight: FontWeight.w600),
+                SizedBox(height: 62),
+                  IconButton(
+                    padding: EdgeInsets.only(left: appPadding),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(Iconsax.arrow_square_left,
+                        size: 32, color: blackLight),
                   ),
+                  SizedBox(height: 8),
+                  Container(
+                  alignment: Alignment.topLeft,
+                  padding: EdgeInsets.only(left: appPadding, right: appPadding),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Change Password',
+                        style: TextStyle(
+                          fontFamily: 'SFProText',
+                          fontSize: title24,
+                          color: blackLight,
+                          fontWeight: FontWeight.w700,
+                          height: 1.6,
+                        ),
+                      ),
+                    ],
+                  )
                 ),
                 SizedBox(height: 32),
                 Column(

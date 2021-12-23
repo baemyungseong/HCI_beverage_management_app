@@ -31,10 +31,14 @@ const atAdsLogin2 = 'assets/images/authentication/adsLogin2.png';
 const atAdsLogin3 = 'assets/images/authentication/adsLogin3.png';
 
 //accountManagement images
-const amGradientCard = 'assets/images/accountManagement/gradientCard.png';
-const amUserAvatar = 'assets/images/accountManagement/userAvatar.png';
-const amFunnyDog = 'assets/images/accountManagement/funnyDog.png';
-const amHelper = 'assets/images/accountManagement/helper.png';
+const amGradientCard = 'assets/images/account/gradientCard.png';
+const amUserAvatar = 'assets/images/account/userAvatar.png';
+const amFunnyDog = 'assets/images/account/funnyDog.png';
+const amHelper = 'assets/images/account/helper.png';
 
 //accountant images
 const atReexCard = 'assets/images/accountant/reexCard.png';
+
+//common images
+const indicator = 'assets/images/common/filterIndicator.png';
+const arrowToRight = 'assets/images/common/arrowRight.png';
