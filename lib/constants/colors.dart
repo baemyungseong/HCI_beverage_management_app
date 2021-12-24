@@ -13,7 +13,7 @@ const Color blackUltraLight = Color(0xFF3E4D5B);
 const Color grey3 = Color(0xFF333333);
 const Color grey8 = Color(0xFF888888);
 const Color greyD = Color(0xFFDDDDDD);
-const Color grey6 = Color(0x6F7175);
+const Color grey6 = Color(0xFF666666);
 
 const Color red = Color(0xC13C43);
 

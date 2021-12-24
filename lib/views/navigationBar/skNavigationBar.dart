@@ -45,7 +45,7 @@ class _storekeeperNavigationBarState extends State<storekeeperNavigationBar>
         children: <Widget>[
           storekeeperDashboardScreen(),
           storekeeperAccountManagementScreen(),
-          storekeeperIncidentReportScreen()
+          skIncidentReportScreen()
         ],
         controller: _tabController,
         //onPageChanged: whenPageChanged,

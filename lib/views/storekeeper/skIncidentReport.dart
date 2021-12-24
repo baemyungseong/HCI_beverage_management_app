@@ -14,18 +14,18 @@ import 'package:ui_fresh_app/constants/others.dart';
 import 'package:ui_fresh_app/views/accountManagement/profileManagement.dart';
 import 'package:ui_fresh_app/views/storekeeper/skIncidentReportCreating.dart';
 import 'package:ui_fresh_app/views/storekeeper/skSearchingIncident.dart';
-import 'package:ui_fresh_app/views/storekeeper/skwidget/sktabview.dart';
+import 'package:ui_fresh_app/views/storekeeper/skwidget/skTabView.dart';
 
-class storekeeperIncidentReportScreen extends StatefulWidget {
-  const storekeeperIncidentReportScreen({Key? key}) : super(key: key);
+class skIncidentReportScreen extends StatefulWidget {
+  const skIncidentReportScreen({Key? key}) : super(key: key);
 
   @override
-  State<storekeeperIncidentReportScreen> createState() =>
-      _storekeeperIncidentReportScreenState();
+  State<skIncidentReportScreen> createState() =>
+      _skIncidentReportScreenState();
 }
 
-class _storekeeperIncidentReportScreenState
-    extends State<storekeeperIncidentReportScreen>
+class _skIncidentReportScreenState
+    extends State<skIncidentReportScreen>
     with SingleTickerProviderStateMixin {
   TextEditingController _minpricecontroller = TextEditingController();
   TextEditingController _maxpricecontroller = TextEditingController();
@@ -37,9 +37,9 @@ class _storekeeperIncidentReportScreenState
   Widget build(BuildContext context) {
     return AnnotatedRegion(
       value: SystemUiOverlayStyle(
-          statusBarBrightness: Brightness.light,
-          statusBarIconBrightness: Brightness.light,
-          statusBarColor: Colors.transparent),
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.light,
+        statusBarColor: Colors.transparent),
       child: Scaffold(
         body: Stack(
           children: [
@@ -188,7 +188,7 @@ class _storekeeperIncidentReportScreenState
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    skIncidentReportCreating(),
+                                    skIncidentReportCreatingScreen(),
                               ),
                             );
                           },
@@ -240,7 +240,7 @@ class _storekeeperIncidentReportScreenState
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  skIncidentManagementSearchScreen(
+                                  skIncidentReportSearchingScreen(
                                 searchResult: searchController.text,
                                 haveFilter: haveFilter,
                               ),
@@ -261,11 +261,12 @@ class _storekeeperIncidentReportScreenState
                             contentPadding: EdgeInsets.only(left: 20, right: 0),
                             hintText: "What're you looking for?",
                             hintStyle: TextStyle(
-                                fontFamily: 'SFProText',
-                                fontSize: content14,
-                                fontWeight: FontWeight.w400,
-                                color: blueLight,
-                                height: 1.4),
+                              fontFamily: 'SFProText',
+                              fontSize: content14,
+                              fontWeight: FontWeight.w400,
+                              color: grey8,
+                              height: 1.4
+                            ),
                             filled: true,
                             fillColor: blueLight,
                             border: OutlineInputBorder(
@@ -281,10 +282,10 @@ class _storekeeperIncidentReportScreenState
                     height: 38,
                   ),
                   Text(
-                    'Incedent Report',
+                    'Incident Report',
                     style: TextStyle(
                       fontSize: title24,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w700,
                       fontFamily: 'SFProText',
                       color: blackLight,
                     ),

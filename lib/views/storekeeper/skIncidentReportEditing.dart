@@ -9,15 +9,15 @@ import 'package:ui_fresh_app/constants/others.dart';
 import 'package:ui_fresh_app/views/storekeeper/skIncidentReport.dart';
 import 'package:ui_fresh_app/views/widget/dialogWidget.dart';
 
-class skIncidentReportEditing extends StatefulWidget {
-  const skIncidentReportEditing({Key? key}) : super(key: key);
+class skIncidentReportEditingScreen extends StatefulWidget {
+  const skIncidentReportEditingScreen({Key? key}) : super(key: key);
 
   @override
-  State<skIncidentReportEditing> createState() =>
-      _skIncidentReportEditingState();
+  State<skIncidentReportEditingScreen> createState() =>
+      _skIncidentReportEditingScreenState();
 }
 
-class _skIncidentReportEditingState extends State<skIncidentReportEditing> {
+class _skIncidentReportEditingScreenState extends State<skIncidentReportEditingScreen> {
   late DateTime selectDate = DateTime.now();
   int selected = 0;
   Widget customRadio(String role, int index) {
@@ -114,13 +114,7 @@ class _skIncidentReportEditingState extends State<skIncidentReportEditing> {
                         Spacer(),
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    storekeeperIncidentReportScreen(),
-                              ),
-                            );
+                            Navigator.pop(context);
                           },
                           child: Container(
                             width: 80,
@@ -138,7 +132,7 @@ class _skIncidentReportEditingState extends State<skIncidentReportEditing> {
                                     1.0,
                                   ]),
                               borderRadius: BorderRadius.all(
-                                Radius.circular(5.0),
+                                Radius.circular(8.0),
                               ),
                             ),
                             padding: EdgeInsets.zero,
@@ -149,7 +143,7 @@ class _skIncidentReportEditingState extends State<skIncidentReportEditing> {
                                 style: TextStyle(
                                   fontFamily: "SFProText",
                                   fontSize: 14.0,
-                                  color: blackLight,
+                                  color: white,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),

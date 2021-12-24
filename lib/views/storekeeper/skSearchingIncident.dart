@@ -17,20 +17,20 @@ import 'package:ui_fresh_app/views/accountant/atReexManagement.dart';
 //import others
 import 'package:iconsax/iconsax.dart';
 
-class skIncidentManagementSearchScreen extends StatefulWidget {
-  skIncidentManagementSearchScreen(
+class skIncidentReportSearchingScreen extends StatefulWidget {
+  skIncidentReportSearchingScreen(
       {Key? key, required this.searchResult, required this.haveFilter})
       : super(key: key);
   String searchResult;
   bool haveFilter;
 
   @override
-  _skIncidentManagementSearchScreenState createState() =>
-      _skIncidentManagementSearchScreenState();
+  _skIncidentReportSearchingScreenState createState() =>
+      _skIncidentReportSearchingScreenState();
 }
 
-class _skIncidentManagementSearchScreenState
-    extends State<skIncidentManagementSearchScreen> {
+class _skIncidentReportSearchingScreenState
+    extends State<skIncidentReportSearchingScreen> {
   TextEditingController searchController = TextEditingController();
   bool? useFilter;
 
@@ -105,8 +105,16 @@ class _skIncidentManagementSearchScreenState
                                         ),
                                       ),
                                       Spacer(),
+                                      // Container(
+                                      //   width: 6,
+                                      //   height: 6,
+                                      //   decoration: new BoxDecoration(
+                                      //     color: black,
+                                      //     shape: BoxShape.circle,
+                                      //   ),
+                                      // )
                                       Image.asset(
-                                        (index == 0 || index == 0)
+                                        (index == 0 || index == 4)
                                             ? 'assets/images/accountant/Ellipse137.png'
                                             : 'assets/images/accountant/Ellipse138.png',
                                       ),
@@ -124,7 +132,7 @@ class _skIncidentManagementSearchScreenState
                                       SizedBox(
                                         width: 23,
                                       ),
-                                      Icon(Iconsax.clock),
+                                      Icon(Iconsax.clock, size: 18, color: blackLight),
                                       SizedBox(
                                         width: 6,
                                       ),
@@ -134,7 +142,7 @@ class _skIncidentManagementSearchScreenState
                                           fontFamily: 'SFProText',
                                           fontSize: content12,
                                           fontWeight: FontWeight.w500,
-                                          color: blackLight,
+                                          color: grey8,
                                         ),
                                       ),
                                       Spacer(),
@@ -154,9 +162,7 @@ class _skIncidentManagementSearchScreenState
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
-                                        width: 24,
-                                      ),
+                                      SizedBox(width: 24),
                                     ],
                                   ),
                                 ],

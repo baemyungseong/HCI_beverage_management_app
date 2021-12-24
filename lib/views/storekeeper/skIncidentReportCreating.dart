@@ -9,15 +9,15 @@ import 'package:ui_fresh_app/constants/others.dart';
 import 'package:ui_fresh_app/views/storekeeper/skIncidentReport.dart';
 import 'package:ui_fresh_app/views/widget/dialogWidget.dart';
 
-class skIncidentReportCreating extends StatefulWidget {
-  const skIncidentReportCreating({Key? key}) : super(key: key);
+class skIncidentReportCreatingScreen extends StatefulWidget {
+  const skIncidentReportCreatingScreen({Key? key}) : super(key: key);
 
   @override
-  State<skIncidentReportCreating> createState() =>
-      _skIncidentReportCreatingState();
+  State<skIncidentReportCreatingScreen> createState() =>
+      _skIncidentReportCreatingScreenState();
 }
 
-class _skIncidentReportCreatingState extends State<skIncidentReportCreating> {
+class _skIncidentReportCreatingScreenState extends State<skIncidentReportCreatingScreen> {
   late DateTime selectDate = DateTime.now();
   int selected = 0;
   Widget customRadio(String role, int index) {
@@ -119,7 +119,7 @@ class _skIncidentReportCreatingState extends State<skIncidentReportCreating> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    storekeeperIncidentReportScreen(),
+                                    skIncidentReportScreen(),
                               ),
                             );
                           },

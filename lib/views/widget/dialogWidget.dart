@@ -292,7 +292,7 @@ removeDialog(BuildContext context) {
     context: context,
     pageBuilder: (context, anim1, anim2) {
       return Align(
-        alignment: Alignment.bottomCenter,
+        alignment: Alignment.center,
         child: Container(
           height: 194,
           width: 299,
@@ -323,7 +323,7 @@ removeDialog(BuildContext context) {
                             1.0,
                           ]),
                       borderRadius: BorderRadius.all(
-                        Radius.circular(5.0),
+                        Radius.circular(8.0),
                       ),
                     ),
                     padding: EdgeInsets.zero,
@@ -384,6 +384,14 @@ removeDialog(BuildContext context) {
                       borderRadius: BorderRadius.all(
                         Radius.circular(8.0),
                       ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: black.withOpacity(0.25),
+                          spreadRadius: 0,
+                          blurRadius: 4,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
                     ),
                     child: Center(
                       child: Text(
@@ -398,9 +406,7 @@ removeDialog(BuildContext context) {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 7,
-                  ),
+                  Spacer(),
                   GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
@@ -427,11 +433,13 @@ removeDialog(BuildContext context) {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    width: 24,
+                  ),
                 ],
               ),
             ],
           ),
-          margin: EdgeInsets.only(bottom: 250, left: 12, right: 12),
           decoration: BoxDecoration(
             color: white,
             borderRadius: BorderRadius.circular(24),
