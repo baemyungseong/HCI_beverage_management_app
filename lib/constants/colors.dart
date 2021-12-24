@@ -14,6 +14,7 @@ const Color grey3 = Color(0xFF333333);
 const Color grey8 = Color(0xFF888888);
 const Color greyC = Color(0xFFCCCCCC);
 const Color greyD = Color(0xFFDDDDDD);
+const Color grey6 = Color(0xFF666666);
 
 const Color blueWater = Color(0xFF5FAAEF);
 const Color blueLight = Color(0xFFDDF1FF);

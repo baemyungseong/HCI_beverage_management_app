@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:ui_fresh_app/constants/colors.dart';
+import 'package:ui_fresh_app/constants/fonts.dart';
 
 //import constants
 import 'package:ui_fresh_app/constants/colors.dart';
@@ -334,3 +338,176 @@ datePickerDialog(BuildContext context, selectDate, category) {
 //       }
 //   );
 // }
+
+removeDialog(BuildContext context) {
+  return showGeneralDialog(
+    barrierLabel: "Label",
+    barrierDismissible: true,
+    barrierColor: Colors.black.withOpacity(0.5),
+    transitionDuration: Duration(milliseconds: 400),
+    context: context,
+    pageBuilder: (context, anim1, anim2) {
+      return Align(
+        alignment: Alignment.center,
+        child: Container(
+          height: 194,
+          width: 299,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 16,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 24,
+                  ),
+                  Container(
+                    width: 32,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            Color(0xFFCB356B),
+                            Color(0xFFBD3F32),
+                          ],
+                          stops: [
+                            0.0,
+                            1.0,
+                          ]),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8.0),
+                      ),
+                    ),
+                    padding: EdgeInsets.zero,
+                    alignment: Alignment.center,
+                    child: Icon(
+                      Iconsax.close_circle,
+                      size: 18,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 24,
+                  ),
+                  Container(
+                    child: Text(
+                      'Do you want to remove \nthis incident Report?',
+                      style: TextStyle(
+                        fontFamily: "SFProText",
+                        fontSize: 20,
+                        color: blackLight,
+                        fontWeight: FontWeight.w700,
+                        decoration: TextDecoration.none,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 24,
+                  ),
+                  Container(
+                    width: 122,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            Color(0xFFCB356B),
+                            Color(0xFFBD3F32),
+                          ],
+                          stops: [
+                            0.0,
+                            1.0,
+                          ]),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8.0),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: black.withOpacity(0.25),
+                          spreadRadius: 0,
+                          blurRadius: 4,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Remove',
+                        style: TextStyle(
+                          fontFamily: "SFProText",
+                          fontSize: 16,
+                          color: white,
+                          fontWeight: FontWeight.w600,
+                          decoration: TextDecoration.none,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Spacer(),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: 122,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8.0),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(
+                            fontFamily: "SFProText",
+                            fontSize: 16,
+                            color: blackLight,
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 24,
+                  ),
+                ],
+              ),
+            ],
+          ),
+          decoration: BoxDecoration(
+            color: white,
+            borderRadius: BorderRadius.circular(24),
+          ),
+        ),
+      );
+    },
+    transitionBuilder: (context, anim1, anim2, child) {
+      return SlideTransition(
+        position: Tween(begin: Offset(0, 1), end: Offset(0, 0)).animate(anim1),
+        child: child,
+      );
+    },
+  );
+}

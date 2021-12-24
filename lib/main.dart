@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:ui_fresh_app/views/authentication/signIn.dart';
 
 //import views
@@ -22,21 +23,29 @@ class FreshApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Fresh',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          scaffoldBackgroundColor: Colors.white,
-          dialogBackgroundColor: Colors.white,
-          primarySwatch: Colors.grey,
-          cardColor: Colors.white70,
-          accentColor: Colors.white,
-        ),
-        initialRoute:
-            initScreen == 0 || initScreen == null ? 'onboarding' : 'signin',
-        routes: {
-          'onboarding': (context) => onboardingWrapper(),
-          'signin': (context) => signInScreen(),
-        },
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', 'US'), // English
+        // const Locale('vn', 'VN'), // VietNam (cai' nay` cu' bo? trong comment nha, understand thi` xoa' ghi chu' nay`)
+      ],
+      title: 'Fresh',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        dialogBackgroundColor: Colors.white,
+        primarySwatch: Colors.grey,
+        cardColor: Colors.white70,
+        accentColor: Colors.white,
+      ),
+      initialRoute:
+          initScreen == 0 || initScreen == null ? 'onboarding' : 'signin',
+      routes: {
+        'onboarding': (context) => onboardingWrapper(),
+        'signin': (context) => signInScreen(),
+      },
     );
   }
 }
