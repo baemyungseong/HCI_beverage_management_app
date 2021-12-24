@@ -126,7 +126,7 @@ List<String> names = ["Pan1", "BrownD", "Pan2", "Pan1", "BrownD", "Pan2", "Pan1"
                                   height: 1.2
                                 ),
                               )),
-                          SizedBox(height: 2),
+                          SizedBox(height: 1),
                           Container(
                               // alignment: Alignment.topLeft,
                               child: Text('Accountant',
@@ -139,7 +139,6 @@ List<String> names = ["Pan1", "BrownD", "Pan2", "Pan1", "BrownD", "Pan2", "Pan1"
                                   )
                               )
                           ),
-                          SizedBox(height: 2)
                         ],
                       ),
                       Spacer(),

@@ -10,6 +10,7 @@ const backgroundOnboarding = 'assets/images/background/backgroundOnboarding.png'
 const backgroundLogin = 'assets/images/background/backgroundLogin.png';
 const backgroundCreateAccount = 'assets/images/background/backgroundCreateAccount.png';
 const backgroundChangePassword = 'assets/images/background/backgroundChangePassword.png';
+const backgroundDrink = 'assets/images/background/backgroundDrink.png';
 
 //logo images
 const logo = 'assets/images/logo/basicLogo.png';

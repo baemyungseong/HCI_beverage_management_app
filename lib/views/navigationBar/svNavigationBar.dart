@@ -43,7 +43,7 @@ class _serveNavigationBarState extends State<serveNavigationBar>
     return Scaffold(
       body: TabBarView(
         children: <Widget>[
-          serveDashboardScreen(),
+          svDashboardCenterScreen(),
           serveMainTaskManagementScreen(),
           serveInvoiceManagementScreen(),
           serveIncidentReportScreen()

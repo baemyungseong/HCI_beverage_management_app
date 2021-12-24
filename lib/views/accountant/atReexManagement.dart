@@ -110,6 +110,37 @@ class _atReexManagementScreenState extends State<atReexManagementScreen> {
                         ),
                       ),
                       SizedBox(width: 16),
+                      (haveSearch == false) ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  'Noob Chảo',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontFamily: 'SFProText',
+                                    color: black,
+                                    fontWeight: FontWeight.w600,
+                                    height: 1.2
+                                  ),
+                                )),
+                            SizedBox(height: 1),
+                            Container(
+                                // alignment: Alignment.topLeft,
+                                child: Text('Accountant',
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                      fontFamily: 'SFProText',
+                                      color: grey8,
+                                      fontWeight: FontWeight.w400,
+                                      // height: 1.4
+                                    )
+                                )
+                            ),
+                          ],
+                        )
+                        : Container(),
                       Spacer(),
                       AnimatedContainer(
                         duration: Duration(milliseconds: 300),

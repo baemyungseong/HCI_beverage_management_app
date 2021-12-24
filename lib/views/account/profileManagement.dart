@@ -19,7 +19,6 @@ import 'package:ui_fresh_app/views/account/helpCenter.dart';
 import 'package:ui_fresh_app/views/account/profileDetail.dart';
 import 'package:ui_fresh_app/views/account/termCondition.dart';
 
-
 //import others
 import 'package:iconsax/iconsax.dart';
 import 'package:flutter/services.dart';
