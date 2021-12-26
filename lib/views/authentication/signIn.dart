@@ -5,42 +5,38 @@ import 'package:flutter/cupertino.dart';
 import 'package:ui_fresh_app/constants/colors.dart';
 import 'package:ui_fresh_app/constants/fonts.dart';
 import 'package:ui_fresh_app/constants/images.dart';
-import 'package:ui_fresh_app/constants/icons.dart';
 import 'package:ui_fresh_app/constants/others.dart';
+
+//import widgets
+import 'package:ui_fresh_app/views/widget/snackBarWidget.dart';
 
 //import views
 import 'package:ui_fresh_app/views/authentication/forgotPassword.dart';
 import 'package:ui_fresh_app/views/navigationBar/skNavigationBar.dart';
-import 'package:ui_fresh_app/views/storekeeper/skDashboard.dart';
-import 'package:ui_fresh_app/views/serve/svDashboard.dart';
-import 'package:ui_fresh_app/views/accountant/atDashboard.dart';
-import 'package:ui_fresh_app/views/bartender/btDashboard.dart';
-import 'package:ui_fresh_app/views/accountManagement/profileManagement.dart';
-
-import 'package:ui_fresh_app/views/navigationBar/skNavigationBar.dart';
-import 'package:ui_fresh_app/views/navigationBar/svNavigationBar.dart';
 import 'package:ui_fresh_app/views/navigationBar/btNavigationBar.dart';
 import 'package:ui_fresh_app/views/navigationBar/atNavigationBar.dart';
+import 'package:ui_fresh_app/views/navigationBar/svNavigationBar.dart';
 
 //import others
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:iconsax/iconsax.dart';
 
-class signinScreen extends StatefulWidget {
-  const signinScreen({Key? key}) : super(key: key);
+class signInScreen extends StatefulWidget {
+  const signInScreen({Key? key}) : super(key: key);
 
   @override
-  _signinScreenState createState() => _signinScreenState();
+  _signInScreenState createState() => _signInScreenState();
 }
 
-class _signinScreenState extends State<signinScreen> {
+class _signInScreenState extends State<signInScreen> {
   bool isHiddenPassword = true;
-  final GlobalKey<FormState> _formemailKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> _formpasswordKey = GlobalKey<FormState>();
 
-  String? email, password;
+  TextEditingController emailController = TextEditingController();
+  final GlobalKey<FormState> emailFormKey = GlobalKey<FormState>();
+  TextEditingController passwordController = TextEditingController();
+  final GlobalKey<FormState> passwordFormKey = GlobalKey<FormState>();
 
   List<String> _listImage = [atAdsLogin1, atAdsLogin2, atAdsLogin3];
   double _currentPosition = 1.0;
@@ -113,6 +109,7 @@ class _signinScreenState extends State<signinScreen> {
                                   text: 'Fresh',
                                   style: TextStyle(
                                     color: blueWater,
+                                    fontSize: 20,
                                   ),
                                 ),
                                 TextSpan(
@@ -189,112 +186,130 @@ class _signinScreenState extends State<signinScreen> {
                   child: Column(
                     children: [
                       Form(
-                        autovalidate: true,
-                        key: _formemailKey,
-                        child: TextFormField(
-                          keyboardType: TextInputType.emailAddress,
-                          autofillHints: [AutofillHints.email],
-                          style: TextStyle(color: blackLight),
-                          decoration: InputDecoration(
-                            contentPadding:
-                                EdgeInsets.only(left: 20, right: 20),
-                            hintStyle: TextStyle(
+                        key: emailFormKey,
+                        child: Container(
+                          width: 319,
+                          height: 48,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: blueLight),
+                          alignment: Alignment.topCenter,
+                          child: TextFormField(
+                              style: TextStyle(
                                 fontFamily: 'SFProText',
-                                fontSize: content16,
-                                fontWeight: FontWeight.w400,
-                                color: blackLight.withOpacity(0.5)),
-                            hintText: "Enter your email",
-                            filled: true,
-                            fillColor: white,
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            errorStyle: TextStyle(
-                                foreground: Paint()..shader = redGradient),
+                                fontSize: 16,
+                                color: blackLight,
+                                fontWeight: FontWeight.w400
+                              ),
+                              controller: emailController,
+                              keyboardType: TextInputType.emailAddress,
+                              autofillHints: [AutofillHints.email],
+                              // //validator
+                              // validator: (password) {
+                              //   if (isPasswordValid(password.toString())) {
+                              //     return null;
+                              //   } else {
+                              //     return '';
+                              //   }
+                              // },
+                              decoration: InputDecoration(
+                                contentPadding:
+                                  EdgeInsets.only(left: 20, right: 12),
+                                hintStyle: TextStyle(
+                                    fontFamily: 'SFProText',
+                                    fontSize: content16,
+                                    fontWeight: FontWeight.w400,
+                                    color: blackLight.withOpacity(0.5)),
+                                hintText: "Enter your email",
+                                filled: true,
+                                fillColor: white,
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                errorStyle: TextStyle(
+                                  color: Colors.transparent,
+                                  fontSize: 0,
+                                  height: 0,
+                                ),
+                              )
                           ),
-                          //validator
-                          validator: MultiValidator([
-                            RequiredValidator(
-                                errorText: "Please enter your email"),
-                            EmailValidator(
-                                errorText: "Your email is not valid"),
-                          ]),
-                          onChanged: (String? value) {
-                            email = value;
-                          },
                         ),
                       ),
                       SizedBox(height: 16),
                       Form(
-                        autovalidate: true,
-                        key: _formpasswordKey,
-                        child: TextFormField(
-                          keyboardType: TextInputType.visiblePassword,
-                          autofillHints: [AutofillHints.password],
-                          obscureText: isHiddenPassword,
-                          style: TextStyle(color: blackLight),
-                          decoration: InputDecoration(
-                            suffixIcon: InkWell(
+                        key: passwordFormKey,
+                        child: Container(
+                          width: 319,
+                          height: 48,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: blueLight),
+                          alignment: Alignment.topCenter,
+                          child: TextFormField(
+                              style: TextStyle(
+                                fontFamily: 'SFProText',
+                                fontSize: 16,
+                                color: blackLight,
+                                fontWeight: FontWeight.w400
+                              ),
+                              controller: passwordController,
+                              obscureText: isHiddenPassword,
+                              keyboardType:
+                                  TextInputType.visiblePassword,
+                              autofillHints: [AutofillHints.password],
+                              // //validator
+                              // validator: (password) {
+                              //   if (isPasswordValid(password.toString())) {
+                              //     return null;
+                              //   } else {
+                              //     return '';
+                              //   }
+                              // },
+                              decoration: InputDecoration(
+                                suffixIcon: InkWell(
                                 onTap: _togglePasswordView,
                                 child: isHiddenPassword
-                                    ? Stack(
-                                        alignment: Alignment.centerRight,
-                                        children: [
-                                            Container(
-                                                padding:
-                                                    EdgeInsets.only(right: 20),
-                                                child: SvgPicture.asset(
-                                                    atEyeVisibility,
-                                                    color: blackLight,
-                                                    height: 24,
-                                                    width: 24)
-                                            )
-                                          ]
-                                    )
-                                    : Stack(
-                                        alignment: Alignment.centerRight,
-                                        children: [
-                                            Container(
-                                                padding:
-                                                    EdgeInsets.only(right: 20),
-                                                child: SvgPicture.asset(
-                                                    atEyeInvisibility,
-                                                    color: blackLight,
-                                                    height: 24,
-                                                    width: 24)
-                                            )
-                                          ]
-                                    )
-                            ),
-                            contentPadding:
-                                EdgeInsets.only(left: 20, right: 12),
-                            hintStyle: TextStyle(
-                                fontFamily: 'SFProText',
-                                fontSize: content16,
-                                fontWeight: FontWeight.w400,
-                                color: blackLight.withOpacity(0.5)),
-                            hintText: "Enter your password",
-                            filled: true,
-                            fillColor: white,
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            errorStyle: TextStyle(
-                                foreground: Paint()..shader = redGradient),
+                                  ? Stack(
+                                      alignment: Alignment.centerRight,
+                                      children: [
+                                        Container(
+                                          padding: EdgeInsets.only(right: 20),
+                                          child: Icon(Iconsax.eye, size: 24, color: grey8)
+                                        )
+                                      ]
+                                  )
+                                  : Stack(
+                                    alignment: Alignment.centerRight,
+                                    children: [
+                                      Container(
+                                        padding: EdgeInsets.only(right: 20),
+                                        child: Icon(Iconsax.eye_slash, size: 24, color: grey8)
+                                      )
+                                    ]
+                                  )
+                                ),
+                                contentPadding:
+                                  EdgeInsets.only(left: 20, right: 12),
+                                hintStyle: TextStyle(
+                                    fontFamily: 'SFProText',
+                                    fontSize: content16,
+                                    fontWeight: FontWeight.w400,
+                                    color: blackLight.withOpacity(0.5)),
+                                hintText: "Enter your password",
+                                filled: true,
+                                fillColor: white,
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide.none,
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
+                                errorStyle: TextStyle(
+                                  color: Colors.transparent,
+                                  fontSize: 0,
+                                  height: 0,
+                                ),
+                              )
                           ),
-                          //validator
-                          validator: MultiValidator([
-                            RequiredValidator(
-                                errorText: "Please enter your password"),
-                            MinLengthValidator(6,
-                                errorText:
-                                    "Your password must be at least 6 digits length"),
-                          ]),
-                          onChanged: (String? value) {
-                            password = value;
-                          },
                         ),
                       ),
                       Container(
@@ -325,46 +340,39 @@ class _signinScreenState extends State<signinScreen> {
                     child: GestureDetector(
                       //action navigate to dashboard screen
                       onTap: () {
-                        if (_formemailKey.currentState!.validate() &&
-                            _formpasswordKey.currentState!.validate()) {
-                          if(email == "storekeeper@gmail.com" && password == "storekeeper")
+                        if (emailFormKey.currentState!.validate() &&
+                            passwordFormKey.currentState!.validate()) {
+                          if(emailController.text == "storekeeper@gmail.com" && passwordController.text == "storekeeper")
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => storekeeperNavigationBar(),
                               ),
                             );
-                          else if (email == "serve@gmail.com")
+                          else if (emailController.text == "serve@gmail.com")
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => serveNavigationBar(),
                               ),
                             );
-                          else if (email == "bartender@gmail.com" && password == "bartender")
+                          else if (emailController.text == "bartender@gmail.com" && passwordController.text == "bartender")
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => bartenderNavigationBar(),
                               ),
                             );
-                          else if (email == "accountant@gmail.com" && password == "accountant")
+                          else if (emailController.text == "accountant@gmail.com" && passwordController.text == "accountant")
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => accountantNavigationBar(),
                               ),
                             );
-                          else 
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => profileManagementScreen(),
-                              ),
-                            );
-                          // ScaffoldMessenger.of(context).showSnackBar(
-                          //   const SnackBar(content: Text('Processing Data')),
-                          // );
+                          else {
+                            showSnackBar(context, 'Your user account is wrong, please check!', 'error');
+                          }
                         }
                       },
                       child: AnimatedContainer(
