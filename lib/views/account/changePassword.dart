@@ -98,7 +98,6 @@ class _changePasswordScreenState extends State<changePasswordScreen> with InputV
                       padding: EdgeInsets.only(left: appPadding, right: appPadding),
                       alignment: Alignment.centerLeft,
                       child: Form(
-                        autovalidate: true,
                         key: currentFormKey,
                         child: Container(
                           width: 319,
@@ -196,7 +195,6 @@ class _changePasswordScreenState extends State<changePasswordScreen> with InputV
                       padding: EdgeInsets.only(left: appPadding, right: appPadding),
                       alignment: Alignment.centerLeft,
                       child: Form(
-                        autovalidate: true,
                         key: newFormKey,
                         child: Container(
                           width: 319,
@@ -294,7 +292,6 @@ class _changePasswordScreenState extends State<changePasswordScreen> with InputV
                       padding: EdgeInsets.only(left: appPadding, right: appPadding),
                       alignment: Alignment.centerLeft,
                       child: Form(
-                        autovalidate: true,
                         key: confirmFormKey,
                         child: Container(
                           width: 319,
