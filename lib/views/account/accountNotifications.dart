@@ -76,7 +76,12 @@ class _accountNotificationsScreenState extends State<accountNotificationsScreen>
                           itemCount: 10,
                           // itemCount: projects.length,
                           itemBuilder: (context, index) {
-                            return Container(
+                            return GestureDetector(
+                              onTap: () {
+                                print("pressed");
+                              },
+                              child: AnimatedContainer(
+                                duration: Duration(milliseconds: 300),
                                 width: 319,
                                 height: 96,
                                 decoration: BoxDecoration(
@@ -155,6 +160,7 @@ class _accountNotificationsScreenState extends State<accountNotificationsScreen>
                                     ],
                                   ),
                                 )
+                              )
                             );
                           },
                         ),

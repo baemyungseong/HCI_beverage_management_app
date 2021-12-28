@@ -445,7 +445,7 @@ class profileManagementScreen extends StatelessWidget {
                                     children: [
                                       SizedBox(width: 24),
                                       Text(
-                                        "Change Passwork",
+                                        "Change Password",
                                         style: TextStyle(
                                             color: blackLight,
                                             fontFamily: 'SFProText',

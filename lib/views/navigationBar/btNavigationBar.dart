@@ -8,10 +8,10 @@ import 'package:ui_fresh_app/constants/images.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
 //import views
-import 'package:ui_fresh_app/views/bartender/btDashboard.dart';
-import 'package:ui_fresh_app/views/bartender/btMainTaskManagement.dart';
-import 'package:ui_fresh_app/views/bartender/btInventoryManagement.dart';
-import 'package:ui_fresh_app/views/bartender/btIncidentReport.dart';
+import 'package:ui_fresh_app/views/bartender/dashboard/btDashboardManagement.dart';
+import 'package:ui_fresh_app/views/bartender/mainTask/btMainTaskManagement.dart';
+import 'package:ui_fresh_app/views/bartender/inventory/btInventoryManagement.dart';
+import 'package:ui_fresh_app/views/bartender/incidentReport/btIncidentReportManagement.dart';
 
 //import others
 import 'package:flutter_svg/flutter_svg.dart';
@@ -43,10 +43,10 @@ class _bartenderNavigationBarState extends State<bartenderNavigationBar>
     return Scaffold(
       body: TabBarView(
         children: <Widget>[
-          bartenderDashboardScreen(),
-          bartenderMainTaskManagementScreen(),
-          bartenderInventoryManagementScreen(),
-          bartenderIncidentReportScreen()
+          btDashboardManagementScreen(),
+          btMainTaskManagementScreen(),
+          btInventoryManagementScreen(),
+          btIncidentReportManagementScreen()
         ],
         controller: _tabController,
         //onPageChanged: whenPageChanged,

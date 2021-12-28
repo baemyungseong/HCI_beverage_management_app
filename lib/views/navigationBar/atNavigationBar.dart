@@ -8,14 +8,13 @@ import 'package:ui_fresh_app/constants/images.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
 //import views
-import 'package:ui_fresh_app/views/accountant/atDashboard.dart';
-import 'package:ui_fresh_app/views/accountant/atMainTaskManagement.dart';
-import 'package:ui_fresh_app/views/accountant/atReexManagement.dart';
-import 'package:ui_fresh_app/views/accountant/atIncidentReport.dart';
+import 'package:ui_fresh_app/views/accountant/dashboard/atDashboard.dart';
+import 'package:ui_fresh_app/views/accountant/mainTask/atMainTaskManagement.dart';
+import 'package:ui_fresh_app/views/accountant/reex/atReexManagement.dart';
+import 'package:ui_fresh_app/views/accountant/incidentReport/atIncidentReportManagement.dart';
 
 //import others
 import 'package:iconsax/iconsax.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class accountantNavigationBar extends StatefulWidget {
   @override
@@ -46,7 +45,7 @@ class _accountantNavigationBarState extends State<accountantNavigationBar>
           atDashboardScreen(),
           atMainTaskManagementScreen(),
           atReexManagementScreen(),
-          atIncidentReportScreen()
+          atIncidentReportManagementScreen()
         ],
         controller: _tabController,
         //onPageChanged: whenPageChanged,

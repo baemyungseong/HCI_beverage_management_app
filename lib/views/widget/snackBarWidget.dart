@@ -12,24 +12,27 @@ import 'package:iconsax/iconsax.dart';
 
 void showSnackBar(context, text, category) {
   final snackBar = SnackBar(
-    content: Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        SizedBox(width: 4),
-        (category == 'success') ? Icon(Iconsax.verify, size: 24, color: blueWater) : Icon(Iconsax.warning_2, size: 24, color: blueWater),
-        SizedBox(width: 16),
-        Expanded(
-          child: Text(
-            text,
-            style: TextStyle(
-              fontFamily: 'Poppins',
-              color: black,
-              fontWeight: FontWeight.w600,
-              fontSize: content12
+    content: GestureDetector(
+      onTap: () => ScaffoldMessenger.of(context)..hideCurrentSnackBar(),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(width: 4),
+          (category == 'success') ? Icon(Iconsax.verify, size: 24, color: Color(0xFF75CA92)) : ((category == 'error') ? Icon(Iconsax.warning_2, size: 24, color: Color(0xFFDE653F)) : Icon(Iconsax.danger, size: 24, color: Color(0xFFE0B82B))),
+          SizedBox(width: 16),
+          Expanded(
+            child: Text(
+              text,
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                color: black,
+                fontWeight: FontWeight.w600,
+                fontSize: content12
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     ),
     backgroundColor: white,
     duration: Duration(seconds: 3),

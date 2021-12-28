@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:ui_fresh_app/constants/colors.dart';
+import 'package:ui_fresh_app/constants/fonts.dart';
 
 //import constants
 import 'package:ui_fresh_app/constants/colors.dart';
 import 'package:ui_fresh_app/constants/fonts.dart';
 import 'package:ui_fresh_app/constants/images.dart';
 import 'package:ui_fresh_app/constants/others.dart';
+import 'package:ui_fresh_app/views/account/accountMessageDetail.dart';
 
 //import views
 import 'package:ui_fresh_app/views/authentication/signIn.dart';
@@ -13,155 +18,7 @@ import 'package:ui_fresh_app/views/authentication/signIn.dart';
 //import others
 import 'package:iconsax/iconsax.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
-
-logoutDialog(BuildContext mContext) {
-  return showDialog(
-      context: mContext,
-      builder: (context) {
-        return AlertDialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-            backgroundColor: white,
-            content: Stack(
-              overflow: Overflow.visible,
-              alignment: Alignment.topCenter,
-              children: [
-                Container(
-                  height: 264,
-                  width: 240,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 40, 16, 0),
-                    child: Column(
-                      children: [
-                        Text(
-                          "Do you want to log out" + '\n' + "Fresh App?",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: blueWater,
-                              fontFamily: 'Poppins',
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              height: 1.6),
-                        ),
-                        SizedBox(height: 24),
-                        Container(
-                            alignment: Alignment.center,
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => signInScreen(),
-                                  ),
-                                );
-                              },
-                              // onTap: () => signOutUser().then((value) {
-                              //   Navigator.of(context).pushAndRemoveUntil(
-                              //       MaterialPageRoute(
-                              //           builder: (context) =>
-                              //               authenticationWrapper()),
-                              //       (Route<dynamic> route) => false);
-                              // }),
-                              child: AnimatedContainer(
-                                  alignment: Alignment.center,
-                                  duration: Duration(milliseconds: 300),
-                                  height: 54,
-                                  width: 260,
-                                  decoration: BoxDecoration(
-                                    color: blackLight,
-                                    borderRadius: BorderRadius.circular(8),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: black.withOpacity(0.25),
-                                        spreadRadius: 0,
-                                        blurRadius: 4,
-                                        offset: Offset(0, 4),
-                                      ),
-                                      BoxShadow(
-                                        color: black.withOpacity(0.1),
-                                        spreadRadius: 0,
-                                        blurRadius: 60,
-                                        offset: Offset(10, 10),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Text(
-                                    "Log out",
-                                    style: TextStyle(
-                                        color: white,
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 18),
-                                  )),
-                            )),
-                        SizedBox(height: 16),
-                        Container(
-                            alignment: Alignment.center,
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: AnimatedContainer(
-                                  alignment: Alignment.center,
-                                  duration: Duration(milliseconds: 300),
-                                  height: 54,
-                                  width: 260,
-                                  decoration: BoxDecoration(
-                                    color: white,
-                                    border: Border(
-                                      top: BorderSide(width: 3, color: white),
-                                      left: BorderSide(width: 3, color: white),
-                                      right: BorderSide(width: 3, color: white),
-                                      bottom:
-                                          BorderSide(width: 3, color: white),
-                                    ),
-                                    borderRadius: BorderRadius.circular(8),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: black.withOpacity(0.10),
-                                        spreadRadius: 0,
-                                        blurRadius: 4,
-                                        offset: Offset(0, 4),
-                                      ),
-                                      BoxShadow(
-                                        color: black.withOpacity(0.1),
-                                        spreadRadius: 0,
-                                        blurRadius: 60,
-                                        offset: Offset(10, 10),
-                                      ),
-                                    ],
-                                  ),
-                                  child: Text(
-                                    "Cancel",
-                                    style: TextStyle(
-                                        color: blueWater,
-                                        fontFamily: 'Poppins',
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 18),
-                                  )),
-                            ))
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                    top: -64,
-                    child: Container(
-                      child: CircleAvatar(
-                        backgroundColor: blueWater,
-                        radius: 40,
-                        child: Icon(
-                          Iconsax.logout,
-                          color: white,
-                          size: 32,
-                        ),
-                      ),
-                    )),
-              ],
-            ));
-      });
-}
+import 'package:ui_fresh_app/views/widget/snackBarWidget.dart';
 
 datePickerDialog(BuildContext context, selectDate, category) {
   return showRoundedDatePicker(
@@ -303,34 +160,1617 @@ datePickerDialog(BuildContext context, selectDate, category) {
       ));
 }
 
-// dialog(BuildContext Context) {
-//   return showDialog(
-//       context: Context,
-//       builder: (context) {
-//         return SimpleDialog(
-//           title: Text("Favour Options",
-//               style: TextStyle(
-//                   color: Color(0xFF05268D), fontFamily: "MontserratBold")),
-//           children: <Widget>[
-//             SimpleDialogOption(
-//               child: Text("Delete",
-//                   style: TextStyle(
-//                       color: Color(0xFF05268D),
-//                       fontFamily: "MontserratRegular")),
-//               // onPressed: () {
-//               //   Navigator.pop(context);
-//               //   removeUserPost();
-//               // },
-//             ),
-//             SimpleDialogOption(
-//               child: Text("Cancel",
-//                   style: TextStyle(
-//                       color: Color(0xFF05268D),
-//                       fontFamily: "MontserratRegular")),
-//               // onPressed: () => Navigator.pop(context)
-//             ),
-//           ],
-//         );
-//       }
-//   );
-// }
+logoutDialog(BuildContext context) {
+  return showGeneralDialog(
+    barrierLabel: "Label",
+    barrierDismissible: true,
+    barrierColor: Colors.black.withOpacity(0.5),
+    transitionDuration: Duration(milliseconds: 400),
+    context: context,
+    pageBuilder: (context, anim1, anim2) {
+      return Align(
+        alignment: Alignment.center,
+        child: Container(
+          height: 194,
+          width: 299,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 16,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 24,
+                  ),
+                  Container(
+                    width: 32,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            blueWater,
+                            Color(0xFF979DFA),
+                          ],
+                          stops: [
+                            0.0,
+                            1.0,
+                          ]),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8.0),
+                      ),
+                    ),
+                    padding: EdgeInsets.zero,
+                    alignment: Alignment.center,
+                    child: Icon(
+                      Iconsax.logout,
+                      size: 18,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 24,
+                  ),
+                  Container(
+                    child: Text(
+                      'Do you want to logout \nFresh App?',
+                      style: TextStyle(
+                        fontFamily: "SFProText",
+                        fontSize: 20,
+                        color: blackLight,
+                        fontWeight: FontWeight.w700,
+                        decoration: TextDecoration.none,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 24,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => signInScreen(),
+                        ),
+                      );
+                      showSnackBar(context, "Your account is logged out!", 'success');
+                    },
+                    // onTap: () => signOutUser().then((value) {
+                    //   Navigator.of(context).pushAndRemoveUntil(
+                    //       MaterialPageRoute(
+                    //           builder: (context) =>
+                    //               authenticationWrapper()),
+                    //       (Route<dynamic> route) => false);
+                    // }),
+                    child: Container(
+                      width: 122,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                            colors: [
+                              blueWater,
+                              Color(0xFF979DFA),
+                            ],
+                            stops: [
+                              0.0,
+                              1.0,
+                            ]),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8.0),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: black.withOpacity(0.25),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Log out',
+                          style: TextStyle(
+                            fontFamily: "SFProText",
+                            fontSize: 16,
+                            color: white,
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: 122,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8.0),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(
+                            fontFamily: "SFProText",
+                            fontSize: 16,
+                            color: blackLight,
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          decoration: BoxDecoration(
+            color: white,
+            borderRadius: BorderRadius.circular(24),
+          ),
+        ),
+      );
+    },
+    transitionBuilder: (context, anim1, anim2, child) {
+      return SlideTransition(
+        position: Tween(begin: Offset(0, 1), end: Offset(0, 0)).animate(anim1),
+        child: child,
+      );
+    },
+  );
+}
+
+
+//add trouble dialog
+int selected = 0;
+Widget customRadio(String role, int index, StateSetter setState) {
+  return Container(
+      alignment: Alignment.center,
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            selected = index;
+          });
+        },
+        child: AnimatedContainer(
+          child: Center(
+            child: Text(
+              role,
+              style: TextStyle(
+                fontFamily: "SFProText",
+                fontSize: 12.0,
+                color: blackLight,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          alignment: Alignment.center,
+          duration: Duration(milliseconds: 300),
+          height: 36,
+          width: 122,
+          decoration: BoxDecoration(
+            color: (selected == index) ? blueLight : null,
+            border: Border(
+              top: BorderSide(width: 2, color: blueLight),
+              left: BorderSide(width: 2, color: blueLight),
+              right: BorderSide(width: 2, color: blueLight),
+              bottom: BorderSide(width: 2, color: blueLight),
+            ),
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+      ));
+}
+
+addTroubleDialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+          return AlertDialog(
+            backgroundColor: white,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24.0)),
+            insetPadding: EdgeInsets.zero,
+            contentPadding: EdgeInsets.zero,
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            content: Stack(
+              children: <Widget>[
+                Form(
+                  child: Container(
+                    padding: EdgeInsets.only(
+                        top: 16, bottom: 16, left: 24, right: 24),
+                    width: 299,
+                    height: 429,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 32,
+                          height: 32,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                                colors: [
+                                  Color(0xFF5FAAEF),
+                                  Color(0xFF979DFA),
+                                ],
+                                stops: [
+                                  0.0,
+                                  1.0,
+                                ]),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(8.0),
+                            ),
+                          ),
+                          padding: EdgeInsets.zero,
+                          alignment: Alignment.center,
+                          child: Icon(
+                            Iconsax.edit,
+                            size: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        Text(
+                          'Create new trouble',
+                          style: TextStyle(
+                            fontSize: content20,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'SFProText',
+                            color: blackLight,
+                          ),
+                        ),
+                        SizedBox(height: 18),
+                        Text(
+                          'Trouble\'\s Name',
+                          style: TextStyle(
+                            fontSize: content14,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'SFProText',
+                            color: blackLight,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Container(
+                          width: 251,
+                          height: 36,
+                          child: TextFormField(
+                            // initialValue:
+                            //     'Tại sao em lại ra đi hả Bùi Khắc Lam',
+                            autofocus: false,
+                            style: TextStyle(
+                                fontFamily: 'SFProText',
+                                fontSize: content12,
+                                fontWeight: FontWeight.w400,
+                                color: blackLight,
+                                height: 1.4),
+                            decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.only(left: 20, right: 0),
+                              hintText: "What're your trouble?",
+                              hintStyle: TextStyle(
+                                  fontFamily: 'SFProText',
+                                  fontSize: content12,
+                                  fontWeight: FontWeight.w400,
+                                  color: grey8,
+                                  height: 1.4),
+                              filled: true,
+                              fillColor: blueLight,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          'Category',
+                          style: TextStyle(
+                            fontSize: content14,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'SFProText',
+                            color: blackLight,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Row(
+                          children: [
+                            customRadio('Compensation', 1, setState),
+                            SizedBox(
+                              width: 7,
+                            ),
+                            customRadio('Cost', 2, setState),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          'Money',
+                          style: TextStyle(
+                            fontSize: content14,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'SFProText',
+                            color: blackLight,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Container(
+                          width: 122,
+                          height: 36,
+                          child: TextFormField(
+                            style: TextStyle(
+                                fontFamily: 'SFProText',
+                                fontSize: content14,
+                                fontWeight: FontWeight.w400,
+                                color: blackLight,
+                                height: 1.0),
+                            decoration: InputDecoration(
+                              prefix: Column(
+                                children: [
+                                  Text(
+                                    '\$ ',
+                                    style: TextStyle(
+                                      fontFamily: 'SFProText',
+                                      fontSize: content12,
+                                      fontWeight: FontWeight.w400,
+                                      color: blackLight,
+                                      height: 1.4
+                                    ),
+                                  ),
+                                  SizedBox(height: 0.3)
+                                ],
+                              ),
+                              contentPadding:
+                                  EdgeInsets.only(left: 16, right: 0),
+                              hintStyle: TextStyle(
+                                  fontFamily: 'SFProText',
+                                  fontSize: content12,
+                                  fontWeight: FontWeight.w400,
+                                  color: grey8,
+                                  height: 1.6),
+                              filled: true,
+                              fillColor: blueLight,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox( height: 32),
+                        Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                                showSnackBar(context, 'The trouble have been created!', 'success');
+                              },
+                              child: AnimatedContainer(
+                                duration: Duration(milliseconds: 300),
+                                width: 122,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.centerRight,
+                                      colors: [
+                                        blueWater,
+                                        Color(0xFF979DFA),
+                                      ],
+                                      stops: [
+                                        0.0,
+                                        1.0,
+                                      ]),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(8.0),
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: black.withOpacity(0.25),
+                                      spreadRadius: 0,
+                                      blurRadius: 4,
+                                      offset: Offset(0, 4),
+                                    ),
+                                  ],
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Create',
+                                    style: TextStyle(
+                                      fontFamily: "SFProText",
+                                      fontSize: 16,
+                                      color: white,
+                                      fontWeight: FontWeight.w600,
+                                      decoration: TextDecoration.none,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: AnimatedContainer(
+                                duration: Duration(milliseconds: 300),
+                                width: 122,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(8.0),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Cancel',
+                                    style: TextStyle(
+                                      fontFamily: "SFProText",
+                                      fontSize: 16,
+                                      color: blackLight,
+                                      fontWeight: FontWeight.w600,
+                                      decoration: TextDecoration.none,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+      });
+}
+
+addGoodDialog(BuildContext context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+          return AlertDialog(
+            backgroundColor: white,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24.0)),
+            insetPadding: EdgeInsets.zero,
+            contentPadding: EdgeInsets.zero,
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            content: Stack(
+              children: <Widget>[
+                Form(
+                  child: Container(
+                    padding: EdgeInsets.only(
+                        top: 16, bottom: 16, left: 24, right: 24),
+                    width: 299,
+                    height: 514,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 32,
+                          height: 32,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                                colors: [
+                                  Color(0xFF5FAAEF),
+                                  Color(0xFF979DFA),
+                                ],
+                                stops: [
+                                  0.0,
+                                  1.0,
+                                ]),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(8.0),
+                            ),
+                          ),
+                          padding: EdgeInsets.zero,
+                          alignment: Alignment.center,
+                          child: Icon(
+                            Iconsax.edit,
+                            size: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        Text(
+                          'Create new goods',
+                          style: TextStyle(
+                            fontSize: content20,
+                            fontWeight: FontWeight.w700,
+                            fontFamily: 'SFProText',
+                            color: blackLight,
+                          ),
+                        ),
+                        SizedBox(height: 18),
+                        Text(
+                          'Goods\'\s Name',
+                          style: TextStyle(
+                            fontSize: content14,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'SFProText',
+                            color: blackLight,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Container(
+                          width: 251,
+                          height: 36,
+                          child: TextFormField(
+                            // initialValue:
+                            //     'Tại sao em lại ra đi hả Bùi Khắc Lam',
+                            autofocus: false,
+                            style: TextStyle(
+                                fontFamily: 'SFProText',
+                                fontSize: content12,
+                                fontWeight: FontWeight.w400,
+                                color: blackLight,
+                                height: 1.4),
+                            decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.only(left: 20, right: 0),
+                              hintText: "What're your trouble?",
+                              hintStyle: TextStyle(
+                                  fontFamily: 'SFProText',
+                                  fontSize: content12,
+                                  fontWeight: FontWeight.w400,
+                                  color: grey8,
+                                  height: 1.4),
+                              filled: true,
+                              fillColor: blueLight,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          'Goods\'\s Name',
+                          style: TextStyle(
+                            fontSize: content14,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'SFProText',
+                            color: blackLight,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Container(
+                          width: 251,
+                          height: 36,
+                          child: TextFormField(
+                            // initialValue:
+                            //     'Tại sao em lại ra đi hả Bùi Khắc Lam',
+                            autofocus: false,
+                            style: TextStyle(
+                                fontFamily: 'SFProText',
+                                fontSize: content12,
+                                fontWeight: FontWeight.w400,
+                                color: blackLight,
+                                height: 1.4),
+                            decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.only(left: 20, right: 0),
+                              hintText: "What're your trouble?",
+                              hintStyle: TextStyle(
+                                  fontFamily: 'SFProText',
+                                  fontSize: content12,
+                                  fontWeight: FontWeight.w400,
+                                  color: grey8,
+                                  height: 1.4),
+                              filled: true,
+                              fillColor: blueLight,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Text(
+                          'Goods\'\s Name',
+                          style: TextStyle(
+                            fontSize: content14,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'SFProText',
+                            color: blackLight,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Container(
+                          width: 251,
+                          height: 36,
+                          child: TextFormField(
+                            // initialValue:
+                            //     'Tại sao em lại ra đi hả Bùi Khắc Lam',
+                            autofocus: false,
+                            style: TextStyle(
+                                fontFamily: 'SFProText',
+                                fontSize: content12,
+                                fontWeight: FontWeight.w400,
+                                color: blackLight,
+                                height: 1.4),
+                            decoration: InputDecoration(
+                              contentPadding:
+                                  EdgeInsets.only(left: 20, right: 0),
+                              hintText: "What're your trouble?",
+                              hintStyle: TextStyle(
+                                  fontFamily: 'SFProText',
+                                  fontSize: content12,
+                                  fontWeight: FontWeight.w400,
+                                  color: grey8,
+                                  height: 1.4),
+                              filled: true,
+                              fillColor: blueLight,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        Text(
+                          'Unit price',
+                          style: TextStyle(
+                            fontSize: content14,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'SFProText',
+                            color: blackLight,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Container(
+                          width: 122,
+                          height: 36,
+                          child: TextFormField(
+                            style: TextStyle(
+                                fontFamily: 'SFProText',
+                                fontSize: content14,
+                                fontWeight: FontWeight.w400,
+                                color: blackLight,
+                                height: 1.0),
+                            decoration: InputDecoration(
+                              prefix: Column(
+                                children: [
+                                  Text(
+                                    '\$ ',
+                                    style: TextStyle(
+                                        fontFamily: 'SFProText',
+                                        fontSize: content12,
+                                        fontWeight: FontWeight.w400,
+                                        color: blackLight,
+                                        height: 1.4),
+                                  ),
+                                  SizedBox(height: 0.3)
+                                ],
+                              ),
+                              contentPadding:
+                                  EdgeInsets.only(left: 16, right: 0),
+                              hintStyle: TextStyle(
+                                  fontFamily: 'SFProText',
+                                  fontSize: content12,
+                                  fontWeight: FontWeight.w400,
+                                  color: grey8,
+                                  height: 1.6),
+                              filled: true,
+                              fillColor: blueLight,
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 32),
+                        Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: AnimatedContainer(
+                                duration: Duration(milliseconds: 300),
+                                width: 122,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                      begin: Alignment.centerLeft,
+                                      end: Alignment.centerRight,
+                                      colors: [
+                                        blueWater,
+                                        Color(0xFF979DFA),
+                                      ],
+                                      stops: [
+                                        0.0,
+                                        1.0,
+                                      ]),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(8.0),
+                                  ),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: black.withOpacity(0.25),
+                                      spreadRadius: 0,
+                                      blurRadius: 4,
+                                      offset: Offset(0, 4),
+                                    ),
+                                  ],
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Create',
+                                    style: TextStyle(
+                                      fontFamily: "SFProText",
+                                      fontSize: 16,
+                                      color: white,
+                                      fontWeight: FontWeight.w600,
+                                      decoration: TextDecoration.none,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: AnimatedContainer(
+                                duration: Duration(milliseconds: 300),
+                                width: 122,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(8.0),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Cancel',
+                                    style: TextStyle(
+                                      fontFamily: "SFProText",
+                                      fontSize: 16,
+                                      color: blackLight,
+                                      fontWeight: FontWeight.w600,
+                                      decoration: TextDecoration.none,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+      });
+}
+
+watchUserDialog(BuildContext context) {
+  return showGeneralDialog(
+    barrierLabel: "Label",
+    barrierDismissible: true,
+    barrierColor: Colors.black.withOpacity(0.5),
+    transitionDuration: Duration(milliseconds: 400),
+    context: context,
+    pageBuilder: (context, anim1, anim2) {
+      return Align(
+        alignment: Alignment.center,
+        child: Container(
+          height: 192,
+          width: 303,
+          padding: EdgeInsets.only(top: 18, bottom: 18, left: 24, right: 24),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            color: white,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    children: [
+                      SizedBox(height: 8),
+                      AnimatedContainer(
+                        alignment: Alignment.center,
+                        duration: Duration(milliseconds: 300),
+                        height: 56,
+                        width: 56,
+                        decoration: BoxDecoration(
+                          color: blueWater,
+                          borderRadius: BorderRadius.circular(8),
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                  'https://scontent.fvca1-1.fna.fbcdn.net/v/t39.30808-6/244996278_2952087241710403_6324580891206192742_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=QkKoL3I2WxEAX9x_RIV&_nc_ht=scontent.fvca1-1.fna&oh=00_AT-HVBPf8k4Qgo6eEWGidx5PSEN7T9wnIu1_FQRmt9gafg&oe=61CD1F40'),
+                              fit: BoxFit.cover),
+                          shape: BoxShape.rectangle,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: 32,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Pan cái chảo',
+                        style: TextStyle(
+                          fontSize: content18,
+                          fontWeight: FontWeight.w700,
+                          fontFamily: 'SFProText',
+                          color: blackLight,
+                          decoration: TextDecoration.none,
+                          height: 1.4
+                        ),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Container(
+                        height: 0.5,
+                        width: 150.0,
+                        color: blackLight,
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        'nhatkb2021@gmail.com',
+                        style: TextStyle(
+                          fontSize: content10,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'SFProText',
+                          color: grey8,
+                          decoration: TextDecoration.none,
+                          height: 1.4
+                        ),
+                      ),
+                      SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        '84+ 902311293',
+                        style: TextStyle(
+                          fontSize: content10,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'SFProText',
+                          color: grey8,
+                          decoration: TextDecoration.none,
+                          height: 1.4
+                        ),
+                      ),
+                      SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        '@26/03/2001',
+                        style: TextStyle(
+                          fontSize: content10,
+                          fontWeight: FontWeight.w500,
+                          fontFamily: 'SFProText',
+                          color: grey8,
+                          decoration: TextDecoration.none,
+                          height: 1.4
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(height: 24),
+              Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => messageDetailScreen(),
+                        ),
+                      );
+                      // .then((value) {});
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 122,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                            colors: [
+                              blueWater,
+                              Color(0xFF979DFA),
+                            ],
+                            stops: [
+                              0.0,
+                              1.0,
+                            ]),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8.0),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: black.withOpacity(0.25),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Message',
+                          style: TextStyle(
+                            fontFamily: "SFProText",
+                            fontSize: 16,
+                            color: white,
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 11,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: 122,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8.0),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(
+                            fontFamily: "SFProText",
+                            fontSize: 16,
+                            color: blackLight,
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+    transitionBuilder: (context, anim1, anim2, child) {
+      return SlideTransition(
+        position: Tween(begin: Offset(0, 1), end: Offset(0, 0)).animate(anim1),
+        child: child,
+      );
+    },
+  );
+}
+
+removeDialog(BuildContext context) {
+  return showGeneralDialog(
+    barrierLabel: "Label",
+    barrierDismissible: true,
+    barrierColor: Colors.black.withOpacity(0.5),
+    transitionDuration: Duration(milliseconds: 400),
+    context: context,
+    pageBuilder: (context, anim1, anim2) {
+      return Align(
+        alignment: Alignment.center,
+        child: Container(
+          height: 194,
+          width: 299,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 16,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 24,
+                  ),
+                  Container(
+                    width: 32,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            Color(0xFFCB356B),
+                            Color(0xFFBD3F32),
+                          ],
+                          stops: [
+                            0.0,
+                            1.0,
+                          ]),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8.0),
+                      ),
+                    ),
+                    padding: EdgeInsets.zero,
+                    alignment: Alignment.center,
+                    child: Icon(
+                      Iconsax.close_circle,
+                      size: 18,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 24,
+                  ),
+                  Container(
+                    child: Text(
+                      'Do you want to remove \nthis Incident Report?',
+                      style: TextStyle(
+                        fontFamily: "SFProText",
+                        fontSize: 20,
+                        color: blackLight,
+                        fontWeight: FontWeight.w700,
+                        decoration: TextDecoration.none,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 24,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context)
+                      ..pop()
+                      ..pop();
+                    },
+                    child: Container(
+                      width: 122,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                            colors: [
+                              Color(0xFFCB356B),
+                              Color(0xFFBD3F32),
+                            ],
+                            stops: [
+                              0.0,
+                              1.0,
+                            ]),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8.0),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: black.withOpacity(0.25),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Remove',
+                          style: TextStyle(
+                            fontFamily: "SFProText",
+                            fontSize: 16,
+                            color: white,
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: 122,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8.0),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(
+                            fontFamily: "SFProText",
+                            fontSize: 16,
+                            color: blackLight,
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          decoration: BoxDecoration(
+            color: white,
+            borderRadius: BorderRadius.circular(24),
+          ),
+        ),
+      );
+    },
+    transitionBuilder: (context, anim1, anim2, child) {
+      return SlideTransition(
+        position: Tween(begin: Offset(0, 1), end: Offset(0, 0)).animate(anim1),
+        child: child,
+      );
+    },
+  );
+}
+
+checkoutDialog(BuildContext context) {
+  return showGeneralDialog(
+    barrierLabel: "Label",
+    barrierDismissible: true,
+    barrierColor: Colors.black.withOpacity(0.5),
+    transitionDuration: Duration(milliseconds: 400),
+    context: context,
+    pageBuilder: (context, anim1, anim2) {
+      return Align(
+        alignment: Alignment.center,
+        child: Container(
+          height: 194,
+          width: 299,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 16,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 24,
+                  ),
+                  Container(
+                    width: 32,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            Color(0xFF159957),
+                            Color(0xFF159199),
+                          ],
+                          stops: [
+                            0.0,
+                            1.0,
+                          ]),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(8.0),
+                      ),
+                    ),
+                    padding: EdgeInsets.zero,
+                    alignment: Alignment.center,
+                    child: Icon(
+                      Iconsax.message_question,
+                      size: 18,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 24,
+                  ),
+                  Container(
+                    child: Text(
+                      'Do you want to check out \nthis Drink?',
+                      style: TextStyle(
+                        fontFamily: "SFProText",
+                        fontSize: 20,
+                        color: blackLight,
+                        fontWeight: FontWeight.w700,
+                        decoration: TextDecoration.none,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 24,
+              ),
+              Row(
+                children: [
+                  SizedBox(
+                    width: 24,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                      showSnackBar(context, 'The order has been passed!', "success");
+                    },
+                    child: 
+                      Container(
+                      width: 122,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.centerLeft,
+                            end: Alignment.centerRight,
+                            colors: [
+                              Color(0xFF159957),
+                              Color(0xFF159199),
+                            ],
+                            stops: [
+                              0.0,
+                              1.0,
+                            ]),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8.0),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: black.withOpacity(0.25),
+                            spreadRadius: 0,
+                            blurRadius: 4,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Confirm',
+                          style: TextStyle(
+                            fontFamily: "SFProText",
+                            fontSize: 16,
+                            color: white,
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 7,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      width: 122,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(8.0),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Cancel',
+                          style: TextStyle(
+                            fontFamily: "SFProText",
+                            fontSize: 16,
+                            color: blackLight,
+                            fontWeight: FontWeight.w600,
+                            decoration: TextDecoration.none,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          decoration: BoxDecoration(
+            color: white,
+            borderRadius: BorderRadius.circular(24),
+          ),
+        ),
+      );
+    },
+    transitionBuilder: (context, anim1, anim2, child) {
+      return SlideTransition(
+        position: Tween(begin: Offset(0, 1), end: Offset(0, 0)).animate(anim1),
+        child: child,
+      );
+    },
+  );
+}
+
+searchDialog(
+  BuildContext context,
+) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+          return AlertDialog(
+            backgroundColor: white,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24.0)),
+            insetPadding: EdgeInsets.zero,
+            contentPadding: EdgeInsets.zero,
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            content: Stack(
+              children: <Widget>[
+                Form(
+                  child: Container(
+                    padding: EdgeInsets.only(
+                        top: 24, bottom: 24, left: 16, right: 16),
+                    width: 299,
+                    height: 229,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 240,
+                              height: 32,
+                              child: TextFormField(
+                                style: TextStyle(
+                                    fontFamily: 'SFProText',
+                                    fontSize: content14,
+                                    fontWeight: FontWeight.w400,
+                                    color: blackLight,
+                                    height: 1.4),
+                                decoration: InputDecoration(
+                                  prefixIcon: Icon(
+                                    Iconsax.search_normal_1,
+                                    size: 18,
+                                    color: black,
+                                  ),
+                                  contentPadding:
+                                      EdgeInsets.only(left: 20, right: 0),
+                                  hintText: "What're you looking for?",
+                                  hintStyle: TextStyle(
+                                      fontFamily: 'SFProText',
+                                      fontSize: content14,
+                                      fontWeight: FontWeight.w400,
+                                      color: grey8,
+                                      height: 1.4),
+                                  filled: true,
+                                  fillColor: whiteLight,
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                padding: EdgeInsets.zero,
+                                alignment: Alignment.center,
+                                child: Icon(Iconsax.close_square,
+                                    size: 19, color: blackLight),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 17,
+                        ),
+                        Container(
+                          height: 128,
+                          padding: EdgeInsets.only(left: 16, right: 140),
+                          child: ListView.separated(
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            padding: EdgeInsets.zero,
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            itemCount: 4,
+                            separatorBuilder:
+                                (BuildContext context, int index) =>
+                                    SizedBox(height: 16),
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          messageDetailScreen(),
+                                    ),
+                                  );
+                                  // .then((value) {});
+                                },
+                                child: AnimatedContainer(
+                                  duration: Duration(milliseconds: 300),
+                                  decoration: BoxDecoration(
+                                    color: white,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  height: 32,
+                                  width: 111,
+                                  child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            AnimatedContainer(
+                                              alignment: Alignment.center,
+                                              duration:
+                                                  Duration(milliseconds: 300),
+                                              height: 32,
+                                              width: 32,
+                                              decoration: BoxDecoration(
+                                                color: blueWater,
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                                image: DecorationImage(
+                                                    image: NetworkImage(
+                                                        'https://scontent.fsgn5-10.fna.fbcdn.net/v/t1.6435-9/161084499_1011185239289536_7749468629913909457_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=1Z9ynzc2dg4AX_mL5HN&_nc_ht=scontent.fsgn5-10.fna&oh=00_AT92ecLxLZxUsrqM0zA8jcY7hzLCnJ0x_pE78H7gd730uQ&oe=61EC35B8'),
+                                                    fit: BoxFit.cover),
+                                                shape: BoxShape.rectangle,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              width: 8,
+                                            ),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Noob chảo',
+                                                  style: TextStyle(
+                                                    fontFamily: 'SFProText',
+                                                    fontSize: content12,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: blackLight,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 2,
+                                                ),
+                                                Text(
+                                                  'Accountant',
+                                                  style: TextStyle(
+                                                    fontFamily: 'SFProText',
+                                                    fontSize: content8,
+                                                    fontWeight: FontWeight.w400,
+                                                    color: blackLight,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ]),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
+      });
+}

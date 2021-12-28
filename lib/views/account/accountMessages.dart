@@ -14,6 +14,7 @@ import 'package:ui_fresh_app/constants/others.dart';
 // import others
 import 'package:meta/meta.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ui_fresh_app/views/widget/dialogWidget.dart';
 
 class accountMessagesScreen extends StatefulWidget {
 
@@ -25,9 +26,9 @@ class accountMessagesScreen extends StatefulWidget {
 
 class _accountMessagesScreenState extends State<accountMessagesScreen> {
 
- List<String> imageUrls = ["https://i.imgur.com/FpZ9xFI.jpg", "https://scontent.fsgn3-1.fna.fbcdn.net/v/t39.30808-1/239770954_3112191605770421_135227235785245757_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=0c64ff&_nc_ohc=Ltvn8FE7R4MAX_CCBUB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.fsgn3-1.fna&oh=00_AT_N67DmHVju0KQtXcOXogzl6SP9sSUR0uxbWxZLvRQNRw&oe=61C87D4E", "https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-1/259507941_1162683510806374_690586520604516558_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=0c64ff&_nc_ohc=cRFdYNiso3AAX9tKuZz&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT-wcjmfasBhSdM_eTdTS_aCeNw-izZ8XP8vTLjeMWWjDg&oe=61C77C06", 
- "https://i.imgur.com/FpZ9xFI.jpg", "https://scontent.fsgn3-1.fna.fbcdn.net/v/t39.30808-1/239770954_3112191605770421_135227235785245757_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=0c64ff&_nc_ohc=Ltvn8FE7R4MAX_CCBUB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.fsgn3-1.fna&oh=00_AT_N67DmHVju0KQtXcOXogzl6SP9sSUR0uxbWxZLvRQNRw&oe=61C87D4E", "https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-1/259507941_1162683510806374_690586520604516558_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=0c64ff&_nc_ohc=cRFdYNiso3AAX9tKuZz&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT-wcjmfasBhSdM_eTdTS_aCeNw-izZ8XP8vTLjeMWWjDg&oe=61C77C06", 
- "https://i.imgur.com/FpZ9xFI.jpg", "https://scontent.fsgn3-1.fna.fbcdn.net/v/t39.30808-1/239770954_3112191605770421_135227235785245757_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=0c64ff&_nc_ohc=Ltvn8FE7R4MAX_CCBUB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.fsgn3-1.fna&oh=00_AT_N67DmHVju0KQtXcOXogzl6SP9sSUR0uxbWxZLvRQNRw&oe=61C87D4E", "https://scontent.fsgn13-2.fna.fbcdn.net/v/t39.30808-1/259507941_1162683510806374_690586520604516558_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=0c64ff&_nc_ohc=cRFdYNiso3AAX9tKuZz&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.fsgn13-2.fna&oh=00_AT-wcjmfasBhSdM_eTdTS_aCeNw-izZ8XP8vTLjeMWWjDg&oe=61C77C06"];
+ List<String> imageUrls = ["https://i.imgur.com/FpZ9xFI.jpg", "https://i.imgur.com/vDMtz4T.jpg", 
+ "https://i.imgur.com/FpZ9xFI.jpg", "https://i.imgur.com/vDMtz4T.jpg", "https://i.imgur.com/vDMtz4T.jpg", 
+ "https://i.imgur.com/FpZ9xFI.jpg", "https://i.imgur.com/vDMtz4T.jpg", "https://i.imgur.com/vDMtz4T.jpg"];
 
 List<String> names = ["Pan1", "BrownD", "Pan2", "Pan1", "BrownD", "Pan2", "Pan1", "BrownD", "Pan2"];
 
@@ -217,6 +218,7 @@ List<String> names = ["Pan1", "BrownD", "Pan2", "Pan1", "BrownD", "Pan2", "Pan1"
                             //         Screen(required, uid: uid),
                             //   ),
                             // );
+                            searchDialog(context);
                           },
                           child: AnimatedContainer(
                             alignment: Alignment.center,
@@ -242,7 +244,7 @@ List<String> names = ["Pan1", "BrownD", "Pan2", "Pan1", "BrownD", "Pan2", "Pan1"
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           shrinkWrap: true,
-                          itemCount: 9,
+                          itemCount: 8,
                           itemBuilder: (context, index) {
                             return Container(
                               padding: EdgeInsets.only(left: 4, right: 4),
@@ -307,7 +309,7 @@ List<String> names = ["Pan1", "BrownD", "Pan2", "Pan1", "BrownD", "Pan2", "Pan1"
                           padding: EdgeInsets.only(top: 16),
                           scrollDirection: Axis.vertical,
                           shrinkWrap: true,
-                          itemCount: 9,
+                          itemCount: 8,
                           itemBuilder: (context, index) {
                             return Container(
                               padding: EdgeInsets.only(top: 12, bottom: 12),

@@ -12,15 +12,19 @@ import 'package:blur/blur.dart';
 import 'package:iconsax/iconsax.dart';
 
 class atRevenueAndExpenditureCardWidget extends StatelessWidget {
-  const atRevenueAndExpenditureCardWidget({Key? key}) : super(key: key);
+  String time;
+  double revenue;
+  String date;
+
+  atRevenueAndExpenditureCardWidget(this.time, this.revenue, this.date, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Container(
-          width: 307,
-          height: 128,
+          width: 319,
+          height: 140,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16.0),
             image: DecorationImage(
@@ -30,41 +34,27 @@ class atRevenueAndExpenditureCardWidget extends StatelessWidget {
           // child: Image.asset(atReexCard, scale: 8, fit: BoxFit.cover),
           )
         ),
-        Blur(
-          blur: 2,
-          blurColor: white.withOpacity(0.7),
-          child: Container(
-            width: 307,
-            height: 128,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16.0),
-              color: Colors.transparent
-            ),
-            // child: Image.asset(atReexCard, scale: 8, fit: BoxFit.cover),
-          ),
-        ),
         Container(
           margin: EdgeInsets.only(left: 16,top: 16),
           padding: EdgeInsets.only(top: 16, left: 16, bottom: 8, right: 16),
-          width: 307,
-          height: 128,
+          width: 319,
+          height: 140,
           decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: black.withOpacity(0.2),
+                blurRadius: 24,
+                spreadRadius: -1,
+                offset: 
+                  Offset(0, 4)
+              )
+            ],
             borderRadius: BorderRadius.circular(16.0),
-            // border: Border.all(
-            //     color: Colors.white.withOpacity(0.1), width: 2.0),
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                white.withOpacity(0.7),
-                white.withOpacity(0.3),
-              ],
-              stops: [
-                0.0,
-                1.0,
-              ]
-            )
-          ),
+            image: DecorationImage(
+              image: AssetImage(atReexCard),
+              fit: BoxFit.fill
+            ),                    
+          ),          
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -94,7 +84,7 @@ class atRevenueAndExpenditureCardWidget extends StatelessWidget {
               Container(
                 width: 276,
                 child: Text(
-                  '\$ 2069.00',
+                  '\$ ' + revenue.toStringAsFixed(2),
                   maxLines: 1,
                   overflow: TextOverflow.fade,
                   softWrap: false,
@@ -106,12 +96,13 @@ class atRevenueAndExpenditureCardWidget extends StatelessWidget {
                   ),
                 ),
               ),
+              SizedBox(height: 11),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Container(
                     child: Text(
-                      'Num' + '39',
+                      time.toString(),
                       style: TextStyle(
                         fontSize: content12,
                         fontWeight: FontWeight.w500,
@@ -128,7 +119,7 @@ class atRevenueAndExpenditureCardWidget extends StatelessWidget {
                     children: [
                       Container(
                         child: Text(
-                          'Update',
+                          'Updated',
                           style: TextStyle(
                             fontSize: content12,
                             fontWeight: FontWeight.w500,
@@ -142,7 +133,7 @@ class atRevenueAndExpenditureCardWidget extends StatelessWidget {
                       SizedBox(height: 2),
                       Container(
                         child: Text(
-                          '09/11/21',
+                          date.toString(),
                           style: TextStyle(
                             fontSize: content8,
                             fontWeight: FontWeight.w500,

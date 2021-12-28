@@ -29,8 +29,8 @@ class _profileDetailScreenState extends State<profileDetailScreen>
 
   TextEditingController nameController = TextEditingController();
   GlobalKey<FormState> nameFormKey = GlobalKey<FormState>();
-  TextEditingController phonenumberController = TextEditingController();
-  GlobalKey<FormState> phonenumberFormKey = GlobalKey<FormState>();
+  TextEditingController phoneNumberController = TextEditingController();
+  GlobalKey<FormState> phoneNumberFormKey = GlobalKey<FormState>();
 
   late DateTime selectDate = DateTime.now();
 
@@ -111,14 +111,14 @@ class _profileDetailScreenState extends State<profileDetailScreen>
                                   fontWeight: FontWeight.w400),
                               controller: nameController,
                               keyboardType: TextInputType.text,
-                              // //validator
-                              // validator: (password) {
-                              //   if (isPasswordValid(password.toString())) {
-                              //     return null;
-                              //   } else {
-                              //     return '';
-                              //   }
-                              // },
+                              //validator
+                              validator: (name) {
+                                if (isNameValid(name.toString())) {
+                                  return null;
+                                } else {
+                                  return '';
+                                }
+                              },
                               decoration: InputDecoration(
                                 contentPadding:
                                     EdgeInsets.only(left: 20, right: 12),
@@ -162,7 +162,7 @@ class _profileDetailScreenState extends State<profileDetailScreen>
                       padding: EdgeInsets.only(left: appPadding, right: appPadding),
                       alignment: Alignment.centerLeft,
                       child: Form(
-                        key: phonenumberFormKey,
+                        key: phoneNumberFormKey,
                         child: Container(
                           width: 319,
                           height: 48,
@@ -176,16 +176,16 @@ class _profileDetailScreenState extends State<profileDetailScreen>
                                   fontSize: 16,
                                   color: blackLight,
                                   fontWeight: FontWeight.w400),
-                              controller: phonenumberController,
+                              controller: phoneNumberController,
                               keyboardType: TextInputType.phone,
-                              // //validator
-                              // validator: (password) {
-                              //   if (isPasswordValid(password.toString())) {
-                              //     return null;
-                              //   } else {
-                              //     return '';
-                              //   }
-                              // },
+                              //validator
+                              validator: (phoneNumber) {
+                                if (isPhoneNumberValid(phoneNumber.toString())) {
+                                  return null;
+                                } else {
+                                  return '';
+                                }
+                              },
                               decoration: InputDecoration(
                                 contentPadding:
                                     EdgeInsets.only(left: 20, right: 12),
@@ -318,8 +318,18 @@ class _profileDetailScreenState extends State<profileDetailScreen>
                       //   }
                       // },
                       onTap: () {
-                        showSnackBar(context, 'Successfully changed the profile!', 'success');
-                        Navigator.pop(context);
+                        if(nameFormKey.currentState!.validate()) {
+                          if (phoneNumberFormKey.currentState!.validate()) {
+                            showSnackBar(context, 'Successfully changed the profile!', 'success');
+                            Navigator.pop(context);
+                          } else {
+                            showSnackBar(context, 'Your phone number is incorrect!', 'error');
+                          }
+                        } else if (phoneNumberFormKey.currentState!.validate()) {
+                          showSnackBar(context, 'Your user name can not be blank!', 'error');
+                        } else {
+                          showSnackBar(context, "Information can not be blank or incorrect!", 'error');
+                        }
                       },
                       child: AnimatedContainer(
                         alignment: Alignment.center,
@@ -367,5 +377,16 @@ class _profileDetailScreenState extends State<profileDetailScreen>
 
 //Create validation
 mixin InputValidationMixin {
-  bool isPasswordValid(String password) => password.length >= 6;
+  // bool isEmailValid(String email) {
+  //   RegExp regex = new RegExp(
+  //       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+  //   return regex.hasMatch(email);
+  // }
+
+  bool isNameValid(String name) => name.length >= 1;
+
+  bool isPhoneNumberValid(String phoneNumber) {
+    RegExp regex = new RegExp(r'(^(?:[+0]9)?[0-9]{10,12}$)');
+    return regex.hasMatch(phoneNumber);
+  }
 }

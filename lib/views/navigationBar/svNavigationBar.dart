@@ -8,10 +8,10 @@ import 'package:ui_fresh_app/constants/images.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
 //import views
-import 'package:ui_fresh_app/views/serve/svDashboard.dart';
-import 'package:ui_fresh_app/views/serve/svMainTaskManagement.dart';
-import 'package:ui_fresh_app/views/serve/svInvoiceManagement.dart';
-import 'package:ui_fresh_app/views/serve/svIncidentReport.dart';
+import 'package:ui_fresh_app/views/serve/dashboard/svDashboard.dart';
+import 'package:ui_fresh_app/views/serve/mainTask/svMainTaskManagement.dart';
+import 'package:ui_fresh_app/views/serve/invoice/svInvoiceManagement.dart';
+import 'package:ui_fresh_app/views/serve/incidentReport/svIncidentReportManagement.dart';
 
 //import others
 import 'package:flutter_svg/flutter_svg.dart';
@@ -43,10 +43,10 @@ class _serveNavigationBarState extends State<serveNavigationBar>
     return Scaffold(
       body: TabBarView(
         children: <Widget>[
-          svDashboardCenterScreen(),
-          serveMainTaskManagementScreen(),
-          serveInvoiceManagementScreen(),
-          serveIncidentReportScreen()
+          svDashboardManagementScreen(),
+          svMainTaskManagementScreen(),
+          svInvoiceManagementScreen(),
+          svIncidentReportManagementScreen()
         ],
         controller: _tabController,
         //onPageChanged: whenPageChanged,

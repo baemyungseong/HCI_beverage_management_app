@@ -13,16 +13,9 @@ import 'package:ui_fresh_app/views/widget/snackBarWidget.dart';
 //import views
 import 'package:ui_fresh_app/views/authentication/forgotPassword.dart';
 import 'package:ui_fresh_app/views/navigationBar/skNavigationBar.dart';
-import 'package:ui_fresh_app/views/storekeeper/skDashboard.dart';
-import 'package:ui_fresh_app/views/serve/svDashboard.dart';
-import 'package:ui_fresh_app/views/accountant/atDashboard.dart';
-import 'package:ui_fresh_app/views/bartender/btDashboard.dart';
-import 'package:ui_fresh_app/views/account/profileManagement.dart';
-
-import 'package:ui_fresh_app/views/navigationBar/skNavigationBar.dart';
-import 'package:ui_fresh_app/views/navigationBar/svNavigationBar.dart';
 import 'package:ui_fresh_app/views/navigationBar/btNavigationBar.dart';
 import 'package:ui_fresh_app/views/navigationBar/atNavigationBar.dart';
+import 'package:ui_fresh_app/views/navigationBar/svNavigationBar.dart';
 
 //import others
 import 'package:flutter/services.dart';

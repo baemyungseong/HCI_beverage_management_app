@@ -41,20 +41,9 @@ flutter:
     - assets/images/logo/
     - assets/images/onboarding/
     - assets/images/account/
-
-
-    #icons
-    - assets/icons/
-    - assets/icons/general/
-    - assets/icons/navigationBar/
-    - assets/icons/authentication/
-    - assets/icons/account/
     - assets/images/accountant/
-  fonts:
-    # - family: NavBarIcons
-    #   fonts:
-    #     - asset: assets/fonts/nav_bar_icons.ttf
 
+  fonts:
     - family: SFProText
       fonts:
         - asset: assets/fonts/sfprotext/SFProText-Ultralight.otf

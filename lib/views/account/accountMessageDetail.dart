@@ -189,7 +189,7 @@ class _messageDetailScreenState extends State<messageDetailScreen> {
                                           image: DecorationImage(
                                               image: NetworkImage(
                                                   // '${projects[index]!["background"]}'),
-                                                  'https://scontent.fsgn3-1.fna.fbcdn.net/v/t39.30808-1/239770954_3112191605770421_135227235785245757_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=0c64ff&_nc_ohc=Ltvn8FE7R4MAX_CCBUB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.fsgn3-1.fna&oh=00_AT_N67DmHVju0KQtXcOXogzl6SP9sSUR0uxbWxZLvRQNRw&oe=61C87D4E'),
+                                                  'https://i.imgur.com/vDMtz4T.jpg'),
                                               fit: BoxFit.cover),
                                           shape: BoxShape.circle,
                                         ),
@@ -243,7 +243,7 @@ class _messageDetailScreenState extends State<messageDetailScreen> {
                                           image: DecorationImage(
                                               image: NetworkImage(
                                                   // '${projects[index]!["background"]}'),
-                                                  'https://scontent.fsgn3-1.fna.fbcdn.net/v/t39.30808-1/239770954_3112191605770421_135227235785245757_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=0c64ff&_nc_ohc=Ltvn8FE7R4MAX_CCBUB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.fsgn3-1.fna&oh=00_AT_N67DmHVju0KQtXcOXogzl6SP9sSUR0uxbWxZLvRQNRw&oe=61C87D4E'),
+                                                  'https://i.imgur.com/vDMtz4T.jpg'),
                                               fit: BoxFit.cover),
                                           shape: BoxShape.circle,
                                         ),
@@ -297,7 +297,7 @@ class _messageDetailScreenState extends State<messageDetailScreen> {
                                           image: DecorationImage(
                                               image: NetworkImage(
                                                   // '${projects[index]!["background"]}'),
-                                                  'https://scontent.fsgn3-1.fna.fbcdn.net/v/t39.30808-1/239770954_3112191605770421_135227235785245757_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=0c64ff&_nc_ohc=Ltvn8FE7R4MAX_CCBUB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.fsgn3-1.fna&oh=00_AT_N67DmHVju0KQtXcOXogzl6SP9sSUR0uxbWxZLvRQNRw&oe=61C87D4E'),
+                                                  'https://i.imgur.com/vDMtz4T.jpg'),
                                               fit: BoxFit.cover),
                                           shape: BoxShape.circle,
                                         ),
@@ -432,7 +432,7 @@ class _messageDetailScreenState extends State<messageDetailScreen> {
                                           image: DecorationImage(
                                               image: NetworkImage(
                                                   // '${projects[index]!["background"]}'),
-                                                  'https://scontent.fsgn3-1.fna.fbcdn.net/v/t39.30808-1/239770954_3112191605770421_135227235785245757_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=0c64ff&_nc_ohc=Ltvn8FE7R4MAX_CCBUB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.fsgn3-1.fna&oh=00_AT_N67DmHVju0KQtXcOXogzl6SP9sSUR0uxbWxZLvRQNRw&oe=61C87D4E'),
+                                                  'https://i.imgur.com/vDMtz4T.jpg'),
                                               fit: BoxFit.cover),
                                           shape: BoxShape.circle,
                                         ),
@@ -529,7 +529,7 @@ class _messageDetailScreenState extends State<messageDetailScreen> {
                                           image: DecorationImage(
                                               image: NetworkImage(
                                                   // '${projects[index]!["background"]}'),
-                                                  'https://scontent.fsgn3-1.fna.fbcdn.net/v/t39.30808-1/239770954_3112191605770421_135227235785245757_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=0c64ff&_nc_ohc=Ltvn8FE7R4MAX_CCBUB&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.fsgn3-1.fna&oh=00_AT_N67DmHVju0KQtXcOXogzl6SP9sSUR0uxbWxZLvRQNRw&oe=61C87D4E'),
+                                                  'https://i.imgur.com/vDMtz4T.jpg'),
                                               fit: BoxFit.cover),
                                           shape: BoxShape.circle,
                                         ),

@@ -8,13 +8,14 @@ import 'package:ui_fresh_app/constants/images.dart';
 import 'package:ui_fresh_app/constants/others.dart';
 
 //import views
-import 'package:ui_fresh_app/views/storekeeper/skDashboard.dart';
-import 'package:ui_fresh_app/views/storekeeper/skAccountManagement.dart';
-import 'package:ui_fresh_app/views/storekeeper/skIncidentReport.dart';
+import 'package:ui_fresh_app/views/storekeeper/dashboard/skDashboard.dart';
+import 'package:ui_fresh_app/views/storekeeper/user/skUserManagement.dart';
+import 'package:ui_fresh_app/views/storekeeper/incidentReport/skIncidentReportManagement.dart';
 
 //import others
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:ui_fresh_app/views/storekeeper/user/skUserManagement.dart';
 
 class storekeeperNavigationBar extends StatefulWidget {
   @override
@@ -42,9 +43,9 @@ class _storekeeperNavigationBarState extends State<storekeeperNavigationBar>
     return Scaffold(
       body: TabBarView(
         children: <Widget>[
-          storekeeperDashboardScreen(),
-          storekeeperAccountManagementScreen(),
-          storekeeperIncidentReportScreen()
+          skDashboardScreen(),
+          skUserManagementScreen(),
+          skIncidentReportManagementScreen()
         ],
         controller: _tabController,
         //onPageChanged: whenPageChanged,
