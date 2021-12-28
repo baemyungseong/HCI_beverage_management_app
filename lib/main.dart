@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:ui_fresh_app/views/authentication/signIn.dart';
 
 //import views
 import 'package:ui_fresh_app/views/wrapper/onboardingWrapper.dart';
+import 'package:ui_fresh_app/views/authentication/signIn.dart';
 
 //import others
 import 'package:shared_preferences/shared_preferences.dart';
